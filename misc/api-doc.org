@@ -1,0 +1,37 @@
+* /api/users
+- POST "/api/users/signup"
+  PUBLIC
+  (create the user)
+  - username
+  - email
+  - password
+
+- POST "/api/users/login"
+  PUBLIC
+  (login user)
+  - username
+  - password
+
+- GET "/api/users/logout"
+  AUTHED
+  (logout user)
+
+
+* /api/crustulom
+- GET "/api/crustulom"
+  AUTHED
+  (get all pastes for the auth'ed user)
+- GET "/api/crustulom/<hash-id>"
+  PUB
+  (get one paste)
+- POST "/api/crustulom"
+  AUTHED
+  (create a paste)
+  - pastetext
+- PUT "/api/crustulom/<hash-id>"
+  AUTHED
+  (update paste text)
+  - pastetext
+- DELETE "/api/curstulom/<hash-id>"
+  AUTHED
+  (delete paste text)
