@@ -1,14 +1,11 @@
 {
   "name": "crustulum-bucket",
   "version": "1.0.0",
-<<<<<<< HEAD
   "description": "",
   "engines": { "node" : "16.x"},
   "main": "server/server.js",
-=======
   "description": "todo",
   "main": "index.js",
->>>>>>> 4fd1af8b8bb33b9bc4888eebc27d163fa0799594
   "scripts": {
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
