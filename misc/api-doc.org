@@ -1,37 +1,121 @@
-* /api/users
-- POST "/api/users/signup"
-  PUBLIC
-  (create the user)
-  - username
-  - email
-  - password
+* frontend
+** pages
+*** App.js
+- Header->Navigation
+*** /paste (Paste.js)
+- PasteContent
+- PasteForm
+- PasteList
+*** /paste/<uuid-of-paste> (SinglePaste.js)
+- PasteContent
+- PasteForm
+*** /login (Login.js)
+- LoginForm
+*** /signup (Singup.js)
+- SignupForm
 
-- POST "/api/users/login"
-  PUBLIC
-  (login user)
-  - username
-  - password
+** components
+- PasteContent
+- PasteForm
+- Header
+- Navigation
+- LoginForm
+- SignupForm
+- PasteList
 
-- GET "/api/users/logout"
-  AUTHED
-  (logout user)
+
+* backend
+** env vars
+- JWT_SECRET
+  (string) the secret we will use to sign jwt's
+- PASTE_PER_USER
+  (int) the max number of paste a user can make in $PASTE_PERIOD
+- PASTE_PERIOD
+  (int) the lifetime of a paste in seconds before it is deleted
+
+** graphql
+*** types
+#+BEGIN_SRC
+  type Auth {
+    token: ID!
+    user: User
+  }
+  type User {
+    email: String
+    pasteCount: Int
+    pastes: [Paste]
+  }
+  type Paste {
+    uuid: ID
+    expires: IsoDate
+    text: String
+  }
+#+END_SRC
+https://www.npmjs.com/package/graphql-iso-date
+to get IsoDate type.
+
+*** inputs
+#+BEGIN_SRC
+  input readPasteInput {
+    uuid: ID!
+  }
+  input loginInput {
+    email: String!
+    password: String!
+  } 
+  input signupInput {
+    email: String!
+    password: String!
+  }
+  input createPasteInput {
+    text: String!
+  }
+  input updatePasteInput {
+    text: String!
+  }
+  input deletePasteInput {
+    uuid: ID!
+  }
+#+END_SRC
+
+*** queries
+#+BEGIN_SRC
+type Query {
+  me: User
+  readPaste(input: readPasteInput!): Paste
+}
+#+END_SRC
+
+*** mutations
+#+BEGIN_SRC
+type Mutation {
+  login(input: loginInput!): Auth
+  signup(input: signupInput!): Auth
+  createPaste(input: createPasteInput!): User
+  updatePaste(input: updatePasteInput!): User
+  deletePaste(input: deletePasteInput!): User
+} 
+#+END_SRC
 
 
-* /api/crustulom
-- GET "/api/crustulom"
-  AUTHED
-  (get all pastes for the auth'ed user)
-- GET "/api/crustulom/<hash-id>"
-  PUB
-  (get one paste)
-- POST "/api/crustulom"
-  AUTHED
-  (create a paste)
-  - pastetext
-- PUT "/api/crustulom/<hash-id>"
-  AUTHED
-  (update paste text)
-  - pastetext
-- DELETE "/api/curstulom/<hash-id>"
-  AUTHED
-  (delete paste text)
+
+* capability urls notes:
+https://w3ctag.github.io/capability-urls/
+good document to get familiar with capability urls
+
+https://w3ctag.github.io/capability-urls/#no-login-required
+we are using capability urls for pastes,
+so people viewing the paste don't have to login.
+only the people you have shared your link with can see it.
+
+https://w3ctag.github.io/capability-urls/#application-design
+"The path under which capability URLs are found should be listed within robots.txt"
+still update it.
+
+https://w3ctag.github.io/capability-urls/#capability-url-design
+"A version 4 UUID is sufficient"
+According to rfc 4122:
+https://datatracker.ietf.org/doc/html/rfc4122#section-6
+"they should not be used as security capabilities"
+noted, and we are going to assume that the rng for the uuid implementation
+we use will be good enough to ignore this warning for mvp purposes.
