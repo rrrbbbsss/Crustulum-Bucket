@@ -18,14 +18,15 @@ db.once('open', async () => {
   }
 
   const createdUsers = await User.collection.insertMany(userData);
+  console.log(createdUsers);
 
   //Create paste // NOTE _id needed
   let createdPastes = [];
   for (let i = 0; i < 100; i += 1) {
     const pasteText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
-    const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-    const { email, _id: userId } = createdUsers.ops[randomUserIndex];
+    const randomUserIndex = Math.floor(Math.random() * createdUsers.length);
+    const { email, _id: userId } = createdUsers[randomUserIndex];
 
     const createdPaste = await Paste.create({ pasteText, email });
 
