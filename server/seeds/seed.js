@@ -11,10 +11,10 @@ db.once('open', async () => {
   const userData = [];
 
   for (let i = 0; i < 50; i += 1) {
-    const email = faker.internet.email(username);
+    const email = faker.internet.email();
     const password = faker.internet.password();
 
-    userData.push({ username, email, password });
+    userData.push({ email, password });
   }
 });
 

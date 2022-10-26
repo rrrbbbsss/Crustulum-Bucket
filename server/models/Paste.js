@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
-//Dateformatter? "createdAt" use graphql-iso-date or normal dateformat utils? 
-//UUID integratiom??
+const { v4: uuidv4 } = require('uuid');
 
 const pasteSchema = new Schema(
   {
@@ -10,9 +9,13 @@ const pasteSchema = new Schema(
       minlength: 3,
       maxlength: 10000
     },
-    email: {
+    timeStamp: {
+      type: Date,
+      default: Date.now
+    },
+    UUID: {
       type: String,
-      required: true
+      default: uuidv4
     }
   },
   {
