@@ -1,4 +1,5 @@
 const faker = require('faker');
+
 const db = require('../config/connection');
 const { Paste, User } = require('../models');
 

@@ -13,14 +13,16 @@ The best paste bin site ever made.
 ![img](.)
 
 ## Technologies Used
-- [express](https://expressjs.com/) Web framework
-- [bcrypt](https://github.com/kelektiv/node.bcrypt.js) Password hashing
-- [apollo-server-express](https://www.npmjs.com/package/apollo-server-express) Server framework
-- [dotenv](https://www.npmjs.com/package/dotenv) Loads environment variables
-- [graphql](https://www.npmjs.com/package/graphql) Query Language 
-- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) Token implementation
-- [mongoose](https://github.com/Automattic/mongoose) MongoDB ODM
-- [uuid](https://www.npmjs.com/package/uuid) RFC4122 UUIDs
+- [Express](https://expressjs.com/) Web framework
+- [Bcrypt](https://github.com/kelektiv/node.bcrypt.js) Password hashing
+- [Apollo-server-express](https://www.npmjs.com/package/apollo-server-express) Server framework
+- [Dotenv](https://www.npmjs.com/package/dotenv) Loads environment variables
+- [Graphql](https://www.npmjs.com/package/graphql) Query Language 
+- [Jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) Token implementation
+- [Mongoose](https://github.com/Automattic/mongoose) MongoDB ODM
+- [UUID](https://www.npmjs.com/package/uuid) RFC4122 UUIDs
+- [React](https://reactjs.org/) Front-end framework
+- [Bootstrap](https://getbootstrap.com/) CSS Variables
 
 ## Installation
 ```sh
