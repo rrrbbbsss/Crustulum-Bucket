@@ -24,7 +24,7 @@ db.once('open', async () => {
     const pasteText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-    const { username, _id: userId } = createdUsers.ops[randomUserIndex];
+    const { email, _id: userId } = createdUsers.ops[randomUserIndex];
 
     const createdPaste = await Paste.create({ pasteText, email });
 
