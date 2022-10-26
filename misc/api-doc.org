@@ -71,6 +71,7 @@ to get IsoDate type.
     text: String!
   }
   input updatePasteInput {
+    uuid: ID!
     text: String!
   }
   input deletePasteInput {
