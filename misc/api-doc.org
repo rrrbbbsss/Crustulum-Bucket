@@ -1,3 +1,5 @@
+max paste length: 10,000
+
 * frontend
 ** pages
 *** App.js
@@ -71,6 +73,7 @@ to get IsoDate type.
     text: String!
   }
   input updatePasteInput {
+    uuid: ID!
     text: String!
   }
   input deletePasteInput {
