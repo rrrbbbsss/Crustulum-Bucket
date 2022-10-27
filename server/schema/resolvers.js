@@ -214,7 +214,7 @@ const resolvers = {
     },
 
     // createPaste mutation
-    createPaste: async (parent, { input: text }, context) => {
+    createPaste: async (parent, { input: { text } }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
         Authorization: false,
@@ -222,6 +222,12 @@ const resolvers = {
           return "todo";
         },
         InputValidation: () => {
+          if (text.length === 0) {
+            throw {
+              type: "InputValidation",
+              message: "Must leave paste",
+            };
+          }
           if (text.length > 10000) {
             throw {
               type: "InputValidation",
@@ -237,6 +243,7 @@ const resolvers = {
         if (!paste) {
           throw "paste creation error";
         }
+        console.log(paste);
         const updatedUser = await User.findByIdAndUpdate(
           context.user._id,
           { $push: { pastes: paste._id } },
@@ -244,6 +251,7 @@ const resolvers = {
         )
           .select("-__v -password")
           .populate({ path: "pastes", select: "-__v -_id" });
+        console.log(updatedUser);
         return updatedUser;
       };
       const result = await runResolver({ checks, main });

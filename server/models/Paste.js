@@ -1,30 +1,30 @@
-const { Schema, model } = require('mongoose');
-const { v4: uuidv4 } = require('uuid');
+const { Schema, model } = require("mongoose");
+const { v4: uuidv4 } = require("uuid");
 
 const pasteSchema = new Schema(
   {
-    pasteText: {
+    text: {
       type: String,
-      required: 'Must leave crust',
-      minlength: 3,
-      maxlength: 10000
+      required: "Must leave crust",
+      minlength: 1,
+      maxlength: 10000,
     },
-    timeStamp: {
+    created: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
-    UUID: {
+    uuid: {
       type: String,
-      default: uuidv4
-    }
+      default: uuidv4,
+    },
   },
   {
     toJSON: {
-      getters: true
-    }
+      getters: true,
+    },
   }
 );
 
-const Paste = model('Paste', pasteSchema);
+const Paste = model("Paste", pasteSchema);
 
 module.exports = Paste;
