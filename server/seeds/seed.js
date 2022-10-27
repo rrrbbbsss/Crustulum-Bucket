@@ -10,34 +10,39 @@ db.once('open', async () => {
   // create user data
   const userData = [];
 
-  for (let i = 0; i < 50; i += 1) {
+  for (let i = 0; i < 10; i += 1) {
     const email = faker.internet.email();
     const password = faker.internet.password();
 
     userData.push({ email, password });
   }
 
-  const createdUsers = await User.collection.insertMany(userData);
+  const users = await User.collection.insertMany(userData);
+  const createdUsers = await User.find({})
   console.log(createdUsers);
+
 
   //Create paste // NOTE _id needed
   let createdPastes = [];
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < 10; i += 1) {
     const pasteText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.length);
-    const { email, _id: userId } = createdUsers[randomUserIndex];
+    const { _id: userId } = createdUsers[randomUserIndex];
 
-    const createdPaste = await Paste.create({ pasteText, email });
+    const createdPaste = await Paste.create({ pasteText });
 
     const updatedUser = await User.updateOne(
       { _id: userId },
-      { $push: { Pastes: createdPaste._id } }
+      { $push: { pastes: createdPaste._id } }
     );
 
     createdPastes.push(createdPaste);
   }
   console.log('all done!');
+  const updatedUsers = await User.find({}).populate("pastes")
+  console.log(updatedUsers);
+
   process.exit(0);
 });
 
