@@ -169,17 +169,17 @@ const resolvers = {
         Accounting: false,
         InputValidation: () => {
           // todo: validate email
-          // todo: validate password
           return "todo";
         },
       };
       const main = async () => {
         const user = await User.findOne({ email })
-          .select("-__v -password")
-          .populate({ paste: "pastes", select: "-__v -_id" });
+          .select("-__v")
+          .populate({ path: "pastes", select: "-__v -_id" });
         if (!user) {
           throw { type: "Authentication", message: "Incorrect credentials" };
         }
+        console.log(password);
         const correctPw = await user.isCorrectPassword(password);
         if (!correctPw) {
           throw { type: "Authentication", message: "Incorrect credentials" };
