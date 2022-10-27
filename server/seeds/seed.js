@@ -41,7 +41,7 @@ db.once('open', async () => {
   }
   console.log('all done!');
   const updatedUsers = await User.find({}).populate("pastes")
-  console.log(updatedUsers);
+  console.log(JSON.stringify(updatedUsers, null, 4));
 
   process.exit(0);
 });
