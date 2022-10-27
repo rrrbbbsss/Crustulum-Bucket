@@ -259,7 +259,7 @@ const resolvers = {
     },
 
     // updatePaste mutation
-    updatePaste: async (parent, { input: uuid, text }, context) => {
+    updatePaste: async (parent, { input: { uuid, text } }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
         Authorization: () => {
@@ -267,6 +267,12 @@ const resolvers = {
         },
         Accounting: false,
         InputValidation: () => {
+          if (text.length === 0) {
+            throw {
+              type: "InputValidation",
+              message: "Must leave paste",
+            };
+          }
           if (text.length > 10000) {
             throw {
               type: "InputValidation",
