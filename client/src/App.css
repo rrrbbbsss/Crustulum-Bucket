@@ -1,8 +1,8 @@
 
 form {
 position: static;
-padding-top: 250px;
-
+padding-top: 200px;
+ 
 }
  .App-logo {
   height: 100vmin;
@@ -13,9 +13,13 @@ padding-top: 250px;
   
   
 }
+ .fa-infinity {
+  color: rgba(20, 92, 248, 0.8);
+}
+/* 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s alternate-reverse;
+    animation: App-logo-spin infinite 20s linear;
     transform: scale(5.5);
   }
 }
@@ -29,17 +33,15 @@ padding-top: 250px;
     transform: rotate(720deg);
     
   }
-} 
+}  */
 
-body {
-  font-family: 'sans-serif';
-}
+
 
 /* Full-width inputs */
 .placehold {
     background: rgba(224, 209, 209, 0.2);
       display: flex;
-      margin-bottom: 40px;
+      margin-top: 40px;
       /* padding: 20px 10px 5px 0; */
       border-radius: 35px;
       line-height: 45px;
@@ -61,18 +63,27 @@ body {
     
 background: rgba(20, 92, 248, 0.8);
   display: flex;
-  margin-bottom: 20px;
+  margin-top: 20px;
   /* padding: 20px 10px 5px 0; */
   border-radius: 35px;
   line-height: 45px;
   margin-left: 14%;
   width: 300px;
   border-color: transparent;
-  text-indent: 100px;
+  text-indent: 98px;
   color: white;
   font-size: larger;
   letter-spacing: 3px;
   
+}
+
+.Sign-up {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, .8);
+  line-height: 30px;
+  color: black;
+  text-indent: 57px;
+  letter-spacing: 2px;
 }
 
 /* Set a style for all buttons */
@@ -92,12 +103,7 @@ i {
   
 }
 
-/* Extra style for the cancel button (red) */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+
 
 
 
@@ -111,7 +117,10 @@ i {
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (min-width: 1400px){
 .button {
-  text-indent: 180px;
+  text-indent: 130px;
+}
+.Sign-up {
+  text-indent: 90px;
 }
  .App-logo {
    height: 65vmin;
@@ -122,26 +131,9 @@ i {
 
 
  }
-
- @media (prefers-reduced-motion: no-preference) {
-   .App-logo {
-     animation: App-logo-spin infinite 30s linear;
-     transform: scale(5.5);
-   }
- }
-
- @keyframes App-logo-spin {
-   from {
-     transform: rotate(0deg);
-
-   }
-
-   to {
-     transform: rotate(720deg);
-
-   }
- }
 }
+
+
 
 @media screen and (max-width: 300px) {
   span.psw {
