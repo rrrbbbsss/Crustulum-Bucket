@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import Login from './pages/Login';
 import './App.css';
 
 function App() {
+
+   const myStyle={
+        backgroundImage: "url(./images/nasa.jpg)",
+        height:'100vh',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+    };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div style={myStyle}>
+        
+      <Login/>
+      </div>
+      
+    
   );
-}
+};
 
 export default App;
