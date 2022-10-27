@@ -126,7 +126,7 @@ const resolvers = {
     // me query
     me: async (parent, args, context) => {
       const checks = {
-        Authentication: DefaultAccountingCheck(context),
+        Authentication: DefaultAuthenticationCheck(context),
         Authorization: false,
         Accounting: false,
         InputValidation: false,
@@ -134,7 +134,7 @@ const resolvers = {
       const main = async () => {
         const userData = await User.findById(context.user._id)
           .select("-__v -password")
-          .populate({ paste: "pastes", select: "-__v -_id" });
+          .populate({ path: "pastes", select: "-__v -_id" });
         DefaultNotFoundCheck(userData, "User");
         return userData;
       };
