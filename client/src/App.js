@@ -1,5 +1,5 @@
-//  import Login from './pages/Login';
-  import SignUp from './pages/Signup';
+ import Login from './pages/Login';
+//  import SignUp from './pages/Signup';
 import './App.css';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
   return (
     <div style={myStyle}>
         
-      <SignUp/>
+      <Login/>
       </div>
       
     

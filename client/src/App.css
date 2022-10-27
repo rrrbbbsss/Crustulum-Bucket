@@ -1,4 +1,6 @@
-
+* {
+  cursor: url('../public/images/rocket-solid.svg'), auto;
+}
 form {
 position: static;
 padding-top: 200px;
@@ -16,8 +18,8 @@ padding-top: 200px;
  .fa-infinity {
   color: rgba(20, 92, 248, 0.8);
 }
-/* 
-@media (prefers-reduced-motion: no-preference) {
+
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
     transform: scale(5.5);
@@ -33,7 +35,7 @@ padding-top: 200px;
     transform: rotate(720deg);
     
   }
-}  */
+}   */
 
 
 
