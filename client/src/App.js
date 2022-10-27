@@ -1,6 +1,8 @@
- import Login from './pages/Login';
+import Login from './pages/Login';
 //  import SignUp from './pages/Signup';
 import './App.css';
+// import Header from './components/Header';
+// import Home from './pages/Home';
 
 function App() {
 
@@ -12,11 +14,13 @@ function App() {
     };
   return (
     <div style={myStyle}>
-        
+            {/*<div className="App">
+      <Header />
+      <Home />
+    </div>*/}
       <Login/>
       </div>
-      
-    
+
   );
 };
 

@@ -37,6 +37,20 @@ padding-top: 200px;
   }
 }   */
 
+/* Nav Styling */
+nav {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+#pasteText {
+  width: 95%;
+}
+
+.paste-text {
+  width: 95%;
+}
 
 
 /* Full-width inputs */
@@ -147,5 +161,3 @@ i {
     width: 100%;
   }
 }
-
-
