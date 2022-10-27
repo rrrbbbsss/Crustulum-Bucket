@@ -20,42 +20,42 @@ async function runResolver({ checks, main }) {
     return result;
   } catch (err) {
     console.log(err);
-    switch (err) {
+    switch (err.type) {
       // Authentication Error Handling
-      case err.Authentication:
-        throw new GraphQLError(err.Authentication, {
+      case "Authentication":
+        throw new GraphQLError(err.message, {
           extension: {
             code: "UNAUTHENTICATED",
             http: { status: 401 },
           },
         });
       // Authroization Error Handling
-      case err.Authorization:
-        throw new GraphQLError(err.Authorization, {
+      case "Authorization":
+        throw new GraphQLError(err.message, {
           extension: {
             code: "todo",
             http: { status: 403 },
           },
         });
       // Accounting Error Handling
-      case err.Accounting:
-        throw new GraphQLError(err.Accounting, {
+      case "Accounting":
+        throw new GraphQLError(err.message, {
           extension: {
             code: "todo",
             http: { status: 403 },
           },
         });
       // Input Validation Error Handling
-      case err.InputValidation:
-        throw new GraphQLError(err.InputValidation, {
+      case "InputValidation":
+        throw new GraphQLError(err.message, {
           extension: {
             code: "BAD_USER_INPUT",
             http: { status: 400 },
           },
         });
       // Not Found Error Handling
-      case err.NotFound:
-        throw new GraphQLError(err.NotFound, {
+      case "NotFound":
+        throw new GraphQLError(err.message, {
           extension: {
             code: "todo",
             http: { status: 404 },
@@ -77,7 +77,7 @@ async function runResolver({ checks, main }) {
 DefaultAuthenticationCheck = (context) => {
   return () => {
     if (!context.user) {
-      throw { Authentication: "Not logged in" };
+      throw { type: "Authentication", message: "Not logged in" };
     }
   };
 };
@@ -89,7 +89,7 @@ DefaultAccountingCheck = (user) => {
 };
 DefaultNotFoundCheck = (object, name) => {
   if (!object) {
-    throw { NotFound: `${name} not found` };
+    throw { type: "NotFound", message: `${name} not found` };
   }
 };
 
@@ -151,11 +151,11 @@ const resolvers = {
           .select("-__v -password")
           .populate({ paste: "pastes", select: "-__v -_id" });
         if (!user) {
-          throw { Authentication: "Incorrect credentials" };
+          throw { type: "Authentication", message: "Incorrect credentials" };
         }
         const correctPw = await user.isCorrectPassword(password);
         if (!correctPw) {
-          throw { Authentication: "Incorrect credentials" };
+          throw { type: "Authentication", message: "Incorrect credentials" };
         }
         const token = signToken(user);
         return { token, user };
@@ -198,7 +198,10 @@ const resolvers = {
         },
         InputValidation: () => {
           if (text.length > 10000) {
-            throw { InputValidation: "Paste text is too long!" };
+            throw {
+              type: "InputValidation",
+              message: "Paste text is too long!",
+            };
           }
         },
       };
@@ -232,7 +235,10 @@ const resolvers = {
         Accounting: false,
         InputValidation: () => {
           if (text.length > 10000) {
-            throw { InputValidation: "Paste text is too long!" };
+            throw {
+              type: "InputValidation",
+              message: "Paste text is too long!",
+            };
           }
         },
       };
