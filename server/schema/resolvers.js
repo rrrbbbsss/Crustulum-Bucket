@@ -1,5 +1,4 @@
 const { User, Paste } = require("../models");
-const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { GraphQLError } = require("graphql");
 
@@ -133,7 +132,7 @@ const resolvers = {
     },
   },
 
-  Mutations: {
+  Mutation: {
     // login mutation
     login: async (parent, { input: { email, password } }, context) => {
       const checks = {
@@ -177,7 +176,8 @@ const resolvers = {
         },
       };
       const main = async () => {
-        const user = await User.create(input).select("-__v -password");
+        const user = await User.create(input);
+        // todo filer out password when returning
         if (!user) {
           throw "user creation error";
         }
@@ -185,7 +185,7 @@ const resolvers = {
         return { token, user };
       };
       const result = await runResolver({ checks, main });
-      return result();
+      return result;
     },
 
     // createPaste mutation
@@ -222,7 +222,7 @@ const resolvers = {
         return updatedUser;
       };
       const result = await runResolver({ checks, main });
-      return result();
+      return result;
     },
 
     // updatePaste mutation
@@ -250,7 +250,7 @@ const resolvers = {
         return updateUser;
       };
       const result = await runResolver({ checks, main });
-      return result();
+      return result;
     },
 
     // deletePaste mutation
@@ -272,7 +272,7 @@ const resolvers = {
         return updatedUser;
       };
       const result = await runResolver({ checks, main });
-      return result();
+      return result;
     },
   },
 };
