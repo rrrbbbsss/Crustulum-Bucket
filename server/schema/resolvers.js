@@ -293,7 +293,7 @@ const resolvers = {
     },
 
     // deletePaste mutation
-    deletePaste: async (parent, { input: uuid }, context) => {
+    deletePaste: async (parent, { input: { uuid } }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
         Authorization: () => {
