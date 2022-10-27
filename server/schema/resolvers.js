@@ -1,101 +1,214 @@
 const { User, Paste } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
+const { GraphQLError } = require("graphql");
 
-const resolvers = {
-  Query: {
-    me: async (parent, args, context) => {
-      // checks
-      if (!context.user) {
-        throw new AuthenticationError("Not logged in");
-      }
-      // main
-      try {
-        const userData = await User.findById(context.user._id)
-          .select("-__v -password")
-          .populate({ paste: "pastes", select: "-__v -_id" });
-
-        return userData;
-      } catch (err) {
-        console.log(err);
-        throw new GraphQLError("Something is wrong!", {
+// wrapper for resolvers, so standard pre-checks are kept track of and any errors get handled.
+async function runResolver({ checks, main }) {
+  try {
+    // if a check is false, then convert it to a thunk that doesnt error to be called;
+    Object.keys(checks).forEach((x) =>
+      checks[x] ? true : (checks[x] = () => true)
+    );
+    // runs checks in order;
+    await checks.Authentication();
+    await checks.Authorization();
+    await checks.Accounting();
+    await checks.InputValidation();
+    // if no check errors out, then main is called;
+    result = await main();
+    return result;
+  } catch (err) {
+    console.log(err);
+    switch (err) {
+      // Authentication Error Handling
+      case err.Authentication:
+        throw new GraphQLError(err.Authentication, {
           extension: {
-            code: "INTERNAL_SERVER_ERROR",
-            http: { status: 500 },
+            code: "UNAUTHENTICATED",
+            http: { status: 401 },
           },
         });
-      }
-    },
-    readPaste: async (parent, { input: { uuid } }, context) => {
-      // checks
-      // main
-      try {
-        const paste = await Paste.findOne({ uuid }).select("-__v -_id");
-        return paste;
-      } catch (err) {
-        console.log(err);
-        throw new GraphQLError("Something is wrong!", {
+      // Authroization Error Handling
+      case err.Authorization:
+        throw new GraphQLError(err.Authorization, {
           extension: {
-            code: "INTERNAL_SERVER_ERROR",
-            http: { status: 500 },
+            code: "todo",
+            http: { status: 403 },
           },
         });
-      }
-    },
-  },
-  Mutations: {
-    login: async (parent, { input: { email, password } }, context) => {
-      // checks
-      // main - todo: refactor
-      const user = await User.findOne({ email })
-        .select("-__v -password")
-        .populate({ paste: "pastes", select: "-__v -_id" });
-      if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
-
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
-
-      const token = signToken(user);
-      return { token, user };
-    },
-    signup: async (parent, { input }, context) => {
-      // checks
-      // main - todo: refacto
-      const user = await User.create(input).select("-__v -password");
-      if (!user) {
-        throw new GraphQLError("Something is wrong!", {
+      // Accounting Error Handling
+      case err.Accounting:
+        throw new GraphQLError(err.Accounting, {
           extension: {
-            code: "INTERNAL_SERVER_ERROR",
-            http: { status: 500 },
+            code: "todo",
+            http: { status: 403 },
           },
         });
-      }
-      const token = signToken(user);
-      return { token, user };
-    },
-    createPaste: async (parent, { input: text }, context) => {
-      // checks
-      if (!context.user) {
-        throw new AuthenticationError("Not logged in");
-      }
-      if (text.length > 10000) {
-        throw new GraphQLError("Paste text is too long!", {
+      // Input Validation Error Handling
+      case err.InputValidation:
+        throw new GraphQLError(err.InputValidation, {
           extension: {
             code: "BAD_USER_INPUT",
             http: { status: 400 },
           },
         });
-      }
-      // main
-      try {
+      // Not Found Error Handling
+      case err.NotFound:
+        throw new GraphQLError(err.NotFound, {
+          extension: {
+            code: "todo",
+            http: { status: 404 },
+          },
+        });
+      // Default Error Handling
+      default:
+        throw new GraphQLError("Something went wrong!", {
+          extension: {
+            code: "INTERNAL_SERVER_ERROR",
+            http: { status: 500 },
+          },
+        });
+    }
+  }
+}
+
+// Default Checks
+DefaultAuthenticationCheck = (context) => {
+  return () => {
+    if (!context.user) {
+      throw { Authentication: "Not logged in" };
+    }
+  };
+};
+DefaultAuthorizationCheck = (user, object) => {
+  "todo";
+};
+DefaultAccountingCheck = (user) => {
+  "todo";
+};
+DefaultNotFoundCheck = (object, name) => {
+  if (!object) {
+    throw { NotFound: `${name} not found` };
+  }
+};
+
+// Resolvers
+const resolvers = {
+  Query: {
+    // me query
+    me: async (parent, args, context) => {
+      const checks = {
+        Authentication: DefaultAccountingCheck(context),
+        Authorization: false,
+        Accounting: false,
+        InputValidation: false,
+      };
+      const main = async () => {
+        const userData = await User.findById(context.user._id)
+          .select("-__v -password")
+          .populate({ paste: "pastes", select: "-__v -_id" });
+        DefaultNotFoundCheck(userData, "User");
+        return userData;
+      };
+      const result = await runResolver({ checks, main });
+      return result();
+    },
+
+    // readPaste query
+    readPaste: async (parent, { input: { uuid } }, context) => {
+      const checks = {
+        Authentication: false,
+        Authorization: false,
+        Accounting: false,
+        InputValidation: false,
+      };
+      const main = async () => {
+        const paste = await Paste.findOne({ uuid }).select("-__v -_id");
+        DefaultNotFoundCheck(paste, "Paste");
+        return paste;
+      };
+      const result = await runResolver({ checks, main });
+      return result();
+    },
+  },
+
+  Mutations: {
+    // login mutation
+    login: async (parent, { input: { email, password } }, context) => {
+      const checks = {
+        Authentication: false,
+        Authorization: false,
+        Accounting: false,
+        InputValidation: () => {
+          // todo: validate email
+          // todo: validate password
+          return "todo";
+        },
+      };
+      const main = async () => {
+        const user = await User.findOne({ email })
+          .select("-__v -password")
+          .populate({ paste: "pastes", select: "-__v -_id" });
+        if (!user) {
+          throw { Authentication: "Incorrect credentials" };
+        }
+        const correctPw = await user.isCorrectPassword(password);
+        if (!correctPw) {
+          throw { Authentication: "Incorrect credentials" };
+        }
+        const token = signToken(user);
+        return { token, user };
+      };
+      const result = await runResolver({ checks, main });
+      return result();
+    },
+
+    // signup mutation
+    signup: async (parent, { input }, context) => {
+      const checks = {
+        Authentication: false,
+        Authorization: false,
+        Accounting: false,
+        InputValidation: () => {
+          // todo: validate email
+          // todo: validate password
+          return "todo";
+        },
+      };
+      const main = async () => {
+        const user = await User.create(input).select("-__v -password");
+        if (!user) {
+          throw "user creation error";
+        }
+        const token = signToken(user);
+        return { token, user };
+      };
+      const result = await runResolver({ checks, main });
+      return result();
+    },
+
+    // createPaste mutation
+    createPaste: async (parent, { input: text }, context) => {
+      const checks = {
+        Authentication: DefaultAuthenticationCheck(context),
+        Authorization: false,
+        Accounting: () => {
+          return "todo";
+        },
+        InputValidation: () => {
+          if (text.length > 10000) {
+            throw { InputValidation: "Paste text is too long!" };
+          }
+        },
+      };
+      const main = async () => {
         const paste = await Paste.create({
           text,
         });
+        if (!paste) {
+          throw "paste creation error";
+        }
         const updatedUser = await User.findByIdAndUpdate(
           context.user._id,
           { $push: { pastes: paste._id } },
@@ -104,67 +217,56 @@ const resolvers = {
           .select("-__v -password")
           .populate({ path: "pastes", select: "-__v -_id" });
         return updatedUser;
-      } catch (err) {
-        console.log(err);
-        throw new GraphQLError("Something is wrong!", {
-          extension: {
-            code: "INTERNAL_SERVER_ERROR",
-            http: { status: 500 },
-          },
-        });
-      }
+      };
+      const result = await runResolver({ checks, main });
+      return result();
     },
+
+    // updatePaste mutation
     updatePaste: async (parent, { input: uuid, text }, context) => {
-      // checks
-      if (!context.user) {
-        throw new AuthenticationError("Not logged in");
-      }
-      if (text.length > 10000) {
-        throw new GraphQLError("Paste text is too long!", {
-          extension: {
-            code: "BAD_USER_INPUT",
-            http: { status: 400 },
-          },
-        });
-      }
-      // todo: check if paste is owned by user
-      try {
+      const checks = {
+        Authentication: DefaultAuthenticationCheck(context),
+        Authorization: () => {
+          return "todo";
+        },
+        Accounting: false,
+        InputValidation: () => {
+          if (text.length > 10000) {
+            throw { InputValidation: "Paste text is too long!" };
+          }
+        },
+      };
+      const main = async () => {
         const updatedPaste = await Paste.findOneAndUpdate({ uuid }, { text });
         const updateUser = await User.findById(context.user._id)
           .select("-__v -password")
           .populate({ path: "pastes", select: "-__v -_id" });
-      } catch (err) {
-        console.log(err);
-        throw new GraphQLError("Something is wrong!", {
-          extension: {
-            code: "INTERNAL_SERVER_ERROR",
-            http: { status: 500 },
-          },
-        });
-      }
+        return updateUser;
+      };
+      const result = await runResolver({ checks, main });
+      return result();
     },
+
+    // deletePaste mutation
     deletePaste: async (parent, { input: uuid }, context) => {
-      // checks
-      if (!context.user) {
-        throw new AuthenticationError("Not logged in");
-      }
-      // todo make sure paste owned by user
-      // main
-      try {
-        const deletedPaste = await Paste.findOneAndDelete({ uuid }, { text });
+      const checks = {
+        Authentication: DefaultAuthenticationCheck(context),
+        Authorization: () => {
+          return "todo";
+        },
+        Accounting: false,
+        InputValidation: false,
+      };
+      const main = async () => {
+        const deletedPaste = await Paste.findOneAndDelete({ uuid });
+        DefaultNotFoundCheck(deletedPaste, "Paste");
         const updatedUser = await User.findById(context.user._id)
           .select("-__v -password")
           .populate({ path: "pastes", select: "-__v -_id" });
         return updatedUser;
-      } catch (err) {
-        console.log(err);
-        throw new GraphQLError("Something is wrong!", {
-          extension: {
-            code: "INTERNAL_SERVER_ERROR",
-            http: { status: 500 },
-          },
-        });
-      }
+      };
+      const result = await runResolver({ checks, main });
+      return result();
     },
   },
 };
