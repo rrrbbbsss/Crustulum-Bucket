@@ -36,6 +36,13 @@ async function runResolver({ checks, main }) {
             http: { status: 403 },
           },
         });
+      case "Duplicate":
+        throw new GraphQLError(err.message, {
+          extension: {
+            code: "todo",
+            http: { status: 403 },
+          },
+        });
       // Accounting Error Handling
       case "Accounting":
         throw new GraphQLError(err.message, {
@@ -91,6 +98,27 @@ DefaultNotFoundCheck = (object, name) => {
     throw { type: "NotFound", message: `${name} not found` };
   }
 };
+DefaultCreateCheck = async (model, value) => {
+  let entity = {};
+  try {
+    entity = await model.create(value);
+  } catch (err) {
+    console.log(err);
+    switch (err.code) {
+      case 11000:
+        throw {
+          type: "Duplicate",
+          message: `${model.collection.collectionName} already exists`,
+        };
+      default:
+        throw "creation error";
+    }
+  }
+  if (!entity) {
+    throw "entity creation error";
+  }
+  return entity;
+};
 
 // Resolvers
 const resolvers = {
@@ -98,7 +126,7 @@ const resolvers = {
     // me query
     me: async (parent, args, context) => {
       const checks = {
-        Authentication: DefaultAccountingCheck(context),
+        Authentication: DefaultAuthenticationCheck(context),
         Authorization: false,
         Accounting: false,
         InputValidation: false,
@@ -106,12 +134,12 @@ const resolvers = {
       const main = async () => {
         const userData = await User.findById(context.user._id)
           .select("-__v -password")
-          .populate({ paste: "pastes", select: "-__v -_id" });
+          .populate({ path: "pastes", select: "-__v -_id" });
         DefaultNotFoundCheck(userData, "User");
         return userData;
       };
       const result = await runResolver({ checks, main });
-      return result();
+      return result;
     },
 
     // readPaste query
@@ -128,7 +156,7 @@ const resolvers = {
         return paste;
       };
       const result = await runResolver({ checks, main });
-      return result();
+      return result;
     },
   },
 
@@ -141,17 +169,17 @@ const resolvers = {
         Accounting: false,
         InputValidation: () => {
           // todo: validate email
-          // todo: validate password
           return "todo";
         },
       };
       const main = async () => {
         const user = await User.findOne({ email })
-          .select("-__v -password")
-          .populate({ paste: "pastes", select: "-__v -_id" });
+          .select("-__v")
+          .populate({ path: "pastes", select: "-__v -_id" });
         if (!user) {
           throw { type: "Authentication", message: "Incorrect credentials" };
         }
+        console.log(password);
         const correctPw = await user.isCorrectPassword(password);
         if (!correctPw) {
           throw { type: "Authentication", message: "Incorrect credentials" };
@@ -160,7 +188,7 @@ const resolvers = {
         return { token, user };
       };
       const result = await runResolver({ checks, main });
-      return result();
+      return result;
     },
 
     // signup mutation
@@ -176,11 +204,8 @@ const resolvers = {
         },
       };
       const main = async () => {
-        const user = await User.create(input);
-        // todo filer out password when returning
-        if (!user) {
-          throw "user creation error";
-        }
+        const user = await DefaultCreateCheck(User, input);
+        // todo filter out password when returning
         const token = signToken(user);
         return { token, user };
       };
@@ -189,7 +214,7 @@ const resolvers = {
     },
 
     // createPaste mutation
-    createPaste: async (parent, { input: text }, context) => {
+    createPaste: async (parent, { input: { text } }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
         Authorization: false,
@@ -197,6 +222,12 @@ const resolvers = {
           return "todo";
         },
         InputValidation: () => {
+          if (text.length === 0) {
+            throw {
+              type: "InputValidation",
+              message: "Must leave paste",
+            };
+          }
           if (text.length > 10000) {
             throw {
               type: "InputValidation",
@@ -212,6 +243,7 @@ const resolvers = {
         if (!paste) {
           throw "paste creation error";
         }
+        console.log(paste);
         const updatedUser = await User.findByIdAndUpdate(
           context.user._id,
           { $push: { pastes: paste._id } },
@@ -219,6 +251,7 @@ const resolvers = {
         )
           .select("-__v -password")
           .populate({ path: "pastes", select: "-__v -_id" });
+        console.log(updatedUser);
         return updatedUser;
       };
       const result = await runResolver({ checks, main });
@@ -226,7 +259,7 @@ const resolvers = {
     },
 
     // updatePaste mutation
-    updatePaste: async (parent, { input: uuid, text }, context) => {
+    updatePaste: async (parent, { input: { uuid, text } }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
         Authorization: () => {
@@ -234,6 +267,12 @@ const resolvers = {
         },
         Accounting: false,
         InputValidation: () => {
+          if (text.length === 0) {
+            throw {
+              type: "InputValidation",
+              message: "Must leave paste",
+            };
+          }
           if (text.length > 10000) {
             throw {
               type: "InputValidation",
@@ -254,7 +293,7 @@ const resolvers = {
     },
 
     // deletePaste mutation
-    deletePaste: async (parent, { input: uuid }, context) => {
+    deletePaste: async (parent, { input: { uuid } }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
         Authorization: () => {
