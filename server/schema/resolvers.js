@@ -36,6 +36,13 @@ async function runResolver({ checks, main }) {
             http: { status: 403 },
           },
         });
+      case "Duplicate":
+        throw new GraphQLError(err.message, {
+          extension: {
+            code: "todo",
+            http: { status: 403 },
+          },
+        });
       // Accounting Error Handling
       case "Accounting":
         throw new GraphQLError(err.message, {
@@ -91,6 +98,27 @@ DefaultNotFoundCheck = (object, name) => {
     throw { type: "NotFound", message: `${name} not found` };
   }
 };
+DefaultCreateCheck = async (model, value) => {
+  let entity = {};
+  try {
+    entity = await model.create(value);
+  } catch (err) {
+    console.log(err);
+    switch (err.code) {
+      case 11000:
+        throw {
+          type: "Duplicate",
+          message: `${model.collection.collectionName} already exists`,
+        };
+      default:
+        throw "creation error";
+    }
+  }
+  if (!entity) {
+    throw "entity creation error";
+  }
+  return entity;
+};
 
 // Resolvers
 const resolvers = {
@@ -111,7 +139,7 @@ const resolvers = {
         return userData;
       };
       const result = await runResolver({ checks, main });
-      return result();
+      return result;
     },
 
     // readPaste query
@@ -128,7 +156,7 @@ const resolvers = {
         return paste;
       };
       const result = await runResolver({ checks, main });
-      return result();
+      return result;
     },
   },
 
@@ -160,7 +188,7 @@ const resolvers = {
         return { token, user };
       };
       const result = await runResolver({ checks, main });
-      return result();
+      return result;
     },
 
     // signup mutation
@@ -176,11 +204,8 @@ const resolvers = {
         },
       };
       const main = async () => {
-        const user = await User.create(input);
-        // todo filer out password when returning
-        if (!user) {
-          throw "user creation error";
-        }
+        const user = await DefaultCreateCheck(User, input);
+        // todo filter out password when returning
         const token = signToken(user);
         return { token, user };
       };
