@@ -21,7 +21,8 @@ const PasteList = ({ pastes }) => {
                                         className="paste-link"
                                     >
                                         Paste #{paste.uuid}
-                                    </Link> */}Paste #{paste.uuid}
+                                    </Link> */}Paste #{paste.uuid}<br/>
+                                    Expires on {paste.expires}
                                 </p>
                                 <div className="card-body">
                                     <textarea className="paste-text" rows="20" readOnly={true} defaultValue={paste.text} />

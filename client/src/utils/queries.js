@@ -7,6 +7,7 @@ export const QUERY_ME = gql`
             pastes {
                 uuid
                 text
+                expires
             }
         }
     }
@@ -17,6 +18,7 @@ export const READ_PASTE = gql`
         readPaste(input: $input) {
             uuid
             text
+            expires
         }
       }
 `;

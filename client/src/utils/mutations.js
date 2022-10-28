@@ -10,6 +10,7 @@ export const LOGIN_USER = gql`
                 pastes {
                     uuid
                     text
+                    expires
                 }
             }
         }
@@ -26,7 +27,7 @@ export const SIGN_UP_USER = gql`
                 pastes {
                     uuid
                     text
-
+                    expires
                 }
             }
         }
@@ -39,6 +40,7 @@ export const CREATE_PASTE = gql`
             paste {
                 uuid
                 text
+                expires
             }
         }
     }
@@ -50,6 +52,7 @@ export const UPDATE_PASTE = gql`
             paste {
                 uuid
                 text
+                expires
             }
         }
     }
@@ -64,6 +67,7 @@ export const DELETE_PASTE = gql`
                 pastes {
                     uuid
                     text
+                    expires
                 }
             }
         }
