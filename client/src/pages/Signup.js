@@ -1,45 +1,45 @@
 import React
-// , { useState } 
+, { useState } 
 from 'react';
-// import { useMutation } from '@apollo/client';
-// import { ADD_USER } from '../utils/mutations';
-// import Auth from '../utils/auth';
+import { useMutation } from '@apollo/client';
+import { SIGN_UP_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 
 
 const SignUp = () => {
-//   const [formState, setFormState] = useState({ username: '', email: '', password: '' });
-//   const [addUser, { error }] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [addUser, { error }] = useMutation(SIGN_UP_USER);
 
-//   const handleChange = (event) => {
-//     const { name, value } = event.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-//     setFormState({
-//       ...formState,
-//       [name]: value,
-//     });
-//   };
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
-//   const handleFormSubmit = async event => {
-//   event.preventDefault();
+  const handleFormSubmit = async event => {
+  event.preventDefault();
 
-//   try {
-//     const { data } = await addUser({
-//       variables: { ...formState }
-//     });
+  try {
+    const { data } = await addUser({
+      variables: { input: {...formState} }
+    });
 
-//     Auth.loggedIn(data.addUser.token);
-//     console.log(data);
-//   } catch (e) {
-//     console.error(e);
-//   }
-// };
+    Auth.loggedIn(data.addUser.token);
+    console.log(data);
+  } catch (e) {
+    console.error(e);
+  }
+};
 
   return (
 <div>
 
     <form
-    // onSubmit={handleFormSubmit}
+    onSubmit={handleFormSubmit}
      >
     
             
@@ -48,27 +48,13 @@ const SignUp = () => {
                 
                 <i className="fa-solid fa-infinity fa-xs"></i>
                 
-            
-           
-            <input  className='placehold col-9 col-md-3 my-lg-5 mx-md-auto' 
-                        placeholder="Username" 
-                        name='username'
-                        type='username'
-                        id='username'
-                        // value={formState.username}
-                        // onChange={handleChange}
-                        
-                        
-                        required/>
-                
-                
                 <input  className='placehold col-9 col-md-3 my-lg-5 mx-md-auto'
                         placeholder="Email" 
                          name='email'
                         type='email'
                         id='email'
-                        // value={formState.email}
-                        // onChange={handleChange}
+                        value={formState.email}
+                        onChange={handleChange}
                         
                         
                         required/>
@@ -79,8 +65,8 @@ const SignUp = () => {
                         name='password'
                         type='password'
                         id='password'
-                        // value={formState.password}
-                        // onChange={handleChange}
+                        value={formState.password}
+                        onChange={handleChange}
                             
                         
                         required/>
@@ -89,7 +75,7 @@ const SignUp = () => {
       
     </form>
 
-    {/* {error && <div>Sign up failed</div>} */}
+    {error && <div>Sign up failed</div>}
 
           
 </div>

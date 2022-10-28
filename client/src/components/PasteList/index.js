@@ -8,12 +8,12 @@ const PasteList = ({ pastes }) => {
 
     return (
         <div className="container">
-            <div className="flex-row">
-                <div className="col-3"></div>
-                <div className="col-6">
+            <div className="col-9 col-md-6 mx-md-auto">
+
+                <div>
                     {pastes &&
                         pastes.map(paste => (
-                            <div key={paste.uuid} className="card mb-3">
+                            <div key={paste.uuid} className="card">
                                 <p className="card-header">
                                     {/* <Link
                                         to={`/paste/${paste.uuid}`}
@@ -31,7 +31,7 @@ const PasteList = ({ pastes }) => {
                             </div>
                         ))}
                 </div>
-                <div className="col-3"></div>
+
             </div>
         </div>
     );
