@@ -4,7 +4,7 @@ import { QUERY_ME } from '../utils/queries';
 import PasteList from "../components/PasteList";
 import auth from "../utils/auth";
 import Login from "./Login";
-import SignUp from "./Signup";
+// import SignUp from "./Signup";
 import Header from "../components/Header";
 
 const Home = () => {
@@ -27,7 +27,9 @@ const Home = () => {
             </div>
             </>
             ):( 
+              <div>
                 <Login />
+              </div>
                 )} 
         </main>
     );

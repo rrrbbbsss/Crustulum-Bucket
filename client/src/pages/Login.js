@@ -1,9 +1,9 @@
-import React
-, { useState } 
-from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
+
 
 
 const Login = (props) => {
@@ -80,11 +80,11 @@ const myStyle={
                         
                         required/>
 
-                <button  type="submit"  className='button col-9 col-md-3 my-lg-5 mx-md-auto'>Sign In</button>
+               <button  type="submit"  className='button col-9 col-md-3 my-lg-5 mx-md-auto'>Sign In</button>
 
     </form>
 
-    <button  type="submit"  className='Sign-up button col-9 col-md-3 my-lg-5 mx-md-auto'>Create Account</button>
+     <Link to="/signup"><button  type="submit"  className='Sign-up button col-9 col-md-3 my-lg-5 mx-md-auto'>Create Account</button></Link>
 
             {error && <div>Login failed</div>}
 </div>
