@@ -1,7 +1,43 @@
-body {
-  font-family: monospace;
+* {
+  cursor: url('../public/images/rocket-solid.svg'), auto;
+}
+form {
+position: static;
+padding-top: 200px;
+ 
+}
+ .App-logo {
+  height: 100vmin;
+  width: auto;
+ 
+  position: fixed;
+  margin-top: -50px;
+  
+  
+}
+ .fa-infinity {
+  color: rgba(20, 92, 248, 0.8);
 }
 
+/* @media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    transform: scale(5.5);
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+    
+  }
+
+  to {
+    transform: rotate(720deg);
+    
+  }
+}   */
+
+/* Nav Styling */
 nav {
   display: flex;
   justify-content: space-between;
@@ -14,4 +50,114 @@ nav {
 
 .paste-text {
   width: 95%;
+}
+
+
+/* Full-width inputs */
+.placehold {
+    background: rgba(224, 209, 209, 0.2);
+      display: flex;
+      margin-top: 40px;
+      /* padding: 20px 10px 5px 0; */
+      border-radius: 35px;
+      line-height: 45px;
+      margin-left: 14%;
+      width: 300px;
+      border-color: transparent;
+      text-indent: 5%;
+      color: black;
+      vertical-align: middle;
+}
+::placeholder {
+  color:rgba(255, 255, 255, .8);
+  text-align: left;
+  margin-right: 50px;
+}
+.button {
+
+     
+    
+background: rgba(20, 92, 248, 0.8);
+  display: flex;
+  margin-top: 20px;
+  /* padding: 20px 10px 5px 0; */
+  border-radius: 35px;
+  line-height: 45px;
+  margin-left: 14%;
+  width: 300px;
+  border-color: transparent;
+  text-indent: 98px;
+  color: white;
+  font-size: larger;
+  letter-spacing: 3px;
+  
+}
+
+.Sign-up {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, .8);
+  line-height: 30px;
+  color: black;
+  text-indent: 57px;
+  letter-spacing: 2px;
+}
+
+/* Set a style for all buttons */
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+i {
+  
+  transform: scale(6.5);
+  margin-left: 49%;
+  margin-bottom: 100px;
+  color: rgba(255, 255, 255);
+  
+ 
+  
+}
+
+
+
+
+
+
+
+/* Add padding to containers */
+
+
+
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (min-width: 1400px){
+.button {
+  text-indent: 130px;
+}
+.Sign-up {
+  text-indent: 90px;
+}
+ .App-logo {
+   height: 65vmin;
+   width: auto;
+
+   position: fixed;
+   margin-top: -60px;
+
+
+ }
+}
+
+
+
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+
+  .cancelbtn {
+    width: 100%;
+  }
 }
