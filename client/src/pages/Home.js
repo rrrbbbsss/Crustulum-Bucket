@@ -15,7 +15,6 @@ const Home = () => {
 
     return (
         <main>
-            
             {loggedIn ? (
             <>
             <Header /> 
@@ -28,7 +27,6 @@ const Home = () => {
             </div>
             </>
             ):( 
-           
                 <Login />
                 )} 
         </main>

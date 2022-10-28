@@ -6,6 +6,7 @@ import './App.css';
 import Home from './pages/Home';
 import SignUp from './pages/Signup';
 import SinglePaste from './pages/SinglePaste';
+import Paste from './pages/Paste';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -32,6 +33,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/paste' element={<Paste />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/paste/:id' element={<SinglePaste />} />
         </Routes>
