@@ -6,6 +6,24 @@ position: static;
 padding-top: 200px;
  
 }
+
+.material-symbols-outlined {
+  color: white;
+  margin-left: 49%;
+  margin-bottom: 100px;
+  transform: scale(7);
+  
+    background: -moz-linear-gradient(top, #e66465 0%, #145cf8cc 25%);
+    background: -webkit-linear-gradient(top, #e66465 0%, #145cf8cc 20%);
+    background: linear-gradient(to bottom, #e66465 0%, #145cf8cc 100%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+   
+}
+
+
  .App-logo {
   height: 100vmin;
   width: auto;
@@ -16,7 +34,7 @@ padding-top: 200px;
   
 }
  .fa-infinity {
-  color: rgba(20, 92, 248, 0.8);
+  color: rgba(255, 255, 255, .8);
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
@@ -77,7 +95,7 @@ nav {
 
      
     
-background: rgba(20, 92, 248, 0.8);
+background: #145cf8cc;
   display: flex;
   margin-top: 20px;
   /* padding: 20px 10px 5px 0; */
@@ -131,12 +149,20 @@ i {
 
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (min-width: 1400px){
+
+@media screen and (min-width: 1900px) {
+  .button {
+    text-indent: 150px;
+  }
+
+
+}
+@media screen and (max-width: 1400px){
 .button {
-  text-indent: 130px;
+  text-indent: 190px;
 }
 .Sign-up {
-  text-indent: 90px;
+  text-indent: 145px;
 }
  .App-logo {
    height: 65vmin;
