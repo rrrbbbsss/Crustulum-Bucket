@@ -13,7 +13,7 @@ const typeDefs = gql`
   }
   type Paste {
     uuid: ID
-    created: String
+    expires: String
     text: String
   }
 
