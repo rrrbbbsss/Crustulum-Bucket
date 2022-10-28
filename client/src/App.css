@@ -1,6 +1,9 @@
 * {
   cursor: url('../public/images/rocket-solid.svg'), auto;
 }
+html {
+  background-color: black;
+}
 form {
 position: static;
 padding-top: 200px;
@@ -56,6 +59,9 @@ padding-top: 200px;
 }   */
 
 /* Nav Styling */
+header {
+  color: white;
+}
 nav {
   display: flex;
   justify-content: space-between;
