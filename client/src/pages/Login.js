@@ -59,10 +59,6 @@ const myStyle={
                         workspaces
                         </span>
                                     
-           
-            
-                
-                
                 <input  className='placehold col-9 col-md-3 my-lg-5 mx-md-auto'
                         type="email" 
                         placeholder="Email" 

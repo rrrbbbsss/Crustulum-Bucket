@@ -1,10 +1,11 @@
-import Login from './pages/Login';
-import './App.css';
-import Header from './components/Header';
-import Home from './pages/Home';
-import SignUp from './pages/Signup';
+import React from 'react';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import Home from './pages/Home';
+import SignUp from './pages/Signup';
+import SinglePaste from './pages/SinglePaste';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -26,15 +27,15 @@ const client = new ApolloClient({
 });
 
 function App() {
-
-
   return (
     <ApolloProvider client={client}>
-      <div>
-        <div className="App">
-          <Home/>
-        </div>
-      </div>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/paste/:id' element={<SinglePaste />} />
+        </Routes>
+      </Router>
     </ApolloProvider>
   );
 };

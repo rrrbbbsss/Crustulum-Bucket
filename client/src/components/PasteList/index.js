@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PasteList = ({ pastes }) => {
     if (!pastes.length) {
@@ -22,13 +22,12 @@ const PasteList = ({ pastes }) => {
                         pastes.map(paste => (
                             <div key={paste.uuid} className="card">
                                 <p className="card-header">
-                                    {/* <Link
+                                    Paste{' '}
+                                    <Link
                                         to={`/paste/${paste.uuid}`}
                                         style={{ fontWeight: 700 }}
                                         className="paste-link"
-                                    >
-                                        Paste #{paste.uuid}
-                                    </Link> */}Paste #{paste.uuid}<br/>
+                                    >#{paste.uuid}</Link><br/>
                                     Expires on {paste.expires}
                                 </p>
                                 <div className="card-body">
