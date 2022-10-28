@@ -40,7 +40,7 @@ setup the following env vars in `./server/.env`:
 ```
 JWT_SECRET='<string: your super secret for your tokens>'
 PASTE_PER_USER='<integer: maximum number of pastes a user can have>'
-PASTE_PERIOD='<integer: lifetime of a paste in seconds before it is deleted>'
+PASTE_PERIOD='<integer: lifetime of a paste in minutes before it is deleted>'
 ```
 
 seed the database:

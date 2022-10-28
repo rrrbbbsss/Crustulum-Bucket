@@ -2,7 +2,8 @@ const { Schema, model } = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
 
 require("dotenv").config();
-const PASTE_PERIOD = parseInt(process.env.PASTE_PERIOD) || 60 * 60 * 24;
+const PASTE_PERIOD =
+  parseInt(process.env.PASTE_PERIOD) * 60 * 1000 || 1000 * 60 * 60 * 24;
 
 const pasteSchema = new Schema(
   {
