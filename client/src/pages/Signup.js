@@ -48,7 +48,7 @@ const SignUp = () => {
                 
                 <i className="fa-solid fa-infinity fa-xs"></i> */}
 
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                         workspaces
                         </span>
                 

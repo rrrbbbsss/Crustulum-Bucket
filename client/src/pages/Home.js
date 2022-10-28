@@ -28,8 +28,10 @@ const Home = () => {
             </div>
             </>
             ):( 
-           
+           <div>
                 <Login />
+                <SignUp/>
+                </div>
                 )} 
         </main>
     );

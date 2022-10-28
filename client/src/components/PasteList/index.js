@@ -3,7 +3,14 @@ import React from "react";
 
 const PasteList = ({ pastes }) => {
     if (!pastes.length) {
-        return <h3>No pastes found.</h3>
+        return    <div className="card">
+                        
+                        <div className="container">
+                            <h4><b>No Pastes</b></h4>
+                            <p>Yet...</p>
+                        </div>
+                    </div>
+
     }
 
     return (
