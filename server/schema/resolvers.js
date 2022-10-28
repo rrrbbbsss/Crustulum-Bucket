@@ -2,6 +2,10 @@ const { User, Paste } = require("../models");
 const { signToken } = require("../utils/auth");
 const { GraphQLError } = require("graphql");
 
+// define max paste per user
+require("dotenv").config();
+const PASTE_PER_USER = parseInt(process.env.PASTE_PER_USER) || 100;
+
 // wrapper for resolvers, so standard pre-checks are kept track of and any errors get handled.
 async function runResolver({ checks, main }) {
   try {
@@ -87,11 +91,26 @@ DefaultAuthenticationCheck = (context) => {
     }
   };
 };
-DefaultAuthorizationCheck = (user, object) => {
-  "todo";
+DefaultAuthorizationCheck = (model, uuid, context) => {
+  return async () => {
+    const owner = context.user._id;
+    const owned = await model.findOne({ uuid, owner });
+    if (!owned) {
+      throw { type: "Authorization", message: "Action Not allowed" };
+    }
+  };
 };
-DefaultAccountingCheck = (user) => {
-  "todo";
+DefaultAccountingCheck = (context) => {
+  return async () => {
+    const user = await User.findById(context.user._id);
+    const pasteCount = user.pasteCount;
+    if (pasteCount >= PASTE_PER_USER) {
+      throw {
+        type: "Accounting",
+        message: "Not allowed to create more pastes",
+      };
+    }
+  };
 };
 DefaultNotFoundCheck = (object, name) => {
   if (!object) {
@@ -205,7 +224,6 @@ const resolvers = {
       };
       const main = async () => {
         const user = await DefaultCreateCheck(User, input);
-        // todo filter out password when returning
         const token = signToken(user);
         return { token, user };
       };
@@ -214,21 +232,19 @@ const resolvers = {
     },
 
     // createPaste mutation
-    createPaste: async (parent, { input: { text } }, context) => {
+    createPaste: async (parent, { input }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
         Authorization: false,
-        Accounting: () => {
-          return "todo";
-        },
+        Accounting: DefaultAccountingCheck(context),
         InputValidation: () => {
-          if (text.length === 0) {
+          if (input.text.length === 0) {
             throw {
               type: "InputValidation",
               message: "Must leave paste",
             };
           }
-          if (text.length > 10000) {
+          if (input.text.length > 10000) {
             throw {
               type: "InputValidation",
               message: "Paste text is too long!",
@@ -237,21 +253,15 @@ const resolvers = {
         },
       };
       const main = async () => {
-        const paste = await Paste.create({
-          text,
-        });
-        if (!paste) {
-          throw "paste creation error";
-        }
-        console.log(paste);
+        const owner = context.user._id;
+        const paste = await DefaultCreateCheck(Paste, { ...input, owner });
         const updatedUser = await User.findByIdAndUpdate(
-          context.user._id,
+          owner,
           { $push: { pastes: paste._id } },
           { new: true, runValidators: true }
         )
           .select("-__v -password")
           .populate({ path: "pastes", select: "-__v -_id" });
-        console.log(updatedUser);
         return updatedUser;
       };
       const result = await runResolver({ checks, main });
@@ -262,9 +272,7 @@ const resolvers = {
     updatePaste: async (parent, { input: { uuid, text } }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
-        Authorization: () => {
-          return "todo";
-        },
+        Authorization: DefaultAuthorizationCheck(Paste, uuid, context),
         Accounting: false,
         InputValidation: () => {
           if (text.length === 0) {
@@ -282,8 +290,13 @@ const resolvers = {
         },
       };
       const main = async () => {
-        const updatedPaste = await Paste.findOneAndUpdate({ uuid }, { text });
-        const updateUser = await User.findById(context.user._id)
+        const owner = context.user._id;
+        const updatedPaste = await Paste.findOneAndUpdate(
+          { uuid, owner },
+          { text }
+        );
+        DefaultNotFoundCheck(updatedPaste, "Paste");
+        const updateUser = await User.findById(owner)
           .select("-__v -password")
           .populate({ path: "pastes", select: "-__v -_id" });
         return updateUser;
@@ -296,16 +309,15 @@ const resolvers = {
     deletePaste: async (parent, { input: { uuid } }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
-        Authorization: () => {
-          return "todo";
-        },
+        Authorization: DefaultAuthorizationCheck(Paste, uuid, context),
         Accounting: false,
         InputValidation: false,
       };
       const main = async () => {
-        const deletedPaste = await Paste.findOneAndDelete({ uuid });
+        const owner = context.user._id;
+        const deletedPaste = await Paste.findOneAndDelete({ uuid, owner });
         DefaultNotFoundCheck(deletedPaste, "Paste");
-        const updatedUser = await User.findById(context.user._id)
+        const updatedUser = await User.findById(owner)
           .select("-__v -password")
           .populate({ path: "pastes", select: "-__v -_id" });
         return updatedUser;

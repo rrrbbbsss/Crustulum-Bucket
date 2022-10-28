@@ -21,6 +21,12 @@ const pasteSchema = new Schema(
       type: String,
       default: uuidv4,
     },
+    // boyd was right, did need this to make it easier.
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: "Must have owner",
+    },
   },
   {
     toJSON: {
