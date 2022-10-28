@@ -37,10 +37,8 @@ export const SIGN_UP_USER = gql`
 export const CREATE_PASTE = gql`
     mutation createPaste($input: createPasteInput!) {
         createPaste(input: $input) {
-            paste {
-                uuid
+            pastes {
                 text
-                expires
             }
         }
     }
