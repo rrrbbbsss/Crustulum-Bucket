@@ -44,11 +44,13 @@ const Login = (props) => {
     
             
             
-                <i className=" fa-solid fa-shuttle-space  App-logo fa-2xl " ></i>
+                {/* <i className=" fa-solid fa-shuttle-space  App-logo fa-2xl " ></i>
                 
-                <i className="fa-solid  fa-infinity fa-xs"></i>
-                
-            
+                <i className="fa-solid  fa-infinity fa-xs"></i> */}
+                <span class="material-symbols-outlined">
+                        workspaces
+                        </span>
+                                    
            
             
                 
