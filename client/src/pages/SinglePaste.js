@@ -2,11 +2,11 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { READ_PASTE } from "../utils/queries";
-import auth from "../utils/auth";
+// import auth from "../utils/auth";
 import Header from "../components/Header";
 
 const SinglePaste = () => {
-    const loggedIn = auth.loggedIn();
+    // const loggedIn = auth.loggedIn();
 
     const { id: pasteId } = useParams();
 

@@ -8,6 +8,15 @@ import Auth from '../utils/auth';
 
 
 const SignUp = () => {
+  const myStyle={
+        backgroundImage: "url(./images/nasa.jpg)",
+        backgroundSize: 'cover',
+        height: '100vh',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        zIndex: '99999'
+    };
+    
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser, { error }] = useMutation(SIGN_UP_USER);
 
@@ -36,7 +45,7 @@ const SignUp = () => {
 };
 
   return (
-<div>
+<div style={myStyle} className="pb-9">
 
     <form
     onSubmit={handleFormSubmit}
