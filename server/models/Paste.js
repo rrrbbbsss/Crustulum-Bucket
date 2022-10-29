@@ -37,7 +37,10 @@ const pasteSchema = new Schema(
 );
 
 pasteSchema.virtual("expires").get(function () {
-  return new Date(this.created).getTime() + PASTE_PERIOD;
+  const expires = new Date(this.created).getTime() + PASTE_PERIOD;
+  const minute = 1000 * 60;
+  // we run the cleanup job every minute so compute the expires time based off that.
+  return expires + minute - (expires % minute);
 });
 
 const Paste = model("Paste", pasteSchema);
