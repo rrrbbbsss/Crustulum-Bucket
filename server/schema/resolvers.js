@@ -75,7 +75,7 @@ const DefaultAuthorizationCheck = (model, uuid, context) => {
 };
 const DefaultAccountingCheck = (context) => {
   return async () => {
-    const user = await User.findById(context.user._id);
+    const user = await User.findById(context.user._id).populate("pastes");
     const pasteCount = user.pasteCount;
     if (pasteCount >= PASTE_PER_USER) {
       throw {
