@@ -37,7 +37,11 @@ export const SIGN_UP_USER = gql`
 export const CREATE_PASTE = gql`
     mutation createPaste($input: createPasteInput!) {
         createPaste(input: $input) {
+<<<<<<< HEAD
             paste 
+=======
+            pastes {
+>>>>>>> develop
                 uuid
                 text
                 expires
@@ -49,7 +53,7 @@ export const CREATE_PASTE = gql`
 export const UPDATE_PASTE = gql`
     mutation updatePaste($input: updatePasteInput!) {
         updatePaste(input: $input) {
-            paste {
+            pastes {
                 uuid
                 text
                 expires

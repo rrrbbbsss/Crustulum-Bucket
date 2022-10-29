@@ -2,7 +2,8 @@ const { Schema, model } = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
 
 require("dotenv").config();
-const PASTE_PERIOD = parseInt(process.env.PASTE_PERIOD) || 60 * 60 * 24;
+const PASTE_PERIOD =
+  parseInt(process.env.PASTE_PERIOD) * 60 * 1000 || 1000 * 60 * 60 * 24;
 
 const pasteSchema = new Schema(
   {
@@ -20,6 +21,12 @@ const pasteSchema = new Schema(
       type: String,
       default: uuidv4,
     },
+    // boyd was right, did need this to make it easier.
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: "Must have owner",
+    },
   },
   {
     toJSON: {
@@ -30,7 +37,10 @@ const pasteSchema = new Schema(
 );
 
 pasteSchema.virtual("expires").get(function () {
-  return new Date(this.created).getTime() + PASTE_PERIOD;
+  const expires = new Date(this.created).getTime() + PASTE_PERIOD;
+  const minute = 1000 * 60;
+  // we run the cleanup job every minute so compute the expires time based off that.
+  return new Date(expires + minute - (expires % minute)).toISOString();
 });
 
 const Paste = model("Paste", pasteSchema);

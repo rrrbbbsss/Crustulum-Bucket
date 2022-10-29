@@ -1,7 +1,6 @@
 import React from "react";
 import auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-// import { NavLink } from "react-router-dom";
 
 const Header = () => {
     const logout = event => {
@@ -16,8 +15,9 @@ const Header = () => {
                 <nav className="text-center col-6">
                     {auth.loggedIn() ? (
                     <>
-                        <Link to='/'>Home</Link>
+                        <Link to="/">Home</Link>
                         <a href="/" onClick={logout}>Logout</a>
+                        <Link to="/paste">Create a Paste</Link>
                     </>
                     ) : (
                         <>
