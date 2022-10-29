@@ -23,6 +23,7 @@ async function runResolver({ checks, main }) {
     );
     // runs checks in order;
     await checks.Authentication();
+    await checks.Exists();
     await checks.Authorization();
     await checks.Accounting();
     await checks.InputValidation();
@@ -61,6 +62,14 @@ const DefaultAuthenticationCheck = (context) => {
   return () => {
     if (!context.user) {
       throw { type: "Authentication", message: "Not logged in" };
+    }
+  };
+};
+const DefaultExistsCheck = (model, uuid) => {
+  return async () => {
+    const owned = await model.findOne({ uuid });
+    if (!owned) {
+      throw { type: "NotFound", message: "Paste does not exist" };
     }
   };
 };
@@ -183,6 +192,7 @@ const resolvers = {
     me: async (parent, args, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
+        Exists: false,
         Authorization: false,
         Accounting: false,
         InputValidation: false,
@@ -202,6 +212,7 @@ const resolvers = {
     readPaste: async (parent, { input: { uuid } }, context) => {
       const checks = {
         Authentication: false,
+        Exists: DefaultExistsCheck(Paste, uuid),
         Authorization: false,
         Accounting: false,
         InputValidation: false,
@@ -221,6 +232,7 @@ const resolvers = {
     login: async (parent, { input: { email, password } }, context) => {
       const checks = {
         Authentication: false,
+        Exists: false,
         Authorization: false,
         Accounting: false,
         InputValidation: () => {
@@ -249,6 +261,7 @@ const resolvers = {
     signup: async (parent, { input }, context) => {
       const checks = {
         Authentication: false,
+        Exists: false,
         Authorization: false,
         Accounting: false,
         InputValidation: () => {
@@ -269,6 +282,7 @@ const resolvers = {
     createPaste: async (parent, { input }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
+        Exists: false,
         Authorization: false,
         Accounting: DefaultAccountingCheck(context),
         InputValidation: () => {
@@ -295,6 +309,7 @@ const resolvers = {
     updatePaste: async (parent, { input: { uuid, text } }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
+        Exists: DefaultExistsCheck(Paste, uuid),
         Authorization: DefaultAuthorizationCheck(Paste, uuid, context),
         Accounting: false,
         InputValidation: () => {
@@ -321,6 +336,7 @@ const resolvers = {
     deletePaste: async (parent, { input: { uuid } }, context) => {
       const checks = {
         Authentication: DefaultAuthenticationCheck(context),
+        Exists: DefaultExistsCheck(Paste, uuid),
         Authorization: DefaultAuthorizationCheck(Paste, uuid, context),
         Accounting: false,
         InputValidation: false,
