@@ -1,6 +1,14 @@
 const { User, Paste } = require("../models");
 const { signToken } = require("../utils/auth");
-const { GraphQLError } = require("graphql");
+const {
+  UserInputError,
+  AuthenticationError,
+  ForbiddenError,
+} = require("apollo-server-errors");
+
+// good enough regex for email validation: https://emailregex.com
+const emailRegex =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 // define max paste per user
 require("dotenv").config();
@@ -26,72 +34,37 @@ async function runResolver({ checks, main }) {
     switch (err.type) {
       // Authentication Error Handling
       case "Authentication":
-        throw new GraphQLError(err.message, {
-          extension: {
-            code: "UNAUTHENTICATED",
-            http: { status: 401 },
-          },
-        });
+        throw new AuthenticationError(err.message);
       // Authroization Error Handling
       case "Authorization":
-        throw new GraphQLError(err.message, {
-          extension: {
-            code: "todo",
-            http: { status: 403 },
-          },
-        });
+        throw new ForbiddenError(err.message);
       case "Duplicate":
-        throw new GraphQLError(err.message, {
-          extension: {
-            code: "todo",
-            http: { status: 403 },
-          },
-        });
+        throw new UserInputError(err.message);
       // Accounting Error Handling
       case "Accounting":
-        throw new GraphQLError(err.message, {
-          extension: {
-            code: "todo",
-            http: { status: 403 },
-          },
-        });
+        throw new ForbiddenError(err.message);
       // Input Validation Error Handling
       case "InputValidation":
-        throw new GraphQLError(err.message, {
-          extension: {
-            code: "BAD_USER_INPUT",
-            http: { status: 400 },
-          },
-        });
+        throw new UserInputError(err.message);
       // Not Found Error Handling
       case "NotFound":
-        throw new GraphQLError(err.message, {
-          extension: {
-            code: "todo",
-            http: { status: 404 },
-          },
-        });
+        throw new UserInputError(err.message);
       // Default Error Handling
       default:
-        throw new GraphQLError("Something went wrong!", {
-          extension: {
-            code: "INTERNAL_SERVER_ERROR",
-            http: { status: 500 },
-          },
-        });
+        throw "Something went wrong!";
     }
   }
 }
 
 // Default Checks
-DefaultAuthenticationCheck = (context) => {
+const DefaultAuthenticationCheck = (context) => {
   return () => {
     if (!context.user) {
       throw { type: "Authentication", message: "Not logged in" };
     }
   };
 };
-DefaultAuthorizationCheck = (model, uuid, context) => {
+const DefaultAuthorizationCheck = (model, uuid, context) => {
   return async () => {
     const owner = context.user._id;
     const owned = await model.findOne({ uuid, owner });
@@ -100,7 +73,7 @@ DefaultAuthorizationCheck = (model, uuid, context) => {
     }
   };
 };
-DefaultAccountingCheck = (context) => {
+const DefaultAccountingCheck = (context) => {
   return async () => {
     const user = await User.findById(context.user._id);
     const pasteCount = user.pasteCount;
@@ -112,12 +85,12 @@ DefaultAccountingCheck = (context) => {
     }
   };
 };
-DefaultNotFoundCheck = (object, name) => {
+const DefaultNotFoundCheck = (object, name) => {
   if (!object) {
     throw { type: "NotFound", message: `${name} not found` };
   }
 };
-DefaultCreateCheck = async (model, value) => {
+const DefaultCreateCheck = async (model, value) => {
   let entity = {};
   try {
     entity = await model.create(value);
@@ -137,6 +110,70 @@ DefaultCreateCheck = async (model, value) => {
     throw "entity creation error";
   }
   return entity;
+};
+
+const InputEmailCheck = (email) => {
+  if (!email.match(emailRegex)) {
+    throw {
+      type: "InputValidation",
+      message: "Please enter valid Email address.",
+    };
+  }
+};
+
+const InputTextCheck = (text) => {
+  if (text.length === 0) {
+    throw {
+      type: "InputValidation",
+      message: "Must leave paste",
+    };
+  }
+  if (text.length > 10000) {
+    throw {
+      type: "InputValidation",
+      message: "Paste text is too long!",
+    };
+  }
+};
+
+const InputPasswordCheck = (password) => {
+  if (password.length < 8) {
+    throw {
+      type: "InputValidation",
+      message: "Password is too short. Must be between 8-20 characters long.",
+    };
+  }
+  if (password.length > 20) {
+    throw {
+      type: "InputValidation",
+      message: "Password is too long. Must be between 8-20 characters long.",
+    };
+  }
+  if (!password.match(/[a-z]/)) {
+    throw {
+      type: "InputValidation",
+      message: "Password must contain at least one lower case character.",
+    };
+  }
+  if (!password.match(/[A-Z]/)) {
+    throw {
+      type: "InputValidation",
+      message: "Password must contain at least one upper case character.",
+    };
+  }
+  if (!password.match(/[0-9]/)) {
+    throw {
+      type: "InputValidation",
+      message: "Password must contain at least one number.",
+    };
+  }
+  // special chars from: https://owasp.org/www-community/password-special-characters
+  if (!password.match(/[ !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/)) {
+    throw {
+      type: "InputValidation",
+      message: "Password must contain at least one special character.",
+    };
+  }
 };
 
 // Resolvers
@@ -187,8 +224,7 @@ const resolvers = {
         Authorization: false,
         Accounting: false,
         InputValidation: () => {
-          // todo: validate email
-          return "todo";
+          InputEmailCheck(email);
         },
       };
       const main = async () => {
@@ -198,7 +234,6 @@ const resolvers = {
         if (!user) {
           throw { type: "Authentication", message: "Incorrect credentials" };
         }
-        console.log(password);
         const correctPw = await user.isCorrectPassword(password);
         if (!correctPw) {
           throw { type: "Authentication", message: "Incorrect credentials" };
@@ -217,9 +252,8 @@ const resolvers = {
         Authorization: false,
         Accounting: false,
         InputValidation: () => {
-          // todo: validate email
-          // todo: validate password
-          return "todo";
+          InputEmailCheck(input.email);
+          InputPasswordCheck(input.password);
         },
       };
       const main = async () => {
@@ -238,18 +272,7 @@ const resolvers = {
         Authorization: false,
         Accounting: DefaultAccountingCheck(context),
         InputValidation: () => {
-          if (input.text.length === 0) {
-            throw {
-              type: "InputValidation",
-              message: "Must leave paste",
-            };
-          }
-          if (input.text.length > 10000) {
-            throw {
-              type: "InputValidation",
-              message: "Paste text is too long!",
-            };
-          }
+          InputTextCheck(input.text);
         },
       };
       const main = async () => {
@@ -275,18 +298,7 @@ const resolvers = {
         Authorization: DefaultAuthorizationCheck(Paste, uuid, context),
         Accounting: false,
         InputValidation: () => {
-          if (text.length === 0) {
-            throw {
-              type: "InputValidation",
-              message: "Must leave paste",
-            };
-          }
-          if (text.length > 10000) {
-            throw {
-              type: "InputValidation",
-              message: "Paste text is too long!",
-            };
-          }
+          InputTextCheck(text);
         },
       };
       const main = async () => {
