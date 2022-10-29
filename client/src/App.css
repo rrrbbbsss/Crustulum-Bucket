@@ -1,37 +1,23 @@
 * {
   cursor: url('../public/images/rocket-solid.svg'), auto;
- 
-}
-html {
-  background-color: rgba(0, 0, 0);
-}
-form {
-position: static;
-padding-top: 200px;
- 
+background-color: black;
 }
 
-.card {
-  /* Add shadows to create the "card" effect */
-  
-  
-  margin-top: 300px;
-  width: 50%;
-  height: 50%;
-  margin-left: 25%;
-  color: white;
-  border: 5px solid white;
-border-radius: 25%;
-}
+ 
+/* form {
+position: static;
+background-color: transparent;
+color: white;
+ 
+}  */
+
+
 
 /* On mouse-over, add a deeper shadow */
 
 
 /* Add some padding inside the card container */
-.container {
-  
-  padding: 2px 16px;
-}
+
 
 .material-symbols-outlined {
   color: white;
@@ -63,32 +49,74 @@ border-radius: 25%;
   color: rgba(255, 255, 255, .8);
 }
 
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    transform: scale(5.5);
-  }
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: lime;
+  /* font-size: large;
+        letter-spacing: 1px; */
 }
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-    
-  }
-
-  to {
-    transform: rotate(720deg);
-    
-  }
-}   */
 
 /* Nav Styling */
 header {
-  color: white;
+  z-index: 9999;
+  background-color: black;
+  color: lime;
+  width: 100vw;
+  /* display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  position: -webkit-sticky;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 80%;
+  height: 130px;
+  width: 102.5%;
+  flex-direction: row;
+  flex-wrap: wrap; */
+} *
+.big-nav {
+  padding-right: 5px;
+  margin-right: 1.4%;
+  color: lime;
 }
-nav {
+ nav {
   display: flex;
   justify-content: space-between;
   text-decoration: none;
+  color: lime;
+} 
+ul {
+  margin: 85px -3px -15px -10px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  list-style: none;
+  flex: auto;
+  flex-direction: row;
+  font-size: 16px;
+  color: lime;
+}
+li {
+  margin-left: 15px;
+  color: lime;
+}
+.big-anc2 {
+  background-color: black;
+  text-decoration: none;
+  color: lime
+
+
+}
+
+li:hover {
+  text-decoration: line-through;
+  color: lime;
+
+
 }
 
 #pasteText {
@@ -96,7 +124,48 @@ nav {
 }
 
 .paste-text {
+  text-indent: 30px;
+  text-align: left;
   width: 95%;
+  color: lime;
+  background-color: black;
+ margin-left: 15%;
+ margin-top: 30px;
+  border: 1px solid white;
+    border-radius: 25px;
+    box-shadow: white 10px 10px;
+
+
+}
+
+.paste-text-one {
+  text-indent: 30px;
+  text-align: left;
+  width: 95%;
+  color: lime;
+  background-color: black;
+margin-left: 2%;
+  margin-top: 30px;
+  border: 1px solid white;
+  border-radius: 25px;
+  box-shadow: white 10px 10px;
+
+
+}
+
+.paste-text-single {
+  text-indent: 15px;
+  text-align: left;
+  width: 95%;
+  color: black;
+  border-radius: 15px;
+  margin-left: 2%;
+  margin-top: 30px;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+.new-paste {
+  margin-left: 0;
 }
 
 
@@ -121,10 +190,7 @@ nav {
   margin-right: 50px;
 }
 .button {
-
-     
-    
-background: #145cf8cc;
+  background: white;
   display: flex;
   margin-top: 20px;
   /* padding: 20px 10px 5px 0; */
@@ -134,20 +200,72 @@ background: #145cf8cc;
   width: 300px;
   border-color: transparent;
   text-indent: 98px;
-  color: white;
+  color: lime;
   font-size: larger;
   letter-spacing: 3px;
+}
+.single-paste {
+  margin-top: 150px;
+  color: lime;
+  padding-left: 25%;
+  
+  
   
 }
 
-.Sign-up {
-  margin-top: 30px;
-  background: rgba(255, 255, 255, .8);
-  line-height: 30px;
-  color: black;
-  text-indent: 57px;
-  letter-spacing: 2px;
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.collapsible:hover {
+  background-color: #ccc;
 }
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+.new-header {
+  background-color: lime;
+  color: black
+}
+
+ .paste-button {
+  background: white;
+  margin-top: 20px;
+  border-radius: 25px;
+  line-height: 45px;
+  
+  border-color: transparent;
+  margin-left: 15%;
+  color: black;
+  font-size: larger;
+  letter-spacing: 3px;
+  text-align: center;
+}
+.paste-button-delete {
+  background: lime;
+  margin-top: 20px;
+  border-radius: 25px;
+  line-height: 45px;
+  margin-left: 15%;
+  border-color: transparent;
+  color: black;
+  font-size: larger;
+  letter-spacing: 3px;
+
+
+}
+.paste-header {
+  color: lime;
+}
+
+
+
+
+ 
 
 /* Set a style for all buttons */
 
@@ -203,9 +321,7 @@ i {
 
  }
 }
-.no-paste {
-  height: 
-}
+
 
 @media screen and (max-width: 700px) {
   .button {

@@ -66,14 +66,14 @@ const UpdatePaste = () => {
     return (
         <>
         <Header />
-        <div key={paste.uuid} className="card">
-            <p className="card-header">
+        <div key={paste.uuid} className="card ">
+            <p className="card-header ">
                 Paste #{paste.uuid}<br/>
                 Expires on {paste.expires}
             </p>
-            <div className="card-body">
+            <div className="">
             <form onSubmit={handleFormSubmit}>
-                <textarea
+                <textarea className=""
                     name="text" 
                     type="text"
                     id="pasteText"
@@ -81,7 +81,7 @@ const UpdatePaste = () => {
                     defaultValue={paste.text}
                     onChange={handleChange}
                     rows='20' /><br />
-                <button type="submit">Paste</button>
+                <button className="col-12 col-md-8 paste-button" type="submit">Paste</button>
                 {error && <div>Paste Failed!</div>}
             </form>
             </div>

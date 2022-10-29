@@ -9,15 +9,17 @@ const Header = () => {
     };
 
     return (
-        <header className="col-9 col-md-3 mx-md-auto text-center">
-            <div className="container flex-row justify-space-between-lg align-center align-right">
+        <header>
+            <div>
                 <h1>Crustulum Bucket</h1>
-                <nav className="text-center col-6">
+                <nav className="big-nav">
                     {auth.loggedIn() ? (
                     <>
-                        <Link to="/">Home</Link>
-                        <a href="/" onClick={logout}>Logout</a>
-                        <Link to="/paste">Create a Paste</Link>
+                    <ul>
+                       <li><Link className="g-2 big-anc2" to="/">Home</Link></li>
+                        <li><a className="g-2 big-anc2" href="/" onClick={logout}>Logout</a></li>
+                        <li><Link className="g-2 big-anc2"to="/paste">Create a Paste</Link></li>
+                    </ul>
                     </>
                     ) : (
                         <>
@@ -25,6 +27,7 @@ const Header = () => {
                             <Link to='/signup'>Sign Up</Link>
                         </>
                     )}
+        
                 </nav>
             </div>
         </header>

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useMutation } from '@apollo/client';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { CREATE_PASTE } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
 
 const PasteForm = () => {
+  
+
 
     const [formState, setFormState] = useState({ text: '' });
     const [createPaste, { error }] = useMutation(CREATE_PASTE, {
@@ -48,23 +50,23 @@ const PasteForm = () => {
     };
 
     return (
-        <main className="container mb-4">
+        <main className="container bg-none">
             <div className="flex-row">
-                <div className="card col-6">
-                    <h4 className="card-header">Paste:</h4>
-                    <div className="card-body">
+                <div>
+                    
                         <form onSubmit={handleFormSubmit}>
-                            <textarea
-                                name="text" 
-                                type="text"
-                                id="pasteText"
-                                value={formState.text}
+                             <div className="mb-3 my-5 mx-5 col-12 col-md-8">
+                                </div>
+                                <div className="mb-3">
+                                <label class="paste-header">New Paste</label>
+                                <textarea className=" new-paste paste-text" name="text" id="pasteText"  value={formState.text}
                                 onChange={handleChange}
                                 rows='20' />
-                            <button type="submit">Paste</button>
-                            {error && <div>Paste Failed!</div>}
+                                </div>
+                            <button className="col-12 col-md-12 paste-button-delete"type="submit">Paste</button>
+                            {error && <div>Paste Failed!</div>} 
                         </form>
-                    </div>
+                    
                 </div>
             </div>
         </main>

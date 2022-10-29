@@ -3,9 +3,10 @@ import PasteForm from "../components/PasteForm";
 import Header from "../components/Header";
 
 const Paste = () => {
+
     return (
         <>
-            <Header />
+            <Header /> 
             <PasteForm />
         </>
     );

@@ -23,13 +23,13 @@ const SinglePaste = () => {
     return (
         <>
         <Header />
-        <div key={paste.uuid} className="card">
-            <p className="card-header">
+        <div key={paste.uuid} className="paste-header">
+            <p className="">
                 Paste #{paste.uuid}<br/>
                 Expires on {paste.expires}
             </p>
-            <div className="card-body">
-                <textarea className="paste-text" rows="20" readOnly={true} defaultValue={paste.text} />
+            <div className="">
+                <textarea className="paste-text-one" rows="20" readOnly={true} defaultValue={paste.text} />
             </div>
         </div>
         </>
