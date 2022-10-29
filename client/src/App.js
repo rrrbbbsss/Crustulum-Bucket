@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import SignUp from './pages/Signup';
 import SinglePaste from './pages/SinglePaste';
 import Paste from './pages/Paste';
+import UpdatePaste from './pages/UpdatePaste';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -36,6 +37,7 @@ function App() {
           <Route path='/paste' element={<Paste />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/paste/:id' element={<SinglePaste />} />
+          <Route path='/update-paste/:id' element={<UpdatePaste />} />
         </Routes>
       </Router>
     </ApolloProvider>

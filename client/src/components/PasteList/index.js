@@ -32,7 +32,8 @@ const PasteList = ({ pastes }) => {
                                 </p>
                                 <div className="card-body">
                                     <textarea className="paste-text" rows="20" readOnly={true} defaultValue={paste.text} />
-                                    <button type="edit">Edit</button>{' '}
+                                    <Link to={`/update-paste/${paste.uuid}`}>
+                                    <button type="edit">Edit</button></Link>{' '}
                                     <button type="delete">Delete</button>
                                 </div>
                             </div>
