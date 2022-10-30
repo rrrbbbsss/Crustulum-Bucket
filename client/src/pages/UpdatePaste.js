@@ -1,11 +1,23 @@
 import { useMutation, useQuery } from "@apollo/client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { UPDATE_PASTE } from "../utils/mutations";
 import { QUERY_ME, READ_PASTE } from "../utils/queries";
 import Header from "../components/Header";
 
 const UpdatePaste = () => {
+          const [theme, setTheme] = useState('paste-text-dark');
+  const toggleTheme = () => {
+    if (theme === 'paste-text-dark') {
+      setTheme('past-text');
+    } else {
+      setTheme('paste-text-dark');
+    }
+  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
     const { id: pasteId } = useParams();
 
     const { loading, data } = useQuery(READ_PASTE, {
@@ -66,14 +78,14 @@ const UpdatePaste = () => {
     return (
         <>
         <Header />
-        <div key={paste.uuid} className="card ">
-            <p className="card-header ">
+        <div key={paste.uuid} className="">
+            <p className=" ">
                 Paste #{paste.uuid}<br/>
                 Expires on {paste.expires}
             </p>
             <div className="">
             <form onSubmit={handleFormSubmit}>
-                <textarea className=""
+                <textarea className={`${theme} new-paste paste-text-dark`}
                     name="text" 
                     type="text"
                     id="pasteText"
@@ -81,7 +93,7 @@ const UpdatePaste = () => {
                     defaultValue={paste.text}
                     onChange={handleChange}
                     rows='20' /><br />
-                <button className="col-12 col-md-8 paste-button" type="submit">Paste</button>
+                <button className="col-12 paste-button" type="submit">Paste</button>
                 {error && <div>Paste Failed!</div>}
             </form>
             </div>

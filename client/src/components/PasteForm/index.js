@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useMutation } from '@apollo/client';
 // import { Link } from "react-router-dom";
 import { CREATE_PASTE } from "../../utils/mutations";
@@ -6,7 +6,17 @@ import { QUERY_ME } from "../../utils/queries";
 
 const PasteForm = () => {
   
-
+      const [theme, setTheme] = useState('paste-text-dark');
+  const toggleTheme = () => {
+    if (theme === 'paste-text-dark') {
+      setTheme('past-text');
+    } else {
+      setTheme('paste-text-dark');
+    }
+  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
     const [formState, setFormState] = useState({ text: '' });
     const [createPaste, { error }] = useMutation(CREATE_PASTE, {
@@ -55,11 +65,11 @@ const PasteForm = () => {
                 <div>
                     
                         <form onSubmit={handleFormSubmit}>
-                             <div className="mb-3 my-5 mx-5 col-12 col-md-8">
+                             <div className="mb-3 my-5 col-12 col-md-8">
                                 </div>
                                 <div className="mb-3">
-                                <label class="paste-header">New Paste</label>
-                                <textarea className=" new-paste paste-text" name="text" id="pasteText"  value={formState.text}
+                                <label class={`${theme} new-paste-header`}>New Paste</label>
+                                <textarea className={` ${theme} new-paste`} name="text" id="pasteText"  value={formState.text}
                                 onChange={handleChange}
                                 rows='20' />
                                 </div>

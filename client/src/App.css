@@ -1,11 +1,10 @@
 * {
   cursor: url('../public/images/rocket-solid.svg'), auto;
-background-color: black;
   
 }
 
 html {
-  background-color: black;
+  background-color: inherit;
 }
 .home {
   margin-top: 10%;
@@ -61,6 +60,7 @@ a,
 a:hover,
 a:focus,
 a:active {
+  background-color: transparent;
   text-decoration: none;
   color: lime;
   /* font-size: large;
@@ -70,8 +70,8 @@ a:active {
 /* Nav Styling */
 header {
   z-index: 9999;
-  background-color: black;
-  color: lime;
+  /* background-color: black;
+  color: lime; */
   width: 100vw;
   /* display: flex;
   justify-content: space-between;
@@ -113,15 +113,15 @@ li {
   color: lime;
 }
 .big-anc2 {
-  background-color: black;
+  /* background-color: ; */
   text-decoration: none;
-  color: lime
+  color: black
 
 
 }
 
 li:hover {
-  text-decoration: line-through;
+  
   color: lime;
 
 
@@ -131,20 +131,26 @@ li:hover {
   width: 95%;
 }
 
+
+
+.paste-text-dark {
+  color: lime;
+  background-color: black;
+  border-radius: 25px;
+}
 .paste-text {
   text-indent: 30px;
   text-align: left;
   width: 95%;
-  color: lime;
-  background-color: black;
- margin-left: 15%;
- margin-top: 30px;
+  color: black;
+  background-color: white;
+  margin-left: 15%;
+  margin-top: 30px;
   border: 1px solid white;
-    border-radius: 25px;
-    box-shadow: white 10px 10px;
-
-
+  border-radius: 25px;
+  box-shadow: white 10px 10px;
 }
+
 
 .paste-text-one {
   text-indent: 30px;
@@ -172,9 +178,21 @@ margin-left: 2%;
   border: 1px solid black;
   border-radius: 25px;
 }
-.new-paste {
-  margin-left: 3%;
+.new-paste-header{
+  margin-left: 44%;
+  background-color: inherit;
+  color: lime;
+  font-size: 30px;
 }
+.new-paste {
+  height: 25%;
+  margin-left: 2%;
+  background-color: inherit;
+  color: lime;
+  font-size: 30px;
+}
+
+
 
 
 /* Full-width inputs */
@@ -212,9 +230,11 @@ margin-left: 2%;
   letter-spacing: 3px;
   margin-top: -5px;
 }
+.toggle {
+  margin-top: -50%;
+}
 .single-paste {
   margin-top: 150px;
-  color: lime;
   padding-left: 25%;
   
   
@@ -241,13 +261,13 @@ margin-left: 2%;
 }
 
  .paste-button {
-  background: white;
+  background: red;
   margin-top: 20px;
   border-radius: 25px;
   line-height: 45px;
   
   border-color: transparent;
-  margin-left: 15%;
+ 
   color: black;
   font-size: larger;
   letter-spacing: 3px;
@@ -258,7 +278,7 @@ margin-left: 2%;
   margin-top: 20px;
   border-radius: 25px;
   line-height: 45px;
-  margin-left: 15%;
+  
   border-color: transparent;
   color: black;
   font-size: larger;
@@ -272,7 +292,7 @@ margin-left: 2%;
   margin-top: 20px;
   border-radius: 25px;
   line-height: 45px;
-  margin-left: 10px;
+  
   
   border-color: transparent;
   color: black;
@@ -283,6 +303,10 @@ margin-left: 2%;
 }
 .paste-header {
   color: lime;
+}
+.light {
+  background-color: #fff;
+  color: #333;
 }
 
 
