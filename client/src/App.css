@@ -173,7 +173,7 @@ margin-left: 2%;
   border-radius: 25px;
 }
 .new-paste {
-  margin-left: 0;
+  margin-left: 3%;
 }
 
 
@@ -259,6 +259,21 @@ margin-left: 2%;
   border-radius: 25px;
   line-height: 45px;
   margin-left: 15%;
+  border-color: transparent;
+  color: black;
+  font-size: larger;
+  letter-spacing: 3px;
+
+
+}
+
+.paste-button-delete2 {
+  background: lime;
+  margin-top: 20px;
+  border-radius: 25px;
+  line-height: 45px;
+  margin-left: 10px;
+  
   border-color: transparent;
   color: black;
   font-size: larger;
