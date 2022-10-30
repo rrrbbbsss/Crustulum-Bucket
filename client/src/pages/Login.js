@@ -46,7 +46,7 @@ const myStyle={
   return (
 <div style={myStyle} className=" home pb-9">
 
-    <form 
+    <form className="home-form"
     onSubmit={handleFormSubmit}
     >
     

@@ -93,7 +93,7 @@ const UpdatePaste = () => {
                     defaultValue={paste.text}
                     onChange={handleChange}
                     rows='20' /><br />
-                <button className="col-12 paste-button" type="submit">Paste</button>
+                <button className="col-12 paste-button-delete" type="submit">Paste</button>
                 {error && <div>Paste Failed!</div>}
             </form>
             </div>

@@ -1,18 +1,17 @@
 * {
   cursor: url('../public/images/rocket-solid.svg'), auto;
-  
 }
 
 html {
-  background-color: inherit;
+  
 }
 .home {
-  margin-top: 10%;
+  margin-top: 0;
 }
 
  
  form {
-position: static;
+position: relative;
 background-color: transparent;
 color: white;
  
@@ -27,7 +26,7 @@ color: white;
 
 
 .material-symbols-outlined {
-  color: white;
+  margin-top: 13%;
   margin-left: 49%;
   margin-bottom: 100px;
   transform: scale(7);

@@ -51,7 +51,7 @@ const PasteList = ({ pastes }) => {
                                         </div>
                                     <textarea className={`${theme} col-12`} rows="20" readOnly={true} defaultValue={paste.text} />
                                     <Link to={`/update-paste/${paste.uuid}`}>
-                                    <button className={`col-12 paste-button`} type="edit">Edit</button></Link>{' '}
+                                    <button className={`col-12 paste-button-delete`} type="edit">Edit</button></Link>{' '}
                                     <button className=" mt-5 col-12 paste-button-delete" type="delete">Delete</button>
                                 </div>
                             </div>
