@@ -1,15 +1,23 @@
 * {
   cursor: url('../public/images/rocket-solid.svg'), auto;
 background-color: black;
+  
+}
+
+html {
+  background-color: black;
+}
+.home {
+  margin-top: 10%;
 }
 
  
-/* form {
+ form {
 position: static;
 background-color: transparent;
 color: white;
  
-}  */
+}  
 
 
 
@@ -25,9 +33,9 @@ color: white;
   margin-bottom: 100px;
   transform: scale(7);
   
-    background: -moz-linear-gradient(top, #e66465 0%, #145cf8cc 25%);
-    background: -webkit-linear-gradient(top, #e66465 0%, #145cf8cc 20%);
-    background: linear-gradient(to bottom, #e66465 0%, #145cf8cc 100%);
+    background: -moz-linear-gradient(top, lime 0%, #145cf8cc 25%);
+    background: -webkit-linear-gradient(top, lime 0%, #145cf8cc 20%);
+    background: linear-gradient(to bottom, lime 0%, #145cf8cc 100%);
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
@@ -173,7 +181,7 @@ margin-left: 2%;
 .placehold {
     background: rgba(224, 209, 209, 0.2);
       display: flex;
-      margin-top: 40px;
+      margin-top: 10px;
       /* padding: 20px 10px 5px 0; */
       border-radius: 35px;
       line-height: 45px;
@@ -190,19 +198,19 @@ margin-left: 2%;
   margin-right: 50px;
 }
 .button {
-  background: white;
+  background: lime;
   display: flex;
-  margin-top: 20px;
-  /* padding: 20px 10px 5px 0; */
+  margin-top: 10px;
   border-radius: 35px;
   line-height: 45px;
   margin-left: 14%;
   width: 300px;
   border-color: transparent;
   text-indent: 98px;
-  color: lime;
+  color: black;
   font-size: larger;
   letter-spacing: 3px;
+  margin-top: -5px;
 }
 .single-paste {
   margin-top: 150px;
@@ -310,6 +318,7 @@ i {
 }
 .Sign-up {
   text-indent: 90px;
+  text-decoration: none;
 }
  .App-logo {
    height: 65vmin;

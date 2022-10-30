@@ -45,7 +45,7 @@ const SignUp = () => {
 };
 
   return (
-<div style={myStyle} className="pb-9">
+<div style={myStyle} className=" home pb-9">
 
     <form
     onSubmit={handleFormSubmit}

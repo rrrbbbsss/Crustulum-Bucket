@@ -44,7 +44,7 @@ const myStyle={
     };
 
   return (
-<div style={myStyle} className="pb-9">
+<div style={myStyle} className=" home pb-9">
 
     <form 
     onSubmit={handleFormSubmit}
@@ -84,7 +84,7 @@ const myStyle={
 
     </form>
 
-     <Link to="/signup"><button  type="submit"  className='Sign-up button col-9 col-md-3 my-lg-5 mx-md-auto'>Create Account</button></Link>
+     <Link style={ {textDecoration: 'none'}} to="/signup"><button  type="submit"  className='Sign-up button col-9 col-md-3 my-lg-5 mx-md-auto'>Create Account</button></Link>
 
             {error && <div>Login failed</div>}
 </div>
