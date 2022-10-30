@@ -44,6 +44,11 @@ const PasteList = ({ pastes }) => {
                                     Expires on {paste.expires}
                                 </p>
                                 <div className=" row justify-content-center ">
+                                     <div className="copy-button" onClick={() => {
+                                            navigator.clipboard.writeText(`http://localhost:3000/paste/${paste.uuid}`);}}><span>
+                                            <i className="fa-solid fa-copy"></i>
+                                            </span>
+                                        </div>
                                     <textarea className={`${theme} col-12`} rows="20" readOnly={true} defaultValue={paste.text} />
                                     <Link to={`/update-paste/${paste.uuid}`}>
                                     <button className={`col-12 paste-button`} type="edit">Edit</button></Link>{' '}

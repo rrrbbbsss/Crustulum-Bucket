@@ -273,6 +273,13 @@ margin-left: 2%;
   letter-spacing: 3px;
   text-align: center;
 }
+
+
+  .fa-copy {
+    color: lime;
+    margin-left: 100%;
+    margin-bottom: -5%;
+  }
 .paste-button-delete {
   background: lime;
   margin-top: 20px;
