@@ -1,11 +1,12 @@
 import { useMutation, useQuery } from "@apollo/client";
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { UPDATE_PASTE } from "../utils/mutations";
 import { QUERY_ME, READ_PASTE } from "../utils/queries";
 import Header from "../components/Header";
 
 const UpdatePaste = () => {
+    const navigate = useNavigate();
     const { id: pasteId } = useParams();
 
     const { loading, data } = useQuery(READ_PASTE, {
@@ -48,11 +49,12 @@ const UpdatePaste = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log('submitted');
-        
         try {
             await updatePaste({
                 variables: { input: { ...formState, uuid } }
         });
+        
+        navigate('/');
         
         } catch (e) {
             console.error(e);

@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { DELETE_PASTE } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
 
 const PasteList = ({ pastes }) => {
+    const navigate = useNavigate();
     const [deletePaste, { error }] = useMutation(DELETE_PASTE, {
         update(cache, { data: { deletePaste } }) {
             
@@ -39,6 +40,9 @@ const PasteList = ({ pastes }) => {
             await deletePaste({
                 variables: { input: { uuid: event.target.value }}
             });
+
+            navigate('/');
+            
         } catch (e) {
             console.error(e);
         }
