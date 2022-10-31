@@ -6,6 +6,7 @@ const { ApolloServer } = require("apollo-server-express");
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
 const { typeDefs, resolvers } = require("./schema");
 const db = require("./config/connection");
+const YOUR_DOMAIN = 'http://localhost:3000';
 
 
 const PORT = process.env.PORT || 3001;
@@ -31,8 +32,8 @@ app.post('/create-checkout-session', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: `${PORT}/success.html`,
-    cancel_url: `${PORT}/cancel.html`,
+    success_url: `${YOUR_DOMAIN}/success.html`,
+    cancel_url: `${YOUR_DOMAIN}/cancel.html`,
     automatic_tax: { enabled: true },
   });
   res.redirect(303, session.url);
