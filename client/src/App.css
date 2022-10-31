@@ -1,10 +1,36 @@
 * {
   cursor: url('../public/images/rocket-solid.svg'), auto;
+ 
+}
+html {
+  background-color: rgba(0, 0, 0);
 }
 form {
 position: static;
 padding-top: 200px;
  
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  
+  
+  margin-top: 300px;
+  width: 50%;
+  height: 50%;
+  margin-left: 25%;
+  color: white;
+  border: 5px solid white;
+border-radius: 25%;
+}
+
+/* On mouse-over, add a deeper shadow */
+
+
+/* Add some padding inside the card container */
+.container {
+  
+  padding: 2px 16px;
 }
 
 .material-symbols-outlined {
@@ -56,6 +82,9 @@ padding-top: 200px;
 }   */
 
 /* Nav Styling */
+header {
+  color: white;
+}
 nav {
   display: flex;
   justify-content: space-between;
@@ -157,12 +186,12 @@ i {
 
 
 }
-@media screen and (max-width: 1400px){
+@media screen and (max-width: 1500px){
 .button {
-  text-indent: 190px;
+  text-indent: 130px;
 }
 .Sign-up {
-  text-indent: 145px;
+  text-indent: 90px;
 }
  .App-logo {
    height: 65vmin;
@@ -173,6 +202,21 @@ i {
 
 
  }
+}
+.no-paste {
+  height: 
+}
+
+@media screen and (max-width: 700px) {
+  .button {
+    text-indent: 100px;
+  }
+
+  .Sign-up {
+    text-indent: 60px;
+  }
+
+
 }
 
 

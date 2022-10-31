@@ -1,26 +1,46 @@
-import Login from './pages/Login';
-//  import SignUp from './pages/Signup';
+import React from 'react';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-// import Header from './components/Header';
-// import Home from './pages/Home';
+import Home from './pages/Home';
+import SignUp from './pages/Signup';
+import SinglePaste from './pages/SinglePaste';
+import Paste from './pages/Paste';
+import UpdatePaste from './pages/UpdatePaste';
+
+const httpLink = createHttpLink({
+  uri: '/graphql'
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
+});
 
 function App() {
-
-   const myStyle={
-        backgroundImage: "url(./images/nasa.jpg)",
-        height:'100vh',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-    };
   return (
-    <div style={myStyle}>
-            {/*<div className="App">
-      <Header />
-      <Home />
-    </div>*/}
-      <Login/>
-      </div>
-
+    <ApolloProvider client={client}>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/paste' element={<Paste />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/paste/:id' element={<SinglePaste />} />
+          <Route path='/update-paste/:id' element={<UpdatePaste />} />
+        </Routes>
+      </Router>
+    </ApolloProvider>
   );
 };
 
