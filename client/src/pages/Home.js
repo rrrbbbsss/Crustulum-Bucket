@@ -10,6 +10,8 @@ import Header from "../components/Header";
 const Home = () => {
     const { loading, data } = useQuery(QUERY_ME);
     const pastes = data?.me.pastes || [];
+    const orderedPastes = [...pastes];
+    orderedPastes.reverse();
 
     const loggedIn = auth.loggedIn();
 
@@ -22,7 +24,7 @@ const Home = () => {
                 {loading ? ( 
                 <div>Loading...</div> 
                  ):( 
-                <PasteList pastes={pastes} />
+                <PasteList pastes={orderedPastes} />
                  )}
             </div>
             </>

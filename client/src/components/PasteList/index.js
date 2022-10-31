@@ -62,7 +62,7 @@ const PasteList = ({ pastes }) => {
                                     Expires on {paste.expires}
                                 </p>
                                 <div className="card-body">
-                                    <textarea className="paste-text" rows="20" readOnly={true} defaultValue={paste.text} />
+                                    <textarea className="paste-text" readOnly={true} rows="20" defaultValue={paste.text} />
                                     <Link to={`/update-paste/${paste.uuid}`}>
                                     <button type="edit">Edit</button></Link>{' '}
                                     <button value={paste.uuid} type="delete" onClick={handleDelete}>Delete</button>

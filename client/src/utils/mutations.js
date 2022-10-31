@@ -39,8 +39,8 @@ export const CREATE_PASTE = gql`
         createPaste(input: $input) {
             pastes {
                 uuid
-                text
                 expires
+                text
             }
         }
     }
