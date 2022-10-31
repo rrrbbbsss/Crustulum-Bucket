@@ -3,7 +3,7 @@ const path = require("path");
 const { authMiddleware } = require("./utils/auth");
 const { cleaner } = require("./utils/cleanup");
 const { ApolloServer } = require("apollo-server-express");
-const stripe = require('stripe')('sk_test_51Lz4z2HQ6q6DJNSmChY9yfjGnvYux87OLxuTHCtmvfv6D2zhx4bXW75HQnGLbtUEc9tQg3OsJkfva3BGzZE3dFdi00p3gOdwLP');
+const stripe = require('stripe')(process.env.STRIPE_SECRET);
 const { typeDefs, resolvers } = require("./schema");
 const db = require("./config/connection");
 
@@ -17,7 +17,6 @@ const server = new ApolloServer({
 });
 
 const app = express();
-const YOUR_DOMAIN = 'http://localhost:3001';
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -27,13 +26,13 @@ app.post('/create-checkout-session', async (req, res) => {
     line_items: [
       {
         // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-        price: 'price_1Lz6ThHQ6q6DJNSmVnh2zI9R',
+        price: 'price_1Lz746HQ6q6DJNSmqyL5IuSV',
         quantity: 1,
       },
     ],
     mode: 'payment',
-    success_url: `${YOUR_DOMAIN}/success.html`,
-    cancel_url: `${YOUR_DOMAIN}/cancel.html`,
+    success_url: `${PORT}/success.html`,
+    cancel_url: `${PORT}/cancel.html`,
     automatic_tax: { enabled: true },
   });
   res.redirect(303, session.url);
