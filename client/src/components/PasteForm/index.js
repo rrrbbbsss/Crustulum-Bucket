@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useMutation } from '@apollo/client';
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CREATE_PASTE } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
 
 const PasteForm = () => {
+    const navigate = useNavigate();
 
     const [formState, setFormState] = useState({ text: '' });
     const [createPaste, { error }] = useMutation(CREATE_PASTE, {
@@ -41,7 +42,7 @@ const PasteForm = () => {
                 variables: { input: { ...formState } }
         });
         
-        setFormState('');
+        navigate('/');
         } catch (e) {
             console.error(e);
         }
