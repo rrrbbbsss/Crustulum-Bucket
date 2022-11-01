@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { READ_PASTE } from "../utils/queries";
@@ -6,7 +6,17 @@ import { READ_PASTE } from "../utils/queries";
 import Header from "../components/Header";
 
 const SinglePaste = () => {
-    // const loggedIn = auth.loggedIn();
+          const [theme, setTheme] = useState('paste-text-dark');
+  const toggleTheme = () => {
+    if (theme === 'paste-text-dark') {
+      setTheme('past-text');
+    } else {
+      setTheme('paste-text-dark');
+    }
+  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
     const { id: pasteId } = useParams();
 
@@ -23,13 +33,19 @@ const SinglePaste = () => {
     return (
         <>
         <Header />
-        <div key={paste.uuid} className="card">
-            <p className="card-header">
+        <div key={paste.uuid} className=" row justify-content-center ">
+            <p className="error2">
                 Paste #{paste.uuid}<br/>
                 Expires on {paste.expires}
             </p>
-            <div className="card-body">
-                <textarea className="paste-text" rows="20" readOnly={true} defaultValue={paste.text} />
+            <div className="row justify-content-center">
+              <div className="copy-button2" onClick={() => {
+                                            navigator.clipboard.writeText(`http://localhost:3000/paste/${paste.uuid}`);}}><span>
+                                            <i className="fa-solid fa-copy"></i>
+                                            </span>
+                                            
+                                        </div>
+                <textarea className={` ${theme} col-8`} rows="20" readOnly={true} defaultValue={paste.text} />
             </div>
         </div>
         </>

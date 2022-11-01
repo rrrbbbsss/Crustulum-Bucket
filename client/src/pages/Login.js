@@ -44,9 +44,9 @@ const Login = (props) => {
   };
 
   return (
-    <div style={myStyle} className="pb-9">
+    <div style={myStyle} className=" home pb-9">
 
-      <form
+      <form className="home-form"
         onSubmit={handleFormSubmit}
       >
 
@@ -58,8 +58,9 @@ const Login = (props) => {
         <span className="material-symbols-outlined">
           workspaces
         </span>
+        <img className='logo2' src="../images/crustulum-bucket.jpg" alt="application logo" />
 
-        <input className='placehold col-9 col-md-3 my-lg-5 mx-md-auto'
+        <input className='placehold col-9 col-md-3 my-lg-4 mx-md-auto'
           type="email"
           placeholder="Email"
           name='email'
@@ -70,7 +71,7 @@ const Login = (props) => {
           required />
 
 
-        <input className='placehold col-9 col-md-3 my-lg-5 mx-md-auto'
+        <input className='placehold col-9 col-md-3 my-lg-4 mx-md-auto'
           placeholder='******'
           name='password'
           type='password'
@@ -80,18 +81,13 @@ const Login = (props) => {
 
           required />
 
-        <button type="submit" className='button col-9 col-md-3 my-lg-5 mx-md-auto'>Sign In</button>
+        <button type="submit" className='button col-9 col-md-3 my-lg-4 mx-md-auto'>Sign In</button>
 
-      </form>
 
-      <Link to="/signup"><button type="submit" className='Sign-up button col-9 col-md-3 my-lg-5 mx-md-auto'>Create Account</button></Link>
+        <Link style={{ textDecoration: 'none' }} to="/signup"><button type="submit" className='Sign-up button col-9 col-md-3 my-lg-4 mx-md-auto'>Create Account</button></Link>
 
-      {error && <div>Login failed</div>}
-      {/* DONATE HERE */}
+        {error && <div className="error my-5">{`${error}`}</div>}
     </div>
-
-
-
   );
 };
 

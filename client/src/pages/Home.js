@@ -22,7 +22,7 @@ const Home = () => {
             <Header /> 
             <div className="flex-row justify-space-between">
                 {loading ? ( 
-                <div>Loading...</div> 
+                <div><i class="fa-solid fa-satellite fa-spin error loading"></i></div> 
                  ):( 
                 <PasteList pastes={orderedPastes} />
                  )}

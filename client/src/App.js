@@ -29,8 +29,10 @@ const client = new ApolloClient({
 });
 
 function App() {
+  
+
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={client} >
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -41,6 +43,7 @@ function App() {
         </Routes>
       </Router>
     </ApolloProvider>
+    
   );
 };
 
