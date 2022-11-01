@@ -39,8 +39,8 @@ export const CREATE_PASTE = gql`
         createPaste(input: $input) {
             pastes {
                 uuid
-                text
                 expires
+                text
             }
         }
     }
@@ -61,14 +61,10 @@ export const UPDATE_PASTE = gql`
 export const DELETE_PASTE = gql`
     mutation deletePaste($input: deletePasteInput!) {
         deletePaste(input: $input) {
-            user {
-                _id
-                email
-                pastes {
-                    uuid
-                    text
-                    expires
-                }
+            pastes {
+                uuid
+                text
+                expires
             }
         }
     }

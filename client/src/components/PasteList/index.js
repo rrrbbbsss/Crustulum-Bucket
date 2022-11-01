@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { DELETE_PASTE } from "../../utils/mutations";
+import { QUERY_ME } from "../../utils/queries";
 
 const PasteList = ({ pastes }) => {
-      const [theme, setTheme] = useState('paste-text-dark');
+          const [theme, setTheme] = useState('paste-text-dark');
   const toggleTheme = () => {
     if (theme === 'paste-text-dark') {
       setTheme('past-text');
@@ -13,6 +16,22 @@ const PasteList = ({ pastes }) => {
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
+    const navigate = useNavigate();
+    const [deletePaste, { error }] = useMutation(DELETE_PASTE, {
+        update(cache, { data: { deletePaste } }) {
+            
+            try {
+                const { me } = cache.readQuery({ query: QUERY_ME });
+
+                cache.writeQuery({
+                    query: QUERY_ME,
+                    data: { me: { ...me, pastes: [...me.pastes, deletePaste] } }
+                });
+            } catch (e) {
+                console.error(e);
+            }
+        }
+    }); 
 
     if (!pastes.length) {
         return    <div className='e-div fa-fade '>
@@ -26,6 +45,21 @@ const PasteList = ({ pastes }) => {
                     </div>
 
     }
+
+    const handleDelete = async (event) => {
+        event.preventDefault();
+
+        try {
+            await deletePaste({
+                variables: { input: { uuid: event.target.value }}
+            });
+
+            navigate('/');
+            
+        } catch (e) {
+            console.error(e);
+        }
+    };
 
     return (
             
@@ -54,7 +88,8 @@ const PasteList = ({ pastes }) => {
                                     <textarea className={`${theme} col-12`} rows="20" readOnly={true} defaultValue={paste.text} />
                                     <Link to={`/update-paste/${paste.uuid}`}>
                                     <button className={`col-12 paste-button-delete`} type="edit">Edit</button></Link>{' '}
-                                    <button className=" mt-5 col-12 paste-button-delete" type="delete">Delete</button>
+                                    <button className=" mt-5 col-12 paste-button-delete" value={paste.uuid} type="delete" onClick={handleDelete}>Delete</button>
+                                    {error && <div>Delete Failed!</div>}
                                 </div>
                             </div>
                         ))}
@@ -64,15 +99,7 @@ const PasteList = ({ pastes }) => {
             
     );
 };
-//   <div key={paste.uuid} className="card">
-//             <p className="card-header">
-//                 Paste #{paste.uuid}<br/>
-//                 Expires on {paste.expires}
-//             </p>
-//             <div className="card-body">
-//                 <textarea className="paste-text" rows="20" readOnly={true} defaultValue={paste.text} />
-//             </div>
-//         </div>
+
 
 
 
