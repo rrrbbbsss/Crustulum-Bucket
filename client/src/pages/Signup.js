@@ -1,6 +1,6 @@
 import React
-, { useState } 
-from 'react';
+, { useState }
+  from 'react';
 import { useMutation } from '@apollo/client';
 import { SIGN_UP_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -8,15 +8,15 @@ import Auth from '../utils/auth';
 
 
 const SignUp = () => {
-  const myStyle={
-        backgroundImage: "url(./images/nasa.jpg)",
-        backgroundSize: 'cover',
-        height: '100vh',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed',
-        zIndex: '99999'
-    };
-    
+  const myStyle = {
+    backgroundImage: "url(./images/nasa.jpg)",
+    backgroundSize: 'cover',
+    height: '100vh',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+    zIndex: '99999'
+  };
+
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser, { error }] = useMutation(SIGN_UP_USER);
 
@@ -30,69 +30,69 @@ const SignUp = () => {
   };
 
   const handleFormSubmit = async event => {
-  event.preventDefault();
+    event.preventDefault();
 
-  try {
-    const { data } = await addUser({
-      variables: { input: {...formState} }
-    });
+    try {
+      const { data } = await addUser({
+        variables: { input: { ...formState } }
+      });
 
-    Auth.loggedIn(data.addUser.token);
-    console.log(data);
-  } catch (e) {
-    console.error(e);
-  }
-};
+      Auth.loggedIn(data.addUser.token);
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
-<div style={myStyle} className="pb-9">
+    <div style={myStyle} className="pb-9">
 
-    <form
-    onSubmit={handleFormSubmit}
-     >
-    
-            
-            
-                {/* <i className=" fa-solid fa-shuttle-space  App-logo fa-2xl " ></i>
+      <form
+        onSubmit={handleFormSubmit}
+      >
+
+
+
+        {/* <i className=" fa-solid fa-shuttle-space  App-logo fa-2xl " ></i>
                 
                 <i className="fa-solid fa-infinity fa-xs"></i> */}
 
-                <span className="material-symbols-outlined">
-                        workspaces
-                        </span>
-                
-                <input  className='placehold col-9 col-md-3 my-lg-5 mx-md-auto'
-                        placeholder="Email" 
-                         name='email'
-                        type='email'
-                        id='email'
-                        value={formState.email}
-                        onChange={handleChange}
-                        
-                        
-                        required/>
+        <span className="material-symbols-outlined">
+          workspaces
+        </span>
 
-                
-                <input  className='placehold col-9 col-md-3 my-lg-5 mx-md-auto' 
-                        placeholder='******'
-                        name='password'
-                        type='password'
-                        id='password'
-                        value={formState.password}
-                        onChange={handleChange}
-                            
-                        
-                        required/>
+        <input className='placehold col-9 col-md-3 my-lg-5 mx-md-auto'
+          placeholder="Email"
+          name='email'
+          type='email'
+          id='email'
+          value={formState.email}
+          onChange={handleChange}
 
-                <button  type="submit"  className='button col-9 col-md-3 my-lg-5 mx-md-auto'>Sign Up!</button>
-      
-    </form>
 
-    {error && <div>Sign up failed</div>}
+          required />
 
-          
-</div>
-    );
+
+        <input className='placehold col-9 col-md-3 my-lg-5 mx-md-auto'
+          placeholder='******'
+          name='password'
+          type='password'
+          id='password'
+          value={formState.password}
+          onChange={handleChange}
+
+
+          required />
+
+        <button type="submit" className='button col-9 col-md-3 my-lg-5 mx-md-auto'>Sign Up!</button>
+
+      </form>
+
+      {error && <div>Sign up failed</div>}
+
+
+    </div>
+  );
 };
 
 export default SignUp;
