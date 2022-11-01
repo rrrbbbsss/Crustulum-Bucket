@@ -1,8 +1,6 @@
 * {
   cursor: url('../public/images/rocket-solid.svg'), auto;
-
 }
-
 
 .home {
   margin-top: 0;
@@ -11,15 +9,12 @@
 input:hover {
   background-color: black;
   color: lime;
-
 }
-
 
 form {
   position: relative;
   background-color: transparent;
   color: white;
-
 }
 
 textarea {
@@ -30,14 +25,8 @@ textarea {
   transform: scale(7);
 }
 
-
-
 /* On mouse-over, add a deeper shadow */
-
-
 /* Add some padding inside the card container */
-
-
 .material-symbols-outlined {
   margin-top: 13%;
   margin-left: 49%;
@@ -54,17 +43,12 @@ textarea {
 
 }
 
-
 .App-logo {
   height: 100vmin;
   width: auto;
-
   position: fixed;
   margin-top: -50px;
-
-
 }
-
 
 .fa-infinity {
   color: rgba(255, 255, 255, .8);
@@ -138,9 +122,7 @@ li {
 }
 
 li:hover {
-
   color: lime;
-
 
 }
 
@@ -151,8 +133,6 @@ li:hover {
 #pasteText {
   width: 95%;
 }
-
-
 
 .paste-text-dark {
   color: lime;
@@ -184,9 +164,6 @@ li:hover {
   margin-top: 30px;
   border: 1px solid white;
   border-radius: 25px;
-
-
-
 }
 
 .paste-text-single {
@@ -215,8 +192,6 @@ li:hover {
   color: lime;
   font-size: 30px;
 }
-
-
 
 
 /* Full-width inputs */
@@ -296,14 +271,10 @@ li:hover {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 27%;
-
-
 }
 
 .e-div {
   margin-top: 15%;
-
-
 }
 
 .fa-arrow-right {
@@ -315,7 +286,6 @@ li:hover {
 
 b {
   font-size: 50px;
-
 }
 
 .button:hover {
@@ -330,11 +300,7 @@ b {
 .single-paste {
   margin-top: 150px;
   padding-left: 25%;
-
-
-
 }
-
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active,
@@ -360,9 +326,7 @@ b {
   margin-top: 20px;
   border-radius: 25px;
   line-height: 45px;
-
   border-color: transparent;
-
   color: black;
   font-size: larger;
   letter-spacing: 3px;
@@ -381,7 +345,6 @@ b {
   color: rgba(0, 255, 0, .5);
   margin-left: 101%;
   margin-bottom: -10%;
-
 }
 
 .paste-button-delete {
@@ -389,7 +352,6 @@ b {
   margin-top: 10%;
   border-radius: 25px;
   line-height: 45px;
-
   border-color: transparent;
   color: black;
   font-size: larger;
@@ -403,14 +365,10 @@ b {
   margin-top: 20px;
   border-radius: 25px;
   line-height: 45px;
-
-
   border-color: transparent;
   color: black;
   font-size: larger;
   letter-spacing: 3px;
-
-
 }
 
 .paste-header {
@@ -422,13 +380,7 @@ b {
   color: #333;
 }
 
-
-
-
-
-
 /* Set a style for all buttons */
-
 /* Add a hover effect for buttons */
 button:hover {
   opacity: 0.8;
@@ -440,24 +392,11 @@ i {
   margin-left: 49%;
   margin-bottom: 100px;
   color: rgba(255, 255, 255);
-
-
-
 }
-
-
-
-
-
-
 
 /* Add padding to containers */
 
-
-
-
 /* Change styles for span and cancel button on extra small screens */
-
 @media screen and (min-width: 1900px) {
   .button {
     text-indent: 150px;
@@ -486,8 +425,6 @@ i {
 
     position: fixed;
     margin-top: -60px;
-
-
   }
 }
 
@@ -500,8 +437,6 @@ i {
   .Sign-up {
     text-indent: 60px;
   }
-
-
 }
 
 @media screen and (max-width: 400px) {
@@ -545,9 +480,6 @@ i {
     margin-left: 49%;
     margin-bottom: 50px;
     transform: scale(5);
-
-
-
   }
 
   .placehold {
@@ -612,10 +544,6 @@ i {
   .logo2 {
     margin-left: 20%;
   }
-
-
-
-
 }
 
 @media screen and (max-width: 300px) {
