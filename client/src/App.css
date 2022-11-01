@@ -511,6 +511,7 @@ i {
 
 }
 
+
 @media screen and (min-width: 400px) {
   .update {
     margin-left: 3%;
@@ -554,5 +555,16 @@ i {
 
   .cancelbtn {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  img {
+    margin-left: -55%;
+    transform: scale(.3);
+  }
+  ul {
+    margin-right: 100px;
+    font-size: 13px;
   }
 }
