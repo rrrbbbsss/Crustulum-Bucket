@@ -42,7 +42,8 @@ const SignUp = () => {
     Auth.loggedIn(data.addUser.token);
     console.log(data);
   } catch (e) {
-    console.error(e);
+    console.error(e)
+    
   }
     try {
     const { data } = await login({
@@ -100,7 +101,7 @@ const SignUp = () => {
       
     </form>
 
-    {error && <div>Sign up failed</div>}
+    {error && <div className='error'>{`${error}`}</div>}
 
           
 </div>

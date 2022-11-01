@@ -1,10 +1,16 @@
 * {
   cursor: url('../public/images/rocket-solid.svg'), auto;
+  
 }
 
 
 .home {
   margin-top: 0;
+}
+input:hover {
+  background-color: black;
+  color: lime;
+  
 }
 
  
@@ -15,6 +21,12 @@ color: white;
  
 }  
 
+textarea {
+  text-align: 30px;
+}
+.loading {
+  transform: scale(7);
+}
 
 
 
@@ -124,15 +136,9 @@ li:hover {
 
 
 }
-/* .copy-button:hover {
-  background-color: lime;
+.copy-button2 {
+  margin-right: 32%;
 }
-
-.copy-button:active {
-  background-color: lime;
-  box-shadow: 0 5px white;
-  transform: translateY(4px);
-} */
 
 #pasteText {
   width: 95%;
@@ -236,6 +242,65 @@ margin-left: 2%;
   font-size: larger;
   letter-spacing: 3px;
   margin-top: -5px;
+}
+.error {
+  background-color: rgba(0, 0, 0, .8);
+  color: lime;
+  font-size: 25px;
+  width: 70vw;
+  text-align: center;
+  margin-left: 15%;
+  border-radius: 25px;
+}
+.error2 {
+  background-color: inherit;
+  color: lime;
+  font-size: 25px;
+  width: fit-content;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+.error3 {
+  background-color: rgba(0, 0, 0, .8);
+  color: lime;
+  font-size: 25px;
+  width: 70vw;
+  text-align: center;
+  margin-left: 15%;
+  background-color: transparent;
+}
+.error4 {
+  background-color: inherit;
+  color: lime;
+  font-size: 25px;
+  width: fit-content;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 27%;
+  
+
+}
+.e-div {
+  margin-top: 15%;
+ 
+  
+}
+.fa-arrow-right {
+  margin-left: 100px;
+  padding-bottom: 40px;
+  transform: scale(4);
+  background-color: inherit;
+}
+b{
+  font-size: 50px;
+ 
+}
+.button:hover {
+  background-color: black;
+  color: lime;
 }
 .toggle {
   margin-top: -50%;
@@ -369,7 +434,10 @@ i {
   .button {
     text-indent: 150px;
   }
-
+  img {
+    margin-left: 1000px;
+    padding-left: 210px;
+  }
 
 }
 @media screen and (max-width: 1500px){
@@ -408,6 +476,7 @@ i {
 .fa-copy {
   transform: scale(3);
 }
+
 .new-paste {
   width: 100px;
 }
@@ -450,6 +519,16 @@ img {
 .button {
   margin-top: 15px;
 }
+b {
+  
+  font-size: 18px;
+}
+.e-div {
+margin-top: 250px;
+}
+.fa-arrow-right {
+  margin-left: 270px;
+}
 
 
 }
@@ -480,6 +559,7 @@ img {
   padding-top: 15px;
     margin-left: 20%;
 }
+
 
 
 }

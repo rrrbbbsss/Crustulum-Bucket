@@ -74,7 +74,7 @@ const PasteForm = () => {
                                 rows='20' />
                                 </div>
                             <button className="col-12 col-md-12 paste-button-delete2"type="submit">Paste</button>
-                            {error && <div>Paste Failed!</div>} 
+                            {error && <div className="error2">{`${error}`}</div>} 
                         </form>
                     
                 

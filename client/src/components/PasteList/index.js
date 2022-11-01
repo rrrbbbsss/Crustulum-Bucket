@@ -15,12 +15,14 @@ const PasteList = ({ pastes }) => {
   }, [theme]);
 
     if (!pastes.length) {
-        return    <div className="card">
+        return    <div className='e-div fa-fade '>
+                       <div className="error">
                         
-                        <div className="container">
-                            <h4><b>No Pastes</b></h4>
-                            <p>Yet...</p>
+                            <h4><b>Lets Get Crusty</b></h4>
+                            <h4><b>You have no pastes yet</b></h4>
+                            <h4><b>Create your first paste this way <Link to="/paste"><i class={`${theme} fa-solid fa-arrow-right`}></i></Link></b></h4>
                         </div>
+                            
                     </div>
 
     }

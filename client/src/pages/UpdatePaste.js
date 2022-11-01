@@ -80,7 +80,7 @@ const UpdatePaste = () => {
         <>
         <Header />
         <div key={paste.uuid} className=" row justify-content-center ">
-            <p className="col-8 my-4 mx-4">
+            <p className="error2">
                 Paste #{paste.uuid}<br/>
                 Expires on {paste.expires}
             </p>

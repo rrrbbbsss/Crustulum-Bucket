@@ -34,12 +34,18 @@ const SinglePaste = () => {
         <>
         <Header />
         <div key={paste.uuid} className=" row justify-content-center ">
-            <p className="col-8 my-4 mx-4">
+            <p className="error2">
                 Paste #{paste.uuid}<br/>
                 Expires on {paste.expires}
             </p>
             <div className="row justify-content-center">
-                <textarea className={` ${theme} col-8 col-md-12`} rows="20" readOnly={true} defaultValue={paste.text} />
+              <div className="copy-button2" onClick={() => {
+                                            navigator.clipboard.writeText(`http://localhost:3000/paste/${paste.uuid}`);}}><span>
+                                            <i className="fa-solid fa-copy"></i>
+                                            </span>
+                                            
+                                        </div>
+                <textarea className={` ${theme} col-8`} rows="20" readOnly={true} defaultValue={paste.text} />
             </div>
         </div>
         </>
