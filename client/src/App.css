@@ -2,9 +2,7 @@
   cursor: url('../public/images/rocket-solid.svg'), auto;
 }
 
-html {
-  
-}
+
 .home {
   margin-top: 0;
 }
@@ -125,6 +123,15 @@ li:hover {
 
 
 }
+/* .copy-button:hover {
+  background-color: lime;
+}
+
+.copy-button:active {
+  background-color: lime;
+  box-shadow: 0 5px white;
+  transform: translateY(4px);
+} */
 
 #pasteText {
   width: 95%;
@@ -278,6 +285,13 @@ margin-left: 2%;
     color: lime;
     margin-left: 100%;
     margin-bottom: -5%;
+    filter: drop-shadow(5px white);
+  }
+    .fa-copy:active {
+    color: rgba(0, 255, 0, .5);
+    margin-left: 101%;
+    margin-bottom: -10%;
+  
   }
 .paste-button-delete {
   background: lime;
