@@ -1,38 +1,576 @@
-.App {
+* {
+  cursor: url('../public/images/rocket-solid.svg'), auto;
+  
+}
+
+
+.home {
+  margin-top: 0;
+}
+input:hover {
+  background-color: black;
+  color: lime;
+  
+}
+
+ 
+ form {
+position: relative;
+background-color: transparent;
+color: white;
+ 
+}  
+
+textarea {
+  text-align: 30px;
+}
+.loading {
+  transform: scale(7);
+}
+
+
+
+/* On mouse-over, add a deeper shadow */
+
+
+/* Add some padding inside the card container */
+
+
+.material-symbols-outlined {
+  margin-top: 13%;
+  margin-left: 49%;
+  margin-bottom: 100px;
+  transform: scale(7);
+  
+    background: -moz-linear-gradient(top, lime 0%, #145cf8cc 25%);
+    background: -webkit-linear-gradient(top, lime 0%, #145cf8cc 20%);
+    background: linear-gradient(to bottom, lime 0%, #145cf8cc 100%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+   
+}
+
+
+ .App-logo {
+  height: 100vmin;
+  width: auto;
+ 
+  position: fixed;
+  margin-top: -50px;
+  
+  
+}
+ .fa-infinity {
+  color: rgba(255, 255, 255, .8);
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  background-color: transparent;
+  text-decoration: none;
+  color: lime;
+  /* font-size: large;
+        letter-spacing: 1px; */
+}
+
+/* Nav Styling */
+header {
+  z-index: 9999;
+  /* background-color: black;
+  color: lime; */
+  width: 100vw;
+  /* display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  position: -webkit-sticky;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 80%;
+  height: 130px;
+  width: 102.5%;
+  flex-direction: row;
+  flex-wrap: wrap; */
+} *
+.big-nav {
+  padding-right: 5px;
+  margin-right: 1.4%;
+  color: lime;
+}
+ nav {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  color: lime;
+} 
+ul {
+  margin: 85px -3px -15px -10px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  list-style: none;
+  flex: auto;
+  flex-direction: row;
+  font-size: 16px;
+  color: lime;
+}
+li {
+  margin-left: 15px;
+  color: lime;
+}
+.big-anc2 {
+  /* background-color: ; */
+  text-decoration: none;
+  color: black
+
+
+}
+
+li:hover {
+  
+  color: lime;
+
+
+}
+.copy-button2 {
+  margin-right: 32%;
+}
+
+#pasteText {
+  width: 95%;
+}
+
+
+
+.paste-text-dark {
+  color: lime;
+  background-color: black;
+  border-radius: 25px;
+}
+.paste-text {
+  text-indent: 30px;
+  text-align: left;
+  width: 95%;
+  color: black;
+  background-color: white;
+  margin-left: 15%;
+  margin-top: 30px;
+  border: 1px solid white;
+  border-radius: 25px;
+  box-shadow: white 10px 10px;
+}
+
+
+.paste-text-one {
+  text-indent: 30px;
+  text-align: left;
+  width: 95%;
+  color: lime;
+  background-color: black;
+margin-left: 2%;
+  margin-top: 30px;
+  border: 1px solid white;
+  border-radius: 25px;
+
+
+
+}
+
+.paste-text-single {
+  text-indent: 15px;
+  text-align: left;
+  width: 95%;
+  color: black;
+  border-radius: 15px;
+  margin-left: 2%;
+  margin-top: 30px;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+.new-paste-header{
+  margin-left: 33%;
+  background-color: inherit;
+  color: rgb(0, 255, 0);
+  font-size: 30px;
+}
+.new-paste {
+  height: 25%;
+  margin-left: 2%;
+  background-color: black;
+  color: lime;
+  font-size: 30px;
+}
+
+
+
+
+/* Full-width inputs */
+.placehold {
+    background: rgba(224, 209, 209, 0.2);
+      display: flex;
+      margin-top: 10px;
+      /* padding: 20px 10px 5px 0; */
+      border-radius: 35px;
+      line-height: 45px;
+      margin-left: 14%;
+      width: 300px;
+      border-color: transparent;
+      text-indent: 5%;
+      color: black;
+      vertical-align: middle;
+}
+::placeholder {
+  color:rgba(255, 255, 255, .8);
+  text-align: left;
+  margin-right: 50px;
+}
+.button {
+  background: lime;
+  display: flex;
+  margin-top: 10px;
+  border-radius: 35px;
+  line-height: 45px;
+  margin-left: 14%;
+  width: 300px;
+  border-color: transparent;
+  text-indent: 98px;
+  color: black;
+  font-size: larger;
+  letter-spacing: 3px;
+  margin-top: -5px;
+}
+.error {
+  background-color: rgba(0, 0, 0, .8);
+  color: lime;
+  font-size: 25px;
+  width: 70vw;
+  text-align: center;
+  margin-left: 15%;
+  border-radius: 25px;
+}
+.error2 {
+  background-color: inherit;
+  color: lime;
+  font-size: 25px;
+  width: fit-content;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+.error3 {
+  background-color: rgba(0, 0, 0, .8);
+  color: lime;
+  font-size: 25px;
+  width: 70vw;
+  text-align: center;
+  margin-left: 15%;
+  background-color: transparent;
+}
+.error4 {
+  background-color: inherit;
+  color: lime;
+  font-size: 25px;
+  width: fit-content;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 27%;
+  
+
+}
+.e-div {
+  margin-top: 15%;
+ 
+  
+}
+.fa-arrow-right {
+  margin-left: 100px;
+  padding-bottom: 40px;
+  transform: scale(4);
+  background-color: inherit;
+}
+b{
+  font-size: 50px;
+ 
+}
+.button:hover {
+  background-color: black;
+  color: lime;
+}
+.toggle {
+  margin-top: -50%;
+}
+.single-paste {
+  margin-top: 150px;
+  padding-left: 25%;
+  
+  
+  
+}
+
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+.new-header {
+  background-color: lime;
+  color: black
+}
+
+ .paste-button {
+  background: red;
+  margin-top: 20px;
+  border-radius: 25px;
+  line-height: 45px;
+  
+  border-color: transparent;
+ 
+  color: black;
+  font-size: larger;
+  letter-spacing: 3px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .fa-copy {
+    color: lime;
+    margin-left: 100%;
+    margin-bottom: -5%;
+    filter: drop-shadow(5px white);
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+    .fa-copy:active {
+    color: rgba(0, 255, 0, .5);
+    margin-left: 101%;
+    margin-bottom: -10%;
+  
   }
-  to {
-    transform: rotate(360deg);
+.paste-button-delete {
+  background: lime;
+  margin-top: 20px;
+  border-radius: 25px;
+  line-height: 45px;
+  
+  border-color: transparent;
+  color: black;
+  font-size: larger;
+  letter-spacing: 3px;
+
+
+}
+
+.paste-button-delete2 {
+  background: lime;
+  margin-top: 20px;
+  border-radius: 25px;
+  line-height: 45px;
+  
+  
+  border-color: transparent;
+  color: black;
+  font-size: larger;
+  letter-spacing: 3px;
+
+
+}
+.paste-header {
+  color: lime;
+}
+.light {
+  background-color: #fff;
+  color: #333;
+}
+
+
+
+
+ 
+
+/* Set a style for all buttons */
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+i {
+  
+  transform: scale(6.5);
+  margin-left: 49%;
+  margin-bottom: 100px;
+  color: rgba(255, 255, 255);
+  
+ 
+  
+}
+
+
+
+
+
+
+
+/* Add padding to containers */
+
+
+
+
+/* Change styles for span and cancel button on extra small screens */
+
+@media screen and (min-width: 1900px) {
+  .button {
+    text-indent: 150px;
+  }
+  img {
+    margin-left: 1000px;
+    padding-left: 210px;
+  }
+
+}
+@media screen and (max-width: 1500px){
+.button {
+  text-indent: 130px;
+}
+.Sign-up {
+  text-indent: 90px;
+  text-decoration: none;
+}
+ .App-logo {
+   height: 65vmin;
+   width: auto;
+
+   position: fixed;
+   margin-top: -60px;
+
+
+ }
+}
+
+
+@media screen and (max-width: 700px) {
+  .button {
+    text-indent: 100px;
+  }
+
+  .Sign-up {
+    text-indent: 60px;
+  }
+
+
+}
+
+@media screen and (max-width: 400px) {
+.fa-copy {
+  transform: scale(3);
+}
+
+.new-paste {
+  width: 100px;
+}
+.update {
+  margin-left: 4%;
+  margin-bottom: 15px;
+}
+.new {
+  margin-top: -50px;
+}
+ul {
+  font-size: 18px;
+  color: lime;
+  margin-right: 55px;
+  padding-top: 20px;
+}
+h1 {
+  text-align: center;
+  padding-top: 15px;
+}
+img {
+  transform: scale(.2);
+  padding-top: 15px;
+    margin-left: -60%;
+}
+.material-symbols-outlined {
+  margin-top: 55%;
+  margin-left: 49%;
+  margin-bottom: 50px;
+  transform: scale(5);
+
+ 
+
+}
+.placehold {
+ 
+  margin-top: 15px;
+
+}
+.button {
+  margin-top: 15px;
+}
+b {
+  
+  font-size: 18px;
+}
+.e-div {
+margin-top: 250px;
+}
+.fa-arrow-right {
+  margin-left: 270px;
+}
+
+
+}
+
+@media screen and (min-width: 400px) {
+.update {
+  margin-left: 3%;
+  margin-bottom: 15px;
+}
+.new-paste-header {
+  margin-left: 45%;
+  
+}
+ul {
+  font-size: 20px;
+  color: lime;
+  margin-right: 35px;
+  padding-top: 20px;
+}
+
+h1 {
+  text-align: start;
+  padding-top: 15px;
+  margin-left: 30px;
+}
+img {
+  transform: scale(.5);
+  padding-top: 15px;
+    margin-left: 20%;
+}
+
+
+
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+
+  .cancelbtn {
+    width: 100%;
   }
 }
