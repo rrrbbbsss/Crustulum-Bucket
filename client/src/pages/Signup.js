@@ -3,6 +3,7 @@ import React
 from 'react';
 import { useMutation } from '@apollo/client';
 import { SIGN_UP_USER } from '../utils/mutations';
+import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 
@@ -19,6 +20,7 @@ const SignUp = () => {
     
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser, { error }] = useMutation(SIGN_UP_USER);
+  const [login, { error1 }] = useMutation(LOGIN_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -42,7 +44,17 @@ const SignUp = () => {
   } catch (e) {
     console.error(e);
   }
+    try {
+    const { data } = await login({
+      variables: { input: {...formState} }
+    });
+    Auth.login(data.login.token);
+    console.log(data);
+  } catch (e) {
+    console.error(e);
+  }
 };
+
 
   return (
 <div style={myStyle} className=" home pb-9">
@@ -84,7 +96,7 @@ const SignUp = () => {
                         
                         required/>
 
-                <button  type="submit"  className='button col-9 col-md-3 my-lg-5 mx-md-auto'>Sign Up!</button>
+                <button  type="submit"  className='button  col-9 col-md-3 my-5 my-lg-5 mx-md-auto'>Sign Up!</button>
       
     </form>
 

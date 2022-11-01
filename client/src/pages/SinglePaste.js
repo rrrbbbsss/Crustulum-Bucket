@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { READ_PASTE } from "../utils/queries";
@@ -6,7 +6,17 @@ import { READ_PASTE } from "../utils/queries";
 import Header from "../components/Header";
 
 const SinglePaste = () => {
-    // const loggedIn = auth.loggedIn();
+          const [theme, setTheme] = useState('paste-text-dark');
+  const toggleTheme = () => {
+    if (theme === 'paste-text-dark') {
+      setTheme('past-text');
+    } else {
+      setTheme('paste-text-dark');
+    }
+  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
     const { id: pasteId } = useParams();
 
@@ -23,13 +33,13 @@ const SinglePaste = () => {
     return (
         <>
         <Header />
-        <div key={paste.uuid} className="paste-header">
-            <p className="">
+        <div key={paste.uuid} className=" row justify-content-center ">
+            <p className="col-8 my-4 mx-4">
                 Paste #{paste.uuid}<br/>
                 Expires on {paste.expires}
             </p>
-            <div className="">
-                <textarea className="paste-text-one" rows="20" readOnly={true} defaultValue={paste.text} />
+            <div className="row justify-content-center">
+                <textarea className={` ${theme} col-8 col-md-12`} rows="20" readOnly={true} defaultValue={paste.text} />
             </div>
         </div>
         </>

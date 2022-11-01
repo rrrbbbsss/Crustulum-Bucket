@@ -17,6 +17,7 @@ const UpdatePaste = () => {
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
+  
 
     const { id: pasteId } = useParams();
 
@@ -78,14 +79,14 @@ const UpdatePaste = () => {
     return (
         <>
         <Header />
-        <div key={paste.uuid} className="">
-            <p className=" ">
+        <div key={paste.uuid} className=" row justify-content-center ">
+            <p className="col-8 my-4 mx-4">
                 Paste #{paste.uuid}<br/>
                 Expires on {paste.expires}
             </p>
-            <div className="">
-            <form onSubmit={handleFormSubmit}>
-                <textarea className={`${theme} new-paste paste-text-dark`}
+            <div className=" row justify-content-center ">
+            <form className="col-10 my-4 mx-4 my-md-5 " onSubmit={handleFormSubmit}>
+                <textarea className={`update ${theme} col-12`} 
                     name="text" 
                     type="text"
                     id="pasteText"

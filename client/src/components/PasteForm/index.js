@@ -61,15 +61,15 @@ const PasteForm = () => {
 
     return (
         <main className="container bg-none">
-            <div className="flex-row">
-                <div>
+            <div className="row justify-content-center">
+                
                     
-                        <form onSubmit={handleFormSubmit}>
-                             <div className="mb-3 my-5 col-12 col-md-8">
+                        <form className="row  justify-content-center" onSubmit={handleFormSubmit}>
+                             <div className=" col-8 col-md-12 my-2 ">
                                 </div>
-                                <div className="mb-3">
-                                <label class={`${theme} new-paste-header`}>New Paste</label>
-                                <textarea className={` ${theme} new-paste`} name="text" id="pasteText"  value={formState.text}
+                                <div className="new">
+                                <label className={` new-paste-header`}>New Paste</label>
+                                <textarea className={` ${theme} update`} name="text" id="pasteText"  value={formState.text}
                                 onChange={handleChange}
                                 rows='20' />
                                 </div>
@@ -77,7 +77,7 @@ const PasteForm = () => {
                             {error && <div>Paste Failed!</div>} 
                         </form>
                     
-                </div>
+                
             </div>
         </main>
     );

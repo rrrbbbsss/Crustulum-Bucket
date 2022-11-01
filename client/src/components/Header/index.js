@@ -25,12 +25,12 @@ const Header = () => {
         <div className={`${theme}`}>
         <header >
             <div>
-                <h1>Crustulum Bucket</h1>
+                <img onClick={toggleTheme} src="../images/crustulum-bucket.jpg" alt="application logo"/>
                 <nav className={`${theme} big-nav`}>
                     {auth.loggedIn() ? (
                     <>
                     <ul>
-                        <li className={`${theme} g-2 big-anc2`} onClick={toggleTheme}>Toggle Theme</li>
+                        
                        <li><Link className={`${theme} g-2 big-anc2`} to="/">Home</Link></li>
                         <li><a className={`${theme} g-2 big-anc2`} href="/" onClick={logout}>Logout</a></li>
                         <li><Link className={`${theme} g-2 big-anc2`} to="/paste">Create a Paste</Link></li>
