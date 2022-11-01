@@ -27,7 +27,7 @@ app.post('/create-checkout-session', async (req, res) => {
     line_items: [
       {
         // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-        price: 'price_1Lz7enHQ6q6DJNSmMl3mQ1qy',
+        price: 'price_1Lz82THQ6q6DJNSmEj2OXvxU',
         quantity: 1,
       },
     ],
