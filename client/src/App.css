@@ -62,6 +62,8 @@ textarea {
   
   
 }
+
+
  .fa-infinity {
   color: rgba(255, 255, 255, .8);
 }
@@ -231,11 +233,10 @@ margin-left: 2%;
 .button {
   background: lime;
   display: flex;
-  margin-top: 10px;
+  margin-top: 3%;
   border-radius: 35px;
-  line-height: 45px;
+  line-height: 225%;
   margin-left: 14%;
-  width: 300px;
   border-color: transparent;
   text-indent: 98px;
   color: black;
@@ -361,7 +362,7 @@ b{
   }
 .paste-button-delete {
   background: lime;
-  margin-top: 20px;
+  margin-top: 10%;
   border-radius: 25px;
   line-height: 45px;
   
@@ -529,7 +530,9 @@ margin-top: 250px;
 .fa-arrow-right {
   margin-left: 270px;
 }
-
+.logo2 {
+  margin-left: -223px;
+}
 
 }
 
@@ -559,6 +562,10 @@ img {
   padding-top: 15px;
     margin-left: 20%;
 }
+.logo2 {
+  margin-left: 20%;
+}
+
 
 
 
