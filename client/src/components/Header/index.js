@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import PasteList from '../PasteList';
 
 const Header = () => {
           const [theme, setTheme] = useState('paste-text-dark');
@@ -28,7 +27,7 @@ const Header = () => {
             <div>
                 <img onClick={toggleTheme} src="../images/crustulum-bucket.jpg" alt="application logo"/>
                 <nav className={`${theme} big-nav`}>
-                    {auth.loggedIn()   ? (
+                    {auth.loggedIn() ? (
                     <>
                     <ul>
                         
@@ -39,11 +38,12 @@ const Header = () => {
                     </>
                     ) : (
                         <>
-                            <Link to='/'><img onClick={toggleTheme} src="../images/crustulum-bucket.jpg" alt="application logo"/></Link>
-                            <Link className={`${theme} g-2 big-anc2`} to='/signup'>Sign Up</Link>
+                        <ul>
+                            <li><Link className={`${theme} g-2 big-anc2`} to='/'>Home</Link></li>
+                            <li><Link className={`${theme} g-2 big-anc2`}to='/signup'>Sign Up</Link></li>
+                        </ul>
                         </>
                     )}
-                   
         
                 </nav>
             </div>
