@@ -35,7 +35,7 @@ const PasteList = ({ pastes }) => {
 
     if (!pastes.length) {
         return    <div className='e-div fa-fade '>
-                       <div className="error">
+                       <div className="error3">
                         
                             <h4><b>Lets Get Crusty</b></h4>
                             <h4><b>You have no pastes yet</b></h4>
