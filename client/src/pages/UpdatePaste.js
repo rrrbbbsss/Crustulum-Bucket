@@ -1,6 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
 import { UPDATE_PASTE } from "../utils/mutations";
 import { QUERY_ME, READ_PASTE } from "../utils/queries";
