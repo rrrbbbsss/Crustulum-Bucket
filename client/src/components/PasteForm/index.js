@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useMutation } from '@apollo/client';
-// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { CREATE_PASTE } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
+import auth from "../../utils/auth";
+import Header from "../Header";
+import { removeArgumentsFromDocument } from "@apollo/client/utilities";
 
 const PasteForm = () => {
   
@@ -37,6 +39,8 @@ const PasteForm = () => {
         }
     });
 
+
+
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -60,12 +64,20 @@ const PasteForm = () => {
             console.error(e);
         }
     };
+ 
+if (!auth.loggedIn()) {
+
+     window.location.assign('/');
+     
+    
+};
 
     return (
+             
         <main className="container bg-none">
             <div className="row justify-content-center">
                 
-                    
+              
                         <form className="row  justify-content-center" onSubmit={handleFormSubmit}>
                              <div className=" col-8 col-md-12 my-2 ">
                                 </div>
@@ -75,9 +87,13 @@ const PasteForm = () => {
                                 onChange={handleChange}
                                 rows='20' />
                                 </div>
+                                
                             <button className="col-12 col-md-12 paste-button-delete2"type="submit">Paste</button>
                             {error && <div className="error2">{`${error}`}</div>} 
                         </form>
+                        
+                                
+            
                     
                 
             </div>
