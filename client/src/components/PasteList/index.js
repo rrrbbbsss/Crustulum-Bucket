@@ -5,7 +5,6 @@ import { DELETE_PASTE } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
 
 const PasteList = ({ pastes }) => {
-    
           const [theme, setTheme] = useState('paste-text-dark');
   const toggleTheme = () => {
     if (theme === 'paste-text-dark') {
