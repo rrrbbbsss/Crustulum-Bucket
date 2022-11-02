@@ -549,6 +549,23 @@ i {
 
 }
 
+@media screen and (max-width: 1900px) {
+  
+@keyframes backgroundSize {
+    0% {
+      background-size: 1000% auto;
+    }
+
+    100% {
+      background-size: 200% auto;
+    }
+
+  }
+
+ 
+
+}
+
 @media screen and (max-width: 1500px) {
  
 @keyframes backgroundSize {
