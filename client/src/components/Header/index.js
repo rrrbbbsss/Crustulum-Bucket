@@ -25,7 +25,7 @@ const Header = () => {
     <div className={`${theme}`}>
       <header >
         <div>
-          <img onClick={toggleTheme} src="../images/crustulum-bucket.jpg" alt="application logo" />
+          <img className='app-logo-home' onClick={toggleTheme} src="../images/crustulum-bucket.jpg" alt="application logo" />
           <nav className={`${theme} big-nav`}>
             {auth.loggedIn() ? (
               <>

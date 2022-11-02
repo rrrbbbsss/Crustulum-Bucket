@@ -58,6 +58,15 @@ textarea {
   margin-top: -50px;
 }
 
+.app-logo-home {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  width: 100%;
+  transform: scale(.25);
+}
+
 .fa-infinity {
   color: rgba(255, 255, 255, .8);
 }
@@ -433,6 +442,10 @@ i {
 
     position: fixed;
     margin-top: -60px;
+  }
+
+  .app-logo-home {
+    transform: scale(.5);
   }
 }
 
