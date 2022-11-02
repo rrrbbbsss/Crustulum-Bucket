@@ -229,6 +229,16 @@ li:hover {
 
 
 /* Full-width inputs */
+
+
+::placeholder {
+  color: rgba(255, 255, 255, .8);
+  text-align: left;
+  margin-right: 50px;
+}
+
+
+
 .placehold {
   background: rgba(224, 209, 209, 0.2);
   display: flex;
@@ -244,26 +254,20 @@ li:hover {
   vertical-align: middle;
 }
 
-::placeholder {
-  color: rgba(255, 255, 255, .8);
-  text-align: left;
-  margin-right: 50px;
-}
-
 .button {
   background: lime;
   display: flex;
   justify-content: center;
-  margin-top: 3%;
-  border-radius: 35px;
-  line-height: 225%;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 25px;
+  line-height: 20px;
   /* margin-left: 14%; */
   border-color: transparent;
-   text-indent: 0; 
   color: black;
   font-size: larger;
   letter-spacing: 3px;
-  margin-top: -5px;
+
 }
 
 .error {
@@ -529,9 +533,7 @@ i {
 
   }
 
-  .button {
-    margin-top: 15px;
-  }
+  
 
   b {
 
