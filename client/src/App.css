@@ -555,7 +555,7 @@ i {
     }
 
     100% {
-      background-size: 120% auto;
+      background-size: 200% auto;
     }
 
   }
@@ -783,4 +783,14 @@ i {
   .cancelbtn {
     width: 100%;
   }
+    @keyframes backgroundSize {
+      0% {
+        background-size: 500% auto;
+      }
+  
+      100% {
+        background-size: 400% auto;
+      }
+  
+    }
 }
