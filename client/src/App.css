@@ -12,7 +12,7 @@
 .home-animate {
   background-position: top center;
   background-size: 200% auto;
-  animation: backgroundSize 7s ease-in-out forwards 0s;
+  animation: backgroundSize 5s ease-in-out forwards 0s;
 
 }
 .placehold-animate {
@@ -49,7 +49,7 @@
 }
 @keyframes backgroundSize {
   0% {
-    background-size: 200% auto;
+    background-size: 1000% auto;
   }
   100% {
     background-size: 100% auto;
