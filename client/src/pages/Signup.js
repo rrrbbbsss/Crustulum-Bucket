@@ -99,7 +99,7 @@ const SignUp = () => {
                         
                         required/>
 
-                <button  type="submit"  className='button  col-9 col-md-3 my-3 my-lg-4 mx-md-auto'>Sign Up!</button>
+                <button  type="submit"  className='button placehold col-9 col-md-3 my-lg-4 mx-md-auto'>Sign Up!</button>
       
     </form>
 
