@@ -48,7 +48,7 @@ const SinglePaste = () => {
             className="copy-button2"
             onClick={() => {
               navigator.clipboard.writeText(
-                `http://localhost:3000/paste/${paste.uuid}`
+                `https://crustulum-bucket.herokuapp.com/paste/${paste.uuid}`
               );
             }}
           >
