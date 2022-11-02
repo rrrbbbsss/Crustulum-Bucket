@@ -213,7 +213,6 @@ li:hover {
 }
 
 .new-paste-header {
-  margin-left: 33%;
   background-color: inherit;
   color: rgb(0, 255, 0);
   font-size: 30px;
@@ -225,6 +224,15 @@ li:hover {
   background-color: black;
   color: lime;
   font-size: 30px;
+}
+
+.new {
+      display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
+      
 }
 
 
@@ -417,6 +425,7 @@ b {
   color: lime;
 }
 
+
 .light {
   background-color: #fff;
   color: #333;
@@ -560,10 +569,7 @@ i {
     margin-bottom: 15px;
   }
 
-  .new-paste-header {
-    margin-left: 45%;
-
-  }
+ 
 
   ul {
     font-size: 20px;
