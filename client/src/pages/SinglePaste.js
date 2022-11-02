@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { READ_PASTE } from "../utils/queries";
 // import auth from "../utils/auth";
@@ -31,7 +32,13 @@ const SinglePaste = () => {
   }
 
   if (error) {
-    return <div>Paste Not Found</div>;
+
+    return (
+    <div className="e-div">
+    <div className="error fa-fade not-found">Paste Not Found</div>
+    <Link  to="/"><p className="error3 ">Click here to return home...</p></Link>
+    </div>
+    )
   }
 
   return (
