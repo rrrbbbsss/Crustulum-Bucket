@@ -1,6 +1,8 @@
 * {
   cursor: url('../public/images/rocket-solid.svg'), auto;
- 
+}
+html {
+  background-color: black;
 }
 
 .home {
@@ -547,6 +549,23 @@ i {
 
 }
 
+@media screen and (max-width: 1900px) {
+  
+@keyframes backgroundSize {
+    0% {
+      background-size: 1000% auto;
+    }
+
+    100% {
+      background-size: 200% auto;
+    }
+
+  }
+
+ 
+
+}
+
 @media screen and (max-width: 1500px) {
  
 @keyframes backgroundSize {
@@ -555,7 +574,7 @@ i {
     }
 
     100% {
-      background-size: 120% auto;
+      background-size: 200% auto;
     }
 
   }
@@ -783,4 +802,14 @@ i {
   .cancelbtn {
     width: 100%;
   }
+    @keyframes backgroundSize {
+      0% {
+        background-size: 500% auto;
+      }
+  
+      100% {
+        background-size: 400% auto;
+      }
+  
+    }
 }
