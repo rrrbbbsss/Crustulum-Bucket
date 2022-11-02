@@ -39,7 +39,8 @@ const PasteList = ({ pastes }) => {
                         
                             <h4><b>Lets Get Crusty</b></h4>
                             <h4><b>You have no pastes yet</b></h4>
-                            <h4><b>Create your first paste this way <Link to="/paste"><i class={`${theme} fa-solid fa-arrow-right`}></i></Link></b></h4>
+                            <h4><b>Create your first paste this way</b></h4>
+                            <Link to="/paste"><i class={`${theme} fa-solid fa-arrow-right`}></i></Link>
                         </div>
                             
                     </div>
@@ -89,7 +90,7 @@ const PasteList = ({ pastes }) => {
                                     <Link to={`/update-paste/${paste.uuid}`}>
                                     <button className={`col-12 paste-button-delete`} type="edit">Edit</button></Link>{' '}
                                     <button className=" mt-5 col-12 paste-button-delete" value={paste.uuid} type="delete" onClick={handleDelete}>Delete</button>
-                                    {error && <div>Delete Failed!</div>}
+                                    {error && <div className="error">{`${error}`}</div>}
                                 </div>
                             </div>
                         ))}
