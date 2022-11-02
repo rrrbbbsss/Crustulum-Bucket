@@ -1,6 +1,8 @@
 * {
   cursor: url('../public/images/rocket-solid.svg'), auto;
- 
+}
+html {
+  background-color: black;
 }
 
 .home {
