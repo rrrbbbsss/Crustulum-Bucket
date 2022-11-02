@@ -25,6 +25,14 @@ textarea {
   transform: scale(7);
 }
 
+.logo2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  width: 60%;
+}
+
 /* On mouse-over, add a deeper shadow */
 /* Add some padding inside the card container */
 .material-symbols-outlined {
@@ -428,6 +436,14 @@ i {
   }
 }
 
+@media screen and (max-width: 800px) {
+  .logo2 {
+    padding-left: 0;
+    width: 100%;
+  }
+  
+}
+
 
 @media screen and (max-width: 700px) {
   .button {
@@ -436,6 +452,10 @@ i {
 
   .Sign-up {
     text-indent: 60px;
+  }
+
+  .logo2 {
+    transform: scale(.75);
   }
 }
 
@@ -506,11 +526,10 @@ i {
   }
 
   .logo2 {
-    margin-left: -223px;
+    transform: scale(.75);
   }
 
 }
-
 
 @media screen and (min-width: 400px) {
   .update {
@@ -542,9 +561,7 @@ i {
     margin-left: 20%;
   }
 
-  .logo2 {
-    margin-left: 20%;
-  }
+
 }
 
 @media screen and (max-width: 300px) {
@@ -555,16 +572,5 @@ i {
 
   .cancelbtn {
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  img {
-    margin-left: -55%;
-    transform: scale(.3);
-  }
-  ul {
-    margin-right: 100px;
-    font-size: 13px;
   }
 }
