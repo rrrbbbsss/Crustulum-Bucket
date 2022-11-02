@@ -44,7 +44,7 @@ const myStyle={
     };
 
   return (
-<div style={myStyle} className=" home home-animate pb-9">
+<div style={myStyle} className=" home home-animate pb-9 ">
 
     <form className="home-form home-form-animate"
     onSubmit={handleFormSubmit}
@@ -52,12 +52,14 @@ const myStyle={
     
             
             
-               <div className='login-design'>
+               <div className='login-design '>
                         <span className="material-symbols-outlined">
                           workspaces
                         </span>
                         <img className='logo2 ' src="../images/crustulum-bucket.jpg" alt="application logo"/>
-                    <img className='floating' src="../images/astro.png" alt="application logo"/>
+                        <div className='el-wrap x'>
+                    <img className='floating el y' src="../images/astro.png" alt="application logo"/>
+                    </div>
                 </div>
                                     
                 <input  className='placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto'

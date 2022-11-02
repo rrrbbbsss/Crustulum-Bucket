@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { READ_PASTE } from "../utils/queries";
+import { formatDate } from "../utils/date";
 // import auth from "../utils/auth";
 import Header from "../components/Header";
 
@@ -48,14 +49,14 @@ const SinglePaste = () => {
         <p className="error2">
           Paste #{paste.uuid}
           <br />
-          Expires on {paste.expires}
+          Expires on {formatDate(paste.expires)}
         </p>
         <div className="row justify-content-center">
           <div
             className="copy-button2"
             onClick={() => {
               navigator.clipboard.writeText(
-                `https://crustulum-bucket.herokuapp.com/paste/${paste.uuid}`
+                `${window.location.origin}/paste/${paste.uuid}`
               );
             }}
           >

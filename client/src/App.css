@@ -5,14 +5,15 @@
 
 .home {
   background-position: top center;
-  background-size: 200% auto;
+  background-size: 100vh;
+  height: 100vh;
 
 }
 
 .home-animate {
   background-position: top center;
   background-size: 200% auto;
-  animation: backgroundSize 2s ease-in-out forwards .5s;
+  animation: backgroundSize 5s ease-in-out forwards 0s;
 
 }
 
@@ -53,7 +54,7 @@
 
 @keyframes backgroundSize {
   0% {
-    background-size: 200% auto;
+    background-size: 1000% auto;
   }
 
   100% {
@@ -91,12 +92,12 @@ textarea {
 }
 
 .floating {
-  height: 100px;
+  transform: scale(2);
   width: auto;
   position: fixed;
   z-index: 10000;
   animation-name: floating;
-  animation-duration: 3s;
+  animation-duration: 5s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   margin-left: 65%;
@@ -111,7 +112,7 @@ textarea {
   }
 
   50% {
-    transform: translate(0, 25px);
+    transform: translate(0, 60px);
   }
 
   100% {
@@ -355,7 +356,7 @@ li:hover {
   align-items: center;
   margin-top: 10px;
   border-radius: 25px;
-  line-height: 20px;
+  line-height: 23px;
   /* margin-left: 14%; */
   border-color: transparent;
   color: black;
@@ -552,6 +553,48 @@ i {
 
 @media screen and (max-width: 1500px) {
 
+  @keyframes backgroundSize {
+    0% {
+      background-size: 1000% auto;
+    }
+
+    100% {
+      background-size: 100% auto;
+    }
+
+  }
+
+  .Sign-up {
+    text-indent: 90px;
+    text-decoration: none;
+  }
+
+  .App-logo {
+    height: 65vmin;
+    width: auto;
+
+    position: fixed;
+    margin-top: -60px;
+  }
+
+  .app-logo-home {
+    transform: scale(.5);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+
+  @keyframes backgroundSize {
+    0% {
+      background-size: 1000% auto;
+    }
+
+    100% {
+      background-size: 200% auto;
+
+    }
+
+  }
 
   .Sign-up {
     text-indent: 90px;
@@ -572,6 +615,7 @@ i {
 }
 
 @media screen and (max-width: 800px) {
+
   .logo2 {
     padding-left: 0;
     width: 75%;
@@ -694,6 +738,10 @@ i {
 
   .logo2 {
     transform: scale(.75);
+  }
+
+  .home {
+    padding-top: 0px;
   }
 
 }
