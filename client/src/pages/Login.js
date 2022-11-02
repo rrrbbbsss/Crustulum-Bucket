@@ -83,10 +83,11 @@ const Login = (props) => {
 
         <button type="submit" className='button col-9 col-md-3 my-lg-4 mx-md-auto'>Sign In</button>
 
+      </form>
 
-        <Link style={{ textDecoration: 'none' }} to="/signup"><button type="submit" className='Sign-up button col-9 col-md-3 my-lg-4 mx-md-auto'>Create Account</button></Link>
+      <Link style={{ textDecoration: 'none' }} to="/signup"><button type="submit" className='Sign-up button col-9 col-md-3 my-lg-4 mx-md-auto'>Create Account</button></Link>
 
-        {error && <div className="error my-5">{`${error}`}</div>}
+      {error && <div className="error my-5">{`${error}`}</div>}
     </div>
   );
 };
