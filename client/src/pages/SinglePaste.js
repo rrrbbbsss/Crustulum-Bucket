@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { READ_PASTE } from "../utils/queries";
+import { formatDate } from "../utils/date";
 // import auth from "../utils/auth";
 import Header from "../components/Header";
 
@@ -31,7 +33,14 @@ const SinglePaste = () => {
   }
 
   if (error) {
-    return <div>Paste Not Found</div>;
+
+    return (
+    <div className="e-div">
+    <div className="error fa-fade not-found">Hold on now Brad Pastely</div>
+    <p className="error3 fa-fade ">That paste hasn't been seen round these parts in years</p>
+    <Link  to="/"><p className="error3 ">How bout you giddy up on home now...</p></Link>
+    </div>
+    )
   }
 
   return (
@@ -41,14 +50,14 @@ const SinglePaste = () => {
         <p className="error2">
           Paste #{paste.uuid}
           <br />
-          Expires on {paste.expires}
+          Expires on {formatDate(paste.expires)}
         </p>
         <div className="row justify-content-center">
           <div
             className="copy-button2"
             onClick={() => {
               navigator.clipboard.writeText(
-                `http://localhost:3000/paste/${paste.uuid}`
+                `${window.location.origin}/paste/${paste.uuid}`
               );
             }}
           >

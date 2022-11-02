@@ -34,6 +34,7 @@ const Header = () => {
                   <li><Link className={`${theme} g-2 big-anc2`} to="/">Home</Link></li>
                   <li><a className={`${theme} g-2 big-anc2`} href="/" onClick={logout}>Logout</a></li>
                   <li><Link className={`${theme} g-2 big-anc2`} to="/paste">Create a Paste</Link></li>
+                  {/* <li><a className={`${theme} g-2 big-anc2`} href="https://buy.stripe.com/test_7sI7sYeBf3PscAE8wy">Donate $1</a></li> */}
                 </ul>
               </>
             ) : (

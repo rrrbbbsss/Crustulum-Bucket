@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { DELETE_PASTE } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
+import { formatDate } from "../../utils/date";
 
 const PasteList = ({ pastes }) => {
           const [theme, setTheme] = useState('paste-text-dark');
@@ -39,7 +40,8 @@ const PasteList = ({ pastes }) => {
                         
                             <h4><b>Lets Get Crusty</b></h4>
                             <h4><b>You have no pastes yet</b></h4>
-                            <h4><b>Create your first paste this way <Link to="/paste"><i class={`${theme} fa-solid fa-arrow-right`}></i></Link></b></h4>
+                            <h4><b>Create your first paste this way</b></h4>
+                            <Link to="/paste"><i class={`${theme} fa-solid fa-arrow-right`}></i></Link>
                         </div>
                             
                     </div>
@@ -77,19 +79,19 @@ const PasteList = ({ pastes }) => {
                                         style={{ fontWeight: 700 }}
                                         
                                     >#{paste.uuid}</Link><br/>
-                                    Expires on {paste.expires}
+                                    Expires on {formatDate(paste.expires)}
                                 </p>
                                 <div className=" row justify-content-center ">
                                      <div className="copy-button" onClick={() => {
-                                            navigator.clipboard.writeText(`http://localhost:3000/paste/${paste.uuid}`);}}><span>
+                                            navigator.clipboard.writeText(`${window.location.origin}/paste/${paste.uuid}`);}}><span>
                                             <i className="fa-solid fa-copy"></i>
                                             </span>
                                         </div>
-                                    <textarea className={`${theme} col-12`} rows="20" readOnly={true} defaultValue={paste.text} />
+                                    <textarea className={`${theme} col-12 `} rows="20" readOnly={true} defaultValue={paste.text} />
                                     <Link to={`/update-paste/${paste.uuid}`}>
-                                    <button className={`col-12 paste-button-delete`} type="edit">Edit</button></Link>{' '}
+                                    <button className={`col-12 paste-button-delete neumorphism`} type="edit">Edit</button></Link>{' '}
                                     <button className=" mt-5 col-12 paste-button-delete" value={paste.uuid} type="delete" onClick={handleDelete}>Delete</button>
-                                    {error && <div>Delete Failed!</div>}
+                                    {error && <div className="error">{`${error}`}</div>}
                                 </div>
                             </div>
                         ))}

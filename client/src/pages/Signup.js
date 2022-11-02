@@ -75,6 +75,7 @@ const SignUp = () => {
                         workspaces
                         </span></Link>
                         <img className='logo2' src="../images/crustulum-bucket.jpg" alt="application logo"/>
+                        <img className='floating' src="../images/astro.png" alt="application logo"/>
                 
                 <input  className='placehold col-9 col-md-3 my-lg-4 mx-md-auto'
                         placeholder="Email" 
