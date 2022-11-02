@@ -6,6 +6,7 @@
   margin-top: 0;
 }
 
+
 input:hover {
   background-color: black;
   color: lime;
@@ -121,6 +122,22 @@ ul {
 li {
   margin-left: 15px;
   color: lime;
+}
+
+.image-div {
+  margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+img {
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: auto;
 }
 
 .big-anc2 {
@@ -412,10 +429,7 @@ i {
 @media screen and (min-width: 1900px) {
   
 
-  img {
-    margin-left: 1000px;
-    padding-left: 210px;
-  }
+ 
 
 }
 
@@ -487,11 +501,7 @@ i {
     padding-top: 15px;
   }
 
-  img {
-    transform: scale(.2);
-    padding-top: 15px;
-    margin-left: -60%;
-  }
+
 
   .material-symbols-outlined {
     margin-top: 55%;
@@ -553,11 +563,7 @@ i {
     margin-left: 30px;
   }
 
-  img {
-    transform: scale(.5);
-    padding-top: 15px;
-    margin-left: 20%;
-  }
+ 
 
 
 }
