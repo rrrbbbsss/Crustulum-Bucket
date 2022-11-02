@@ -44,6 +44,7 @@ const Login = (props) => {
   };
 
   return (
+<<<<<<< HEAD
     <div style={myStyle} className=" home pb-9">
 
       <form className="home-form"
@@ -69,8 +70,49 @@ const Login = (props) => {
           onChange={handleChange}
 
           required />
+=======
+<div style={myStyle} className=" home home-animate pb-9">
+
+    <form className="home-form home-form-animate"
+    onSubmit={handleFormSubmit}
+    >
+    
+            
+            
+               <div className='login-design'>
+                        <span className="material-symbols-outlined">
+                          workspaces
+                        </span>
+                        <img className='logo2' src="../images/crustulum-bucket.jpg" alt="application logo"/>
+
+                </div>
+                                    
+                <input  className='placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto'
+                        type="email" 
+                        placeholder="Email" 
+                        name='email' 
+                        id='email'
+                        value={formState.email}
+                        onChange={handleChange}
+                        
+                        required/>
+
+                
+                <input  className='placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto' 
+                        placeholder='******'
+                        name='password'
+                        type='password'
+                        id='password'
+                        value={formState.password}
+                        onChange={handleChange}  
+                        
+                        required/>
+
+               <button  type="submit"  className='button placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto'>Sign In</button>
+>>>>>>> develop
 
 
+<<<<<<< HEAD
         <input className='placehold col-9 col-md-3 my-lg-4 mx-md-auto'
           placeholder='******'
           name='password'
@@ -78,6 +120,9 @@ const Login = (props) => {
           id='password'
           value={formState.password}
           onChange={handleChange}
+=======
+     <Link style={ {textDecoration: 'none'}} to="/signup"><button  type="submit"  className=' button placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto'>Create Account</button></Link>
+>>>>>>> develop
 
           required />
 

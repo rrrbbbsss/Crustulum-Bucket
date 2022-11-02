@@ -84,6 +84,12 @@ const SignUp = () => {
           value={formState.email}
           onChange={handleChange}
 
+<<<<<<< HEAD
+=======
+                <button  type="submit"  className='button placehold col-9 col-md-3 my-lg-4 mx-md-auto'>Sign Up!</button>
+      
+    </form>
+>>>>>>> develop
 
           required />
 

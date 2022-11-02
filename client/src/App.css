@@ -3,8 +3,58 @@
 }
 
 .home {
-  margin-top: 0;
+  background-position: top center;
+  background-size: 200% auto;
+
 }
+.home-animate {
+  background-position: top center;
+  background-size: 200% auto;
+  animation: backgroundSize 2s ease-in-out forwards .5s;
+
+}
+.placehold-animate {
+  animation: homeForm 2s ease-in-out forwards .5s;
+}
+.login-design {
+  animation: loginDesign 2s ease-in-out forwards .5s;
+}
+
+@keyframes loginDesign {
+  0% {
+    transform: translateY(-600%);
+    opacity: 0;
+    
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+}
+@keyframes homeForm {
+  0% {
+    transform: translateY(600%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+}
+@keyframes backgroundSize {
+  0% {
+    background-size: 200% auto;
+  }
+  100% {
+    background-size: 100% auto;
+  }
+  
+}
+
 
 input:hover {
   background-color: black;
@@ -116,20 +166,37 @@ nav {
 }
 
 ul {
-  margin: 85px -3px -15px -10px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
-  list-style: none;
-  flex: auto;
-  flex-direction: row;
-  font-size: 16px;
-  color: lime;
+    display: flex;
+      justify-content: center;
+      list-style: none;
+      flex: auto;
+      flex-direction: row;
+      font-size: 16px;
+      color: lime;
+      align-items: center;
+      flex-wrap: nowrap;
+      align-content: stretch;
 }
 
 li {
   margin-left: 15px;
   color: lime;
+}
+
+.image-div {
+  margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+img {
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: auto;
 }
 
 .big-anc2 {
@@ -196,7 +263,6 @@ li:hover {
 }
 
 .new-paste-header {
-  margin-left: 33%;
   background-color: inherit;
   color: rgb(0, 255, 0);
   font-size: 30px;
@@ -210,8 +276,27 @@ li:hover {
   font-size: 30px;
 }
 
+.new {
+      display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
+      
+}
+
 
 /* Full-width inputs */
+
+
+::placeholder {
+  color: rgba(255, 255, 255, .8);
+  text-align: left;
+  margin-right: 50px;
+}
+
+
+
 .placehold {
   background: rgba(224, 209, 209, 0.2);
   display: flex;
@@ -227,26 +312,20 @@ li:hover {
   vertical-align: middle;
 }
 
-::placeholder {
-  color: rgba(255, 255, 255, .8);
-  text-align: left;
-  margin-right: 50px;
-}
-
 .button {
   background: lime;
   display: flex;
   justify-content: center;
-  margin-top: 3%;
-  border-radius: 35px;
-  line-height: 225%;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 25px;
+  line-height: 20px;
   /* margin-left: 14%; */
   border-color: transparent;
-   text-indent: 0; 
   color: black;
   font-size: larger;
   letter-spacing: 3px;
-  margin-top: -5px;
+
 }
 
 .error {
@@ -278,6 +357,7 @@ li:hover {
   text-align: center;
   margin-left: 15%;
   background-color: transparent;
+
 }
 
 .error4 {
@@ -294,8 +374,13 @@ li:hover {
 .e-div {
   margin-top: 15%;
 }
+.not-found {
+  margin-top: 25%;
+  font-size: 50px;
+}
 
 .fa-arrow-right {
+  margin-top: 100px;
   margin-left: 100px;
   padding-bottom: 40px;
   transform: scale(4);
@@ -396,6 +481,7 @@ b {
   color: lime;
 }
 
+
 .light {
   background-color: #fff;
   color: #333;
@@ -415,16 +501,18 @@ i {
   color: rgba(255, 255, 255);
 }
 
+.fa-copy {
+  transform: scale(5);
+  margin-bottom: 30px;
+}
+
 /* Add padding to containers */
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (min-width: 1900px) {
   
 
-  img {
-    margin-left: 1000px;
-    padding-left: 210px;
-  }
+ 
 
 }
 
@@ -468,13 +556,43 @@ i {
   .logo2 {
     transform: scale(.75);
   }
+ 
 }
+@media screen and (max-width: 500px) {
 
-@media screen and (max-width: 400px) {
-  .fa-copy {
-    transform: scale(3);
+  .home {
+    padding-top: 175px;
+  }
+@keyframes backgroundSize {
+    0% {
+      background-size: 800% auto;
+    }
+
+    100% {
+      background-size: 300% auto;
+    }
+
   }
 
+  .big-anc2 {
+
+    font-size: 15px;
+
+  }
+
+}
+@media screen and (max-width: 400px) {
+  
+@keyframes backgroundSize {
+    0% {
+      background-size: 500% auto;
+    }
+
+    100% {
+      background-size: 300% auto;
+    }
+
+  }
   .new-paste {
     width: 100px;
   }
@@ -494,17 +612,18 @@ i {
     margin-right: 55px;
     padding-top: 20px;
   }
+  .big-anc2 {
+    
+        font-size: 15px;
+      
+  }
 
   h1 {
     text-align: center;
     padding-top: 15px;
   }
 
-  img {
-    transform: scale(.2);
-    padding-top: 15px;
-    margin-left: -60%;
-  }
+
 
   .material-symbols-outlined {
     margin-top: 55%;
@@ -519,9 +638,7 @@ i {
 
   }
 
-  .button {
-    margin-top: 15px;
-  }
+  
 
   b {
 
@@ -548,10 +665,7 @@ i {
     margin-bottom: 15px;
   }
 
-  .new-paste-header {
-    margin-left: 45%;
-
-  }
+ 
 
   ul {
     font-size: 20px;
@@ -566,21 +680,20 @@ i {
     margin-left: 30px;
   }
 
-  img {
-    transform: scale(.5);
-    padding-top: 15px;
-    margin-left: 20%;
-  }
+ 
 
 
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 390px) {
   span.psw {
     display: block;
     float: none;
   }
-
+.big-anc2 {
+  font-size: 13px;
+  letter-spacing: 0px;
+}
   .cancelbtn {
     width: 100%;
   }
