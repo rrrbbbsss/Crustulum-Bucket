@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { DELETE_PASTE } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
+import { formatDate } from "../../utils/date";
 
 const PasteList = ({ pastes }) => {
           const [theme, setTheme] = useState('paste-text-dark');
@@ -78,7 +79,7 @@ const PasteList = ({ pastes }) => {
                                         style={{ fontWeight: 700 }}
                                         
                                     >#{paste.uuid}</Link><br/>
-                                    Expires on {paste.expires}
+                                    Expires on {formatDate(paste.expires)}
                                 </p>
                                 <div className=" row justify-content-center ">
                                      <div className="copy-button" onClick={() => {
