@@ -56,8 +56,8 @@ const myStyle={
                         <span className="material-symbols-outlined">
                           workspaces
                         </span>
-                        <img className='logo2' src="../images/crustulum-bucket.jpg" alt="application logo"/>
-
+                        <img className='logo2 ' src="../images/crustulum-bucket.jpg" alt="application logo"/>
+                    <img className='floating' src="../images/astro.png" alt="application logo"/>
                 </div>
                                     
                 <input  className='placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto'
@@ -85,7 +85,7 @@ const myStyle={
 
     </form>
 
-     <Link style={ {textDecoration: 'none'}} to="/signup"><button  type="submit"  className=' button placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto'>Create Account</button></Link>
+     <Link style={ {textDecoration: 'none'}} to="/signup"><button  type="submit"  className='  button placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto'>Create Account</button></Link>
 
             {error && <div className="error my-5">{`${error}`}</div>}
 </div>
