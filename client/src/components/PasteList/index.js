@@ -86,9 +86,9 @@ const PasteList = ({ pastes }) => {
                                             <i className="fa-solid fa-copy"></i>
                                             </span>
                                         </div>
-                                    <textarea className={`${theme} col-12`} rows="20" readOnly={true} defaultValue={paste.text} />
+                                    <textarea className={`${theme} col-12 `} rows="20" readOnly={true} defaultValue={paste.text} />
                                     <Link to={`/update-paste/${paste.uuid}`}>
-                                    <button className={`col-12 paste-button-delete`} type="edit">Edit</button></Link>{' '}
+                                    <button className={`col-12 paste-button-delete neumorphism`} type="edit">Edit</button></Link>{' '}
                                     <button className=" mt-5 col-12 paste-button-delete" value={paste.uuid} type="delete" onClick={handleDelete}>Delete</button>
                                     {error && <div className="error">{`${error}`}</div>}
                                 </div>
