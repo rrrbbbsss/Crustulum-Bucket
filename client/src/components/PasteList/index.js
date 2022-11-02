@@ -83,7 +83,7 @@ const PasteList = ({ pastes }) => {
                                 </p>
                                 <div className=" row justify-content-center ">
                                      <div className="copy-button" onClick={() => {
-                                            navigator.clipboard.writeText(`https://crustulum-bucket.herokuapp.com/paste/${paste.uuid}`);}}><span>
+                                            navigator.clipboard.writeText(`${window.location.origin}/paste/${paste.uuid}`);}}><span>
                                             <i className="fa-solid fa-copy"></i>
                                             </span>
                                         </div>
