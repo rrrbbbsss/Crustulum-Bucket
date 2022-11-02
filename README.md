@@ -11,7 +11,7 @@
 ## Description
 
 The best paste bin site ever made.
-![img](.)
+![img](./client/public/images/Crustbuckethp.png)
 
 ## Technologies Used
 
@@ -57,7 +57,7 @@ $ npm run develop
 
 ## Deployed Instance
 
-This [link]() will take you to a deployed instance of the app.
+[This link](https://crustulum-bucket.herokuapp.com/) will take you to a deployed instance of the app.
 
 ## Questions
 
