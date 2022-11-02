@@ -3,7 +3,56 @@
 }
 
 .home {
-  margin-top: 0;
+  background-position: top center;
+  background-size: 200% auto;
+
+}
+.home-animate {
+  background-position: top center;
+  background-size: 200% auto;
+  animation: backgroundSize 2s ease-in-out forwards .5s;
+
+}
+.placehold-animate {
+  animation: homeForm 2s ease-in-out forwards .5s;
+}
+.login-design {
+  animation: loginDesign 2s ease-in-out forwards .5s;
+}
+
+@keyframes loginDesign {
+  0% {
+    transform: translateY(-600%);
+    opacity: 0;
+    
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+}
+@keyframes homeForm {
+  0% {
+    transform: translateY(600%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+}
+@keyframes backgroundSize {
+  0% {
+    background-size: 200% auto;
+  }
+  100% {
+    background-size: 100% auto;
+  }
+  
 }
 
 
@@ -511,6 +560,19 @@ i {
 }
 @media screen and (max-width: 500px) {
 
+  .home {
+    padding-top: 175px;
+  }
+@keyframes backgroundSize {
+    0% {
+      background-size: 800% auto;
+    }
+
+    100% {
+      background-size: 300% auto;
+    }
+
+  }
 
   .big-anc2 {
 
@@ -521,7 +583,16 @@ i {
 }
 @media screen and (max-width: 400px) {
   
+@keyframes backgroundSize {
+    0% {
+      background-size: 500% auto;
+    }
 
+    100% {
+      background-size: 300% auto;
+    }
+
+  }
   .new-paste {
     width: 100px;
   }

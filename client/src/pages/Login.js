@@ -44,23 +44,23 @@ const myStyle={
     };
 
   return (
-<div style={myStyle} className=" home pb-9">
+<div style={myStyle} className=" home home-animate pb-9">
 
-    <form className="home-form"
+    <form className="home-form home-form-animate"
     onSubmit={handleFormSubmit}
     >
     
             
             
-                {/* <i className=" fa-solid fa-shuttle-space  App-logo fa-2xl " ></i>
-                
-                <i className="fa-solid  fa-infinity fa-xs"></i> */}
-                <span className="material-symbols-outlined">
-                        workspaces
+               <div className='login-design'>
+                        <span className="material-symbols-outlined">
+                          workspaces
                         </span>
                         <img className='logo2' src="../images/crustulum-bucket.jpg" alt="application logo"/>
+
+                </div>
                                     
-                <input  className='placehold col-9 col-md-3 my-lg-4 mx-md-auto'
+                <input  className='placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto'
                         type="email" 
                         placeholder="Email" 
                         name='email' 
@@ -71,7 +71,7 @@ const myStyle={
                         required/>
 
                 
-                <input  className='placehold col-9 col-md-3 my-lg-4 mx-md-auto' 
+                <input  className='placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto' 
                         placeholder='******'
                         name='password'
                         type='password'
@@ -81,11 +81,11 @@ const myStyle={
                         
                         required/>
 
-               <button  type="submit"  className='button placehold col-9 col-md-3 my-lg-4 mx-md-auto'>Sign In</button>
+               <button  type="submit"  className='button placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto'>Sign In</button>
 
     </form>
 
-     <Link style={ {textDecoration: 'none'}} to="/signup"><button  type="submit"  className=' button placehold col-9 col-md-3 my-lg-4 mx-md-auto'>Create Account</button></Link>
+     <Link style={ {textDecoration: 'none'}} to="/signup"><button  type="submit"  className=' button placehold placehold-animate col-9 col-md-3 my-lg-4 mx-md-auto'>Create Account</button></Link>
 
             {error && <div className="error my-5">{`${error}`}</div>}
 </div>
