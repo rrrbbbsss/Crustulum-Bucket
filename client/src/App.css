@@ -6,6 +6,7 @@
   margin-top: 0;
 }
 
+
 input:hover {
   background-color: black;
   color: lime;
@@ -132,6 +133,22 @@ li {
   color: lime;
 }
 
+.image-div {
+  margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+img {
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: auto;
+}
+
 .big-anc2 {
   /* background-color: ; */
   text-decoration: none;
@@ -212,6 +229,16 @@ li:hover {
 
 
 /* Full-width inputs */
+
+
+::placeholder {
+  color: rgba(255, 255, 255, .8);
+  text-align: left;
+  margin-right: 50px;
+}
+
+
+
 .placehold {
   background: rgba(224, 209, 209, 0.2);
   display: flex;
@@ -227,26 +254,20 @@ li:hover {
   vertical-align: middle;
 }
 
-::placeholder {
-  color: rgba(255, 255, 255, .8);
-  text-align: left;
-  margin-right: 50px;
-}
-
 .button {
   background: lime;
   display: flex;
   justify-content: center;
-  margin-top: 3%;
-  border-radius: 35px;
-  line-height: 225%;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 25px;
+  line-height: 20px;
   /* margin-left: 14%; */
   border-color: transparent;
-   text-indent: 0; 
   color: black;
   font-size: larger;
   letter-spacing: 3px;
-  margin-top: -5px;
+
 }
 
 .error {
@@ -421,10 +442,7 @@ i {
 @media screen and (min-width: 1900px) {
   
 
-  img {
-    margin-left: 1000px;
-    padding-left: 210px;
-  }
+ 
 
 }
 
@@ -500,11 +518,7 @@ i {
     padding-top: 15px;
   }
 
-  img {
-    transform: scale(.2);
-    padding-top: 15px;
-    margin-left: -60%;
-  }
+
 
   .material-symbols-outlined {
     margin-top: 55%;
@@ -519,9 +533,7 @@ i {
 
   }
 
-  .button {
-    margin-top: 15px;
-  }
+  
 
   b {
 
@@ -566,11 +578,7 @@ i {
     margin-left: 30px;
   }
 
-  img {
-    transform: scale(.5);
-    padding-top: 15px;
-    margin-left: 20%;
-  }
+ 
 
 
 }
