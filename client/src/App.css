@@ -447,6 +447,11 @@ i {
   color: rgba(255, 255, 255);
 }
 
+.fa-copy {
+  transform: scale(5);
+  margin-bottom: 30px;
+}
+
 /* Add padding to containers */
 
 /* Change styles for span and cancel button on extra small screens */
@@ -500,9 +505,7 @@ i {
 }
 
 @media screen and (max-width: 400px) {
-  .fa-copy {
-    transform: scale(3);
-  }
+  
 
   .new-paste {
     width: 100px;
