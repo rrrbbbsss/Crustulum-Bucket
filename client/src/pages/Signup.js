@@ -4,6 +4,7 @@ from 'react';
 import { useMutation } from '@apollo/client';
 import { SIGN_UP_USER } from '../utils/mutations';
 import { LOGIN_USER } from '../utils/mutations';
+import { Link } from "react-router-dom";
 import Auth from '../utils/auth';
 
 
@@ -20,7 +21,7 @@ const SignUp = () => {
     
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser, { error }] = useMutation(SIGN_UP_USER);
-  const [login, { error1 }] = useMutation(LOGIN_USER);
+  const [login, { error1}] = useMutation(LOGIN_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -70,11 +71,12 @@ const SignUp = () => {
                 
                 <i className="fa-solid fa-infinity fa-xs"></i> */}
 
-                <span className="material-symbols-outlined">
+                <Link style={ {textDecoration: 'none'}} to="/"><span className="material-symbols-outlined">
                         workspaces
-                        </span>
+                        </span></Link>
+                        <img className='logo2' src="../images/crustulum-bucket.jpg" alt="application logo"/>
                 
-                <input  className='placehold col-9 col-md-3 my-lg-5 mx-md-auto'
+                <input  className='placehold col-9 col-md-3 my-lg-4 mx-md-auto'
                         placeholder="Email" 
                          name='email'
                         type='email'
@@ -86,7 +88,7 @@ const SignUp = () => {
                         required/>
 
                 
-                <input  className='placehold col-9 col-md-3 my-lg-5 mx-md-auto' 
+                <input  className='placehold col-9 col-md-3 my-lg-4 mx-md-auto' 
                         placeholder='******'
                         name='password'
                         type='password'
@@ -97,7 +99,7 @@ const SignUp = () => {
                         
                         required/>
 
-                <button  type="submit"  className='button  col-9 col-md-3 my-5 my-lg-5 mx-md-auto'>Sign Up!</button>
+                <button  type="submit"  className='button  col-9 col-md-3 my-3 my-lg-4 mx-md-auto'>Sign Up!</button>
       
     </form>
 
