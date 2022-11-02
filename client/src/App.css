@@ -25,6 +25,14 @@ textarea {
   transform: scale(7);
 }
 
+.logo2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  width: 60%;
+}
+
 /* On mouse-over, add a deeper shadow */
 /* Add some padding inside the card container */
 .material-symbols-outlined {
@@ -48,6 +56,15 @@ textarea {
   width: auto;
   position: fixed;
   margin-top: -50px;
+}
+
+.app-logo-home {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  width: 100%;
+  transform: scale(.25);
 }
 
 .fa-infinity {
@@ -219,12 +236,13 @@ li:hover {
 .button {
   background: lime;
   display: flex;
+  justify-content: center;
   margin-top: 3%;
   border-radius: 35px;
   line-height: 225%;
-  margin-left: 14%;
+  /* margin-left: 14%; */
   border-color: transparent;
-  text-indent: 98px;
+   text-indent: 0; 
   color: black;
   font-size: larger;
   letter-spacing: 3px;
@@ -361,6 +379,9 @@ b {
 }
 
 .paste-button-delete2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: lime;
   margin-top: 20px;
   border-radius: 25px;
@@ -398,9 +419,7 @@ i {
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (min-width: 1900px) {
-  .button {
-    text-indent: 150px;
-  }
+  
 
   img {
     margin-left: 1000px;
@@ -410,9 +429,7 @@ i {
 }
 
 @media screen and (max-width: 1500px) {
-  .button {
-    text-indent: 130px;
-  }
+ 
 
   .Sign-up {
     text-indent: 90px;
@@ -426,16 +443,30 @@ i {
     position: fixed;
     margin-top: -60px;
   }
+
+  .app-logo-home {
+    transform: scale(.5);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .logo2 {
+    padding-left: 0;
+    width: 100%;
+  }
+  
 }
 
 
 @media screen and (max-width: 700px) {
-  .button {
-    text-indent: 100px;
-  }
+ 
 
   .Sign-up {
     text-indent: 60px;
+  }
+
+  .logo2 {
+    transform: scale(.75);
   }
 }
 
@@ -506,7 +537,7 @@ i {
   }
 
   .logo2 {
-    margin-left: -223px;
+    transform: scale(.75);
   }
 
 }
@@ -541,9 +572,7 @@ i {
     margin-left: 20%;
   }
 
-  .logo2 {
-    margin-left: 20%;
-  }
+
 }
 
 @media screen and (max-width: 300px) {
