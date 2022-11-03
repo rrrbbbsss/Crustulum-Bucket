@@ -559,7 +559,7 @@ i {
     }
 
     100% {
-      background-size: 100% auto;
+      background-size: 120% auto;
     }
 
   }
@@ -626,6 +626,17 @@ i {
 
 @media screen and (max-width: 700px) {
 
+  @keyframes backgroundSize {
+    0% {
+      background-size: 1000% auto;
+    }
+
+    100% {
+      background-size: 300% auto;
+
+    }
+
+  }
 
   .Sign-up {
     text-indent: 60px;
@@ -649,7 +660,7 @@ i {
     }
 
     100% {
-      background-size: 300% auto;
+      background-size: 350% auto;
     }
 
   }
@@ -670,7 +681,7 @@ i {
     }
 
     100% {
-      background-size: 300% auto;
+      background-size: 350% auto;
     }
 
   }

@@ -36,8 +36,9 @@ const SinglePaste = () => {
 
     return (
     <div className="e-div">
-    <div className="error fa-fade not-found">Paste Not Found</div>
-    <Link  to="/"><p className="error3 ">Click here to return home...</p></Link>
+    <div className="error fa-fade not-found">Hold on now Brad Pastely</div>
+    <p className="error3 fa-fade ">That paste hasn't been seen round these parts in years</p>
+    <Link  to="/"><p className="error3 ">How bout you giddy up on home now...</p></Link>
     </div>
     )
   }
