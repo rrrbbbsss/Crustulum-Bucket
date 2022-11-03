@@ -1,6 +1,7 @@
 * {
   cursor: url('../public/images/rocket-solid.svg'), auto;
 }
+
 html {
   background-color: black;
 }
@@ -11,15 +12,18 @@ html {
   height: 100vh;
 
 }
+
 .home-animate {
   background-position: top center;
   background-size: 200% auto;
   animation: backgroundSize 5s ease-in-out forwards 0s;
 
 }
+
 .placehold-animate {
   animation: homeForm 2s ease-in-out forwards .5s;
 }
+
 .login-design {
   animation: loginDesign 2s ease-in-out forwards .5s;
 }
@@ -28,7 +32,7 @@ html {
   0% {
     transform: translateY(-600%);
     opacity: 0;
-    
+
   }
 
   100% {
@@ -37,6 +41,7 @@ html {
   }
 
 }
+
 @keyframes homeForm {
   0% {
     transform: translateY(600%);
@@ -49,14 +54,16 @@ html {
   }
 
 }
+
 @keyframes backgroundSize {
   0% {
     background-size: 1000% auto;
   }
+
   100% {
     background-size: 100% auto;
   }
-  
+
 }
 
 
@@ -86,6 +93,7 @@ textarea {
   padding: 0;
   width: 60%;
 }
+
 .floating {
   transform: scale(2);
   width: auto;
@@ -96,9 +104,10 @@ textarea {
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   margin-left: 65%;
-  
+
 
 }
+
 @keyframes floating {
 
   0% {
@@ -197,16 +206,16 @@ nav {
 }
 
 ul {
-    display: flex;
-      justify-content: center;
-      list-style: none;
-      flex: auto;
-      flex-direction: row;
-      font-size: 16px;
-      color: lime;
-      align-items: center;
-      flex-wrap: nowrap;
-      align-content: stretch;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex: auto;
+  flex-direction: row;
+  font-size: 16px;
+  color: lime;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: stretch;
 }
 
 li {
@@ -216,11 +225,11 @@ li {
 
 .image-div {
   margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 img {
@@ -308,12 +317,12 @@ li:hover {
 }
 
 .new {
-      display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: space-around;
-        align-items: center;
-      
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+
 }
 
 
@@ -338,7 +347,7 @@ li:hover {
   margin-left: 14%;
   width: 300px;
   border-color: transparent;
-  text-indent: 5%;
+  /* text-indent: 5%; */
   color: black;
   vertical-align: middle;
 }
@@ -350,7 +359,7 @@ li:hover {
   align-items: center;
   margin-top: 10px;
   border-radius: 25px;
-  line-height: 23px;
+  line-height: 45px;
   /* margin-left: 14%; */
   border-color: transparent;
   color: black;
@@ -405,6 +414,7 @@ li:hover {
 .e-div {
   margin-top: 15%;
 }
+
 .not-found {
   margin-top: 25%;
   font-size: 50px;
@@ -542,16 +552,11 @@ i {
 /* Add padding to containers */
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (min-width: 1900px) {
-  
-
- 
-
-}
+@media screen and (min-width: 1900px) {}
 
 @media screen and (max-width: 1900px) {
-  
-@keyframes backgroundSize {
+
+  @keyframes backgroundSize {
     0% {
       background-size: 1000% auto;
     }
@@ -562,13 +567,13 @@ i {
 
   }
 
- 
+
 
 }
 
 @media screen and (max-width: 1500px) {
- 
-@keyframes backgroundSize {
+
+  @keyframes backgroundSize {
     0% {
       background-size: 1000% auto;
     }
@@ -578,6 +583,7 @@ i {
     }
 
   }
+
   .Sign-up {
     text-indent: 90px;
     text-decoration: none;
@@ -605,7 +611,7 @@ i {
 
     100% {
       background-size: 300% auto;
-      
+
     }
 
   }
@@ -629,28 +635,29 @@ i {
 }
 
 @media screen and (max-width: 800px) {
- 
+
   .logo2 {
     padding-left: 0;
-    width: 100%;
+    width: 75%;
   }
-  
+
 }
 
 
 @media screen and (max-width: 700px) {
- 
+
   @keyframes backgroundSize {
-      0% {
-        background-size: 1000% auto;
-      }
-  
-      100% {
-        background-size: 300% auto;
-  
-      }
-  
+    0% {
+      background-size: 1000% auto;
     }
+
+    100% {
+      background-size: 300% auto;
+
+    }
+
+  }
+
   .Sign-up {
     text-indent: 60px;
   }
@@ -658,14 +665,16 @@ i {
   .logo2 {
     transform: scale(.75);
   }
- 
+
 }
+
 @media screen and (max-width: 500px) {
 
   .home {
     padding-top: 175px;
   }
-@keyframes backgroundSize {
+
+  @keyframes backgroundSize {
     0% {
       background-size: 800% auto;
     }
@@ -683,9 +692,10 @@ i {
   }
 
 }
+
 @media screen and (max-width: 400px) {
-  
-@keyframes backgroundSize {
+
+  @keyframes backgroundSize {
     0% {
       background-size: 500% auto;
     }
@@ -695,6 +705,7 @@ i {
     }
 
   }
+
   .new-paste {
     width: 100px;
   }
@@ -714,10 +725,11 @@ i {
     margin-right: 55px;
     padding-top: 20px;
   }
+
   .big-anc2 {
-    
-        font-size: 15px;
-      
+
+    font-size: 15px;
+
   }
 
   h1 {
@@ -740,7 +752,7 @@ i {
 
   }
 
-  
+
 
   b {
 
@@ -758,8 +770,9 @@ i {
   .logo2 {
     transform: scale(.75);
   }
+
   .home {
-    padding-top:0px;
+    padding-top: 0px;
   }
 
 }
@@ -770,7 +783,7 @@ i {
     margin-bottom: 15px;
   }
 
- 
+
 
   ul {
     font-size: 20px;
@@ -785,7 +798,7 @@ i {
     margin-left: 30px;
   }
 
- 
+
 
 
 }
@@ -795,21 +808,24 @@ i {
     display: block;
     float: none;
   }
-.big-anc2 {
-  font-size: 13px;
-  letter-spacing: 0px;
-}
+
+  .big-anc2 {
+    font-size: 13px;
+    letter-spacing: 0px;
+  }
+
   .cancelbtn {
     width: 100%;
   }
-    @keyframes backgroundSize {
-      0% {
-        background-size: 500% auto;
-      }
-  
-      100% {
-        background-size: 400% auto;
-      }
-  
+
+  @keyframes backgroundSize {
+    0% {
+      background-size: 500% auto;
     }
+
+    100% {
+      background-size: 400% auto;
+    }
+
+  }
 }
