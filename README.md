@@ -11,7 +11,7 @@
 ## Description
 
 The best paste bin site ever made.
-![img](./client/public/images/Crustbuckethp.png)
+![img](./client/public/images/CrustbucketHOME.png)
 
 ## Technologies Used
 
