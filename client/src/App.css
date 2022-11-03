@@ -347,7 +347,7 @@ li:hover {
   margin-left: 14%;
   width: 300px;
   border-color: transparent;
-  text-indent: 5%;
+  /* text-indent: 5%; */
   color: black;
   vertical-align: middle;
 }
@@ -359,7 +359,7 @@ li:hover {
   align-items: center;
   margin-top: 10px;
   border-radius: 25px;
-  line-height: 23px;
+  line-height: 45px;
   /* margin-left: 14%; */
   border-color: transparent;
   color: black;
